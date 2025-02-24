@@ -51,10 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (video.paused) {
             video.play();
-            showIndicator("/assets/icons/play.png"); // ✅ Make sure path is correct
+            showIndicator("/assets/Icons/play.png"); // ✅ Make sure path is correct
         } else {
             video.pause();
-            showIndicator("/assets/icons/pause.png");
+            showIndicator("/assets/Icons/pause.png");
         }
     });
 
