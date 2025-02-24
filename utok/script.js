@@ -51,14 +51,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (video.paused) {
             video.play();
-            showIndicator("/assets/Icons/play.png"); // ✅ Make sure path is correct
+            showIndicator("/assets/Icons/play.png"); 
         } else {
             video.pause();
             showIndicator("/assets/Icons/pause.png");
         }
     });
 
-    // Ensure video plays with sound after first user interaction
+    // maeking video plays with sound after first user interaction
     document.body.addEventListener("click", () => {
         if (firstInteraction) {
             video.play().then(() => {
@@ -68,14 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, { once: true });
 
-    // Like button functionality
+    // Like button functionalities dang sound professional
     likeBtn.addEventListener("click", (event) => {
         event.stopPropagation();
         let likes = parseInt(likeBtn.textContent.match(/\d+/)[0]); 
         likeBtn.textContent = `❤️ ${likes + 1}`; 
     });
 
-    // Comment button functionality
+    // Comment button functionality still broken send help
     commentBtn.addEventListener("click", (event) => {
         event.stopPropagation();
         alert("Comments feature coming soon!");
