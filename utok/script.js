@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     video.addEventListener("click", () => {
         if (video.paused) {
             video.play();
-            showIndicator("▶️"); // Show play icon
+            showIndicator("⏯️"); // Show play icon
         } else {
             video.pause();
             showIndicator("⏸️"); // Show pause icon
