@@ -1,9 +1,13 @@
-document.querySelector(".like-btn").addEventListener("click", function () {
-    let likes = parseInt(this.innerText.split(" ")[1]); // Get current likes
-    likes++;
-    this.innerText = `❤️ ${likes}`; // Update likes count
-});
+document.addEventListener("DOMContentLoaded", () => {
+    const likeBtn = document.querySelector(".like-btn");
+    const commentBtn = document.querySelector(".comment-btn");
 
-document.querySelector(".comment-btn").addEventListener("click", function () {
-    alert("Comments feature coming soon!");
+    likeBtn.addEventListener("click", () => {
+        let likes = parseInt(likeBtn.textContent.match(/\d+/)[0]); // Extract the number
+        likeBtn.textContent = `❤️ ${likes + 1}`; // Increment and update
+    });
+
+    commentBtn.addEventListener("click", () => {
+        alert("Comments feature coming soon!");
+    });
 });
