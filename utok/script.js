@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const commentBtn = document.querySelector(".comment-btn");
 
     // Create play/pause indicator 
-    const indicator = document.createElement("div");
+    const indicator = document.createElement("image");
     indicator.classList.add("play-indicator");
     document.body.appendChild(indicator);
 
