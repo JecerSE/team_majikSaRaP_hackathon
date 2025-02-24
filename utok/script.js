@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const likeBtn = document.querySelector(".like-btn");
     const commentBtn = document.querySelector(".comment-btn");
 
-    // Create play/pause indicator
+    // Create play/pause indicator 
     const indicator = document.createElement("div");
     indicator.classList.add("play-indicator");
     document.body.appendChild(indicator);
@@ -41,18 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (video.paused) {
             video.play();
-            showIndicator("⏯️"); // Show play icon
+            showIndicator("/assets/icons/play.png"); // Show play image placeholder zzz
         } else {
             video.pause();
-            showIndicator("⏸️"); // Show pause icon
-        }
+            showIndicator("/assets/icons/pause.png"); // Show pause.png placeholder
+        }//added the images i had
     });
 
     // Ensure video plays with sound after first user interaction
     document.body.addEventListener("click", () => {
         if (firstInteraction) {
             video.play().then(() => {
-                video.muted = false; // Unmute video after first click
+                video.muted = false; // Unmute video after first click i think
                 firstInteraction = false;
             }).catch(error => console.error("Autoplay failed:", error));
         }
