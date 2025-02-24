@@ -3,9 +3,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const likeBtn = document.querySelector(".like-btn");
     const commentBtn = document.querySelector(".comment-btn");
 
-    // Create play/pause indicator 
-    const indicator = document.createElement("image");
+    // .img stupid AHAHHAHAHHAHAHAHAHA
+    const indicator = document.createElement("img"); 
     indicator.classList.add("play-indicator");
+
+    // this should be cleaner
+    indicator.style.position = "absolute";
+    indicator.style.top = "50%";
+    indicator.style.left = "50%";
+    indicator.style.transform = "translate(-50%, -50%)";
+    indicator.style.width = "80px"; // Adjust as needed
+    indicator.style.opacity = "0"; // Start hidden
+    indicator.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+
     document.body.appendChild(indicator);
 
     let firstInteraction = true; // Track first user interaction
@@ -18,56 +28,56 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, 500);
 
-    // Function to show and fade out indicator
-    function showIndicator(icon) {
-        indicator.innerHTML = icon;
+    //  Function to transition indicator
+    function showIndicator(iconSrc) {
+        indicator.src = iconSrc; // suppose to be .src thx stack overflow
         indicator.style.opacity = "1";
-        indicator.style.transform = "scale(1)";
+        indicator.style.transform = "translate(-50%, -50%) scale(1)";
 
         setTimeout(() => {
             indicator.style.opacity = "0";
-            indicator.style.transform = "scale(1.5)";
-        }, 800); // Fades out after 8 seconds
+            indicator.style.transform = "translate(-50%, -50%) scale(1.5)";
+        }, 800);
     }
 
-    // Toggle play/pause on video click
+   
     video.addEventListener("click", (event) => {
-        event.stopPropagation(); // Prevent body click from triggering simultaneously
+        event.stopPropagation();
 
         if (firstInteraction) {
-            video.muted = false; // Unmute on first interaction
+            video.muted = false;
             firstInteraction = false;
         }
 
         if (video.paused) {
             video.play();
-            showIndicator("/assets/icons/play.png"); // Show play image placeholder zzz
+            showIndicator("/assets/icons/play.png"); // ✅ Make sure path is correct
         } else {
             video.pause();
-            showIndicator("/assets/icons/pause.png"); // Show pause.png placeholder
-        }//added the images i had
+            showIndicator("/assets/icons/pause.png");
+        }
     });
 
     // Ensure video plays with sound after first user interaction
     document.body.addEventListener("click", () => {
         if (firstInteraction) {
             video.play().then(() => {
-                video.muted = false; // Unmute video after first click i think
+                video.muted = false;
                 firstInteraction = false;
             }).catch(error => console.error("Autoplay failed:", error));
         }
-    }, { once: true }); // Runs only once
+    }, { once: true });
 
     // Like button functionality
     likeBtn.addEventListener("click", (event) => {
-        event.stopPropagation(); // Prevent video from toggling play/pause
-        let likes = parseInt(likeBtn.textContent.match(/\d+/)[0]); // Extract number
-        likeBtn.textContent = `❤️ ${likes + 1}`; // Increment and update
+        event.stopPropagation();
+        let likes = parseInt(likeBtn.textContent.match(/\d+/)[0]); 
+        likeBtn.textContent = `❤️ ${likes + 1}`; 
     });
 
     // Comment button functionality
     commentBtn.addEventListener("click", (event) => {
-        event.stopPropagation(); // Prevent video from toggling play/pause
+        event.stopPropagation();
         alert("Comments feature coming soon!");
     });
 });
