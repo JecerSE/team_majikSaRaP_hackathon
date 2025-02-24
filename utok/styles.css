@@ -9,54 +9,6 @@ body {
     overflow: hidden;
 }
 
-.top-navbar{
-    position: fixed;
-    top: 0;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    flex-wrap: wrap;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.top-navbar a {
-    display: inline;
-    float: none;
-    width: 700px;
-    padding: 1px 6px;
-    border: 1px outset white;
-    border-radius: 3px;
-    background-color: white;
-    color: black;
-    text-decoration: none;
-}
-
-.bottom-navbar{
-    position: fixed;
-    bottom: 0;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    flex-wrap: wrap;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.bottom-navbar a {
-    display: inline;
-    float: none;
-    width: 700px;
-    padding: 1px 6px;
-    border: 1px outset white;
-    border-radius: 3px;
-    background-color: white;
-    color: black;
-    text-decoration: none;
-}
-
 /* Video container */
 .video-container {
     width: 100vw;
