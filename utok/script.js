@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     indicator.classList.add("play-indicator");
     document.body.appendChild(indicator);
 
+    let firstInteraction = true; // Track first user interaction
+
     // Function to show and fade out indicator
     function showIndicator(icon) {
         indicator.innerHTML = icon;
@@ -21,7 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Toggle play/pause on video click
-    video.addEventListener("click", () => {
+    video.addEventListener("click", (event) => {
+        event.stopPropagation(); // Prevent body click from triggering simultaneously
+
+        if (firstInteraction) {
+            video.muted = false; // Unmute on first interaction
+            firstInteraction = false;
+        }
+
         if (video.paused) {
             video.play();
             showIndicator("⏯️"); // Show play icon
@@ -31,23 +40,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Enable autoplay with sound after user interaction
+    // Ensure video plays with sound after first user interaction
     document.body.addEventListener("click", () => {
-        if (video.paused) {
+        if (firstInteraction) {
             video.play().then(() => {
-                video.muted = false; // Unmute video after play starts
+                video.muted = false; // Unmute video after first click
+                firstInteraction = false;
             }).catch(error => console.error("Autoplay failed:", error));
         }
-    });
+    }, { once: true }); // Runs only once
 
     // Like button functionality
-    likeBtn.addEventListener("click", () => {
+    likeBtn.addEventListener("click", (event) => {
+        event.stopPropagation(); // Prevent video from toggling play/pause
         let likes = parseInt(likeBtn.textContent.match(/\d+/)[0]); // Extract number
         likeBtn.textContent = `❤️ ${likes + 1}`; // Increment and update
     });
 
     // Comment button functionality
-    commentBtn.addEventListener("click", () => {
+    commentBtn.addEventListener("click", (event) => {
+        event.stopPropagation(); // Prevent video from toggling play/pause
         alert("Comments feature coming soon!");
     });
 });
