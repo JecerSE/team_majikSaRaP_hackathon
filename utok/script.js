@@ -10,6 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let firstInteraction = true; // Track first user interaction
 
+    // Ensure video has sound if it starts playing automatically
+    const checkPlayState = setInterval(() => {
+        if (!video.paused) {
+            video.muted = false;
+            clearInterval(checkPlayState);
+        }
+    }, 500);
+
     // Function to show and fade out indicator
     function showIndicator(icon) {
         indicator.innerHTML = icon;
@@ -19,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             indicator.style.opacity = "0";
             indicator.style.transform = "scale(1.5)";
-        }, 800); // Fades out after 800ms
+        }, 800); // Fades out after 8 seconds
     }
 
     // Toggle play/pause on video click
