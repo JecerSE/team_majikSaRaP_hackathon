@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const likeCount = document.querySelector("#like-container > .counter");
     const commentCount = document.querySelector("#comment-container > .counter");
 
-
     const videoList = [
         "videos/sample_video_1.mp4",  
         "videos/sample_video_2.mp4",  
@@ -18,6 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
         "videos/sample_video_9.mp4",  
         "videos/sample_video_10.mp4"   
     ];
+
+    var videoID = videoList[0];
+    var videoLikesKey = videoID+"-likes";
+    var videoCommentsKey = videoID+"-comments";
+    var videoCommentSectionKey = videoID+"-comments-data";
 
     let currentIndex = 0; // Start at the first video
     let isTransitioning = false;
@@ -67,6 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 <tr>
                     <td></td>
                     <td class="comment-field"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Upvote Downvote</td>
+                </tr>
             </table>
             `
             const commentTextField = commentItem.querySelector(".comment-field");
@@ -76,6 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // Update comment counter
             let comments = parseInt(commentCount.textContent) || 0;
             commentCount.textContent = comments + 1;
+
+            // Add updated comment section to video data in session storage
         }
     });
 
@@ -145,14 +156,27 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 isTransitioning = false;
             }, 300);
+
+            if (sessionStorage.getItem(videoLikesKey)) {
+                likeCount.textContent = sessionStorage.getItem(videoID+"-likes");}
+            if (sessionStorage.getItem(videoCommentSectionKey)) {
+                commentCount.textContent = sessionStorage.getItem(videoID+"-comments");}
+            if (sessionStorage.getItem(videoCommentsKey)) {
+                commentSection = sessionStorage.getItem(videoID+"-comments-data");}
         }, 300);
+
+        videoID = "["+videoList[index]+"]";
+        videoLikesKey = videoID+"-likes";
+        videoCommentsKey = videoID+"-comments";
+        videoCommentSectionKey = videoID+"-comments-data";
+
     }
 
     // Scroll Event for Next & Previous Video (Reduced Sensitivity)
     let lastScrollTime = 0;
     window.addEventListener("wheel", (event) => {
         const now = new Date().getTime();
-        if (now - lastScrollTime < 800) return; // Prevent skipping multiple videos doesnt work
+        if (now - lastScrollTime < 1500) return; // Prevent skipping multiple videos doesnt work
         lastScrollTime = now;
 
         if (event.deltaY > 0) {
@@ -166,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
         event.stopPropagation();
         let likes = parseInt(likeCount.textContent) || 0;
         likeCount.textContent = likes + 1;
+        sessionStorage.setItem(videoLikesKey, parseInt(likeCount.textContent));
     });
 
     document.body.addEventListener("click", () => {
