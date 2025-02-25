@@ -224,3 +224,29 @@ body {
     font-size: 24px;
     cursor: pointer;
 }
+
+@font-face {
+    font-family: 'MonaspaceNeon';
+    src: url('../fonts/MonaspaceNeon-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'MonaspaceNeon';
+    src: url('../fonts/MonaspaceNeon-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'MonaspaceNeon';
+    src: url('../fonts/MonaspaceNeon-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+  }
+  
+  body {
+    font-family: 'MonaspaceNeon', monospace;
+  }
+  
