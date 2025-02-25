@@ -1,28 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
     const video = document.querySelector("video");
-    const likeBtn = document.querySelector(".icon-button:nth-child(2)");
+    const likeBtn = document.querySelector("#like-container > .icon-button");
     const commentBtn = document.querySelector("#comment-container > .icon-button");
     const likeCount = document.querySelector("#like-container > .counter");
     const commentCount = document.querySelector("#comment-conainer > .counter");
-    console.log(likeBtn);
+    const commentSection = document.createElement("div");
+    commentSection.classList.add("comment-section");
+    commentSection.innerHTML = `
+        <div class="comment-box">
+            <h3>Comments</h3>
+            <ul class="comments-list"></ul>
+            <input type="text" class="comment-input" placeholder="Write a comment...">
+            <button class="post-comment">Post</button>
+        </div>
+    `;
+    document.body.appendChild(commentSection);
+
+    const commentsList = document.querySelector(".comments-list");
+    const commentInput = document.querySelector(".comment-input");
+    const postCommentBtn = document.querySelector(".post-comment");
 
     // .img stupid AHAHHAHAHHAHAHAHAHA
     const indicator = document.createElement("img"); 
-
-    // this should be cleaner
     indicator.style.position = "absolute";
     indicator.style.top = "50%";
     indicator.style.left = "50%";
     indicator.style.transform = "translate(-50%, -50%)";
-    indicator.style.width = "80px"; // Adjust as needed
-    indicator.style.opacity = "0"; // Start hidden
+    indicator.style.width = "80px";
+    indicator.style.opacity = "0";
     indicator.style.transition = "opacity 0.5s ease, transform 0.5s ease";
 
     document.body.appendChild(indicator);
 
-    let firstInteraction = true; // Track first user interaction
+    let firstInteraction = true;
 
-    // Ensure video has sound if it starts playing automatically
     const checkPlayState = setInterval(() => {
         if (!video.paused) {
             video.muted = false;
@@ -30,9 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, 500);
 
-    //  Function to transition indicator
     function showIndicator(iconSrc) {
-        indicator.src = iconSrc; // suppose to be .src thx stack overflow
+        indicator.src = iconSrc;
         indicator.style.opacity = "1";
         indicator.style.transform = "translate(-50%, -50%) scale(1)";
 
@@ -42,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 800);
     }
 
-    function changePlayState(){
+    function changePlayState() {
         if (firstInteraction) {
             video.muted = false;
             firstInteraction = false;
@@ -56,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             showIndicator("assets/Icons/pause.png");
         }
     }
-   
+
     video.addEventListener("click", (event) => {
         event.stopPropagation();
         changePlayState();
@@ -69,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Making video play with sound after first user interaction
     document.body.addEventListener("click", () => {
         if (firstInteraction) {
             video.play().then(() => {
@@ -79,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, { once: true });
 
-    // Like button functionality
     likeBtn.addEventListener("click", (event) => {
         event.stopPropagation();
         console.log("Like")
@@ -87,10 +95,20 @@ document.addEventListener("DOMContentLoaded", () => {
         likeCount.textContent = likes + 1; 
     });
 
-    // Comment button functionality
     commentBtn.addEventListener("click", (event) => {
         event.stopPropagation();
-        let comments = parseInt(commentCount.textContent) || 0;
-        commentCount.textContent = comments + 1; 
+        commentSection.style.display = commentSection.style.display === "none" ? "block" : "none";
     });
+
+    postCommentBtn.addEventListener("click", () => {
+        const commentText = commentInput.value.trim();
+        if (commentText) {
+            const commentItem = document.createElement("li");
+            commentItem.textContent = commentText;
+            commentsList.appendChild(commentItem);
+            commentInput.value = "";
+        }
+    });
+
+    commentSection.style.display = "none";
 });
