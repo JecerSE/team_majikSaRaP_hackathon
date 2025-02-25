@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const video = document.querySelector("video");
-    const likeBtn = document.querySelector(".like-btn");
-    const commentBtn = document.querySelector(".comment-btn");
+    const likeBtn = document.querySelector(".icon-button:nth-child(2) span");
+    const commentBtn = document.querySelector(".icon-button:nth-child(3) span");
 
     // .img stupid AHAHHAHAHHAHAHAHAHA
     const indicator = document.createElement("img"); 
@@ -57,16 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
    
     video.addEventListener("click", (event) => {
         event.stopPropagation();
-
         changePlayState();
     });
 
-    video.addEventListener("keydown", (event) => {
-        const keyName = event.key;
-
-        if (keyName == " "){
-            event.stopPropagation();
-
+    document.addEventListener("keydown", (event) => {
+        if (event.key === " ") {
+            event.preventDefault();
             changePlayState();
         }
     });
@@ -82,16 +78,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { once: true });
 
     // Like button functionalities dang sound professional
-    likeBtn.addEventListener("click", (event) => {
+    likeBtn.parentElement.addEventListener("click", (event) => {
         event.stopPropagation();
-        let likes = parseInt(likeBtn.textContent.match(/\d+/)[0]); 
-        likeBtn.textContent = `❤️ ${likes + 1}`; 
-
+        let likes = parseInt(likeBtn.textContent) || 0;
+        likeBtn.textContent = likes + 1; 
     });
 
-    // Comment button functionality still broken send help
-    commentBtn.addEventListener("click", (event) => {
+    // fixed
+    commentBtn.parentElement.addEventListener("click", (event) => {
         event.stopPropagation();
-        alert("Comments feature coming soon!");
+        let comments = parseInt(commentBtn.textContent) || 0;
+        commentBtn.textContent = comments + 1; 
     });
 });
