@@ -5,7 +5,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // .img stupid AHAHHAHAHHAHAHAHAHA
     const indicator = document.createElement("img"); 
+    // .img stupid AHAHHAHAHHAHAHAHAHA
+    const indicator = document.createElement("img"); 
     indicator.classList.add("play-indicator");
+
+    // this should be cleaner
+    indicator.style.position = "absolute";
+    indicator.style.top = "50%";
+    indicator.style.left = "50%";
+    indicator.style.transform = "translate(-50%, -50%)";
+    indicator.style.width = "80px"; // Adjust as needed
+    indicator.style.opacity = "0"; // Start hidden
+    indicator.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+
 
     // this should be cleaner
     indicator.style.position = "absolute";
@@ -31,20 +43,29 @@ document.addEventListener("DOMContentLoaded", () => {
     //  Function to transition indicator
     function showIndicator(iconSrc) {
         indicator.src = iconSrc; // suppose to be .src thx stack overflow
+    //  Function to transition indicator
+    function showIndicator(iconSrc) {
+        indicator.src = iconSrc; // suppose to be .src thx stack overflow
         indicator.style.opacity = "1";
+        indicator.style.transform = "translate(-50%, -50%) scale(1)";
         indicator.style.transform = "translate(-50%, -50%) scale(1)";
 
         setTimeout(() => {
             indicator.style.opacity = "0";
             indicator.style.transform = "translate(-50%, -50%) scale(1.5)";
         }, 800);
+            indicator.style.transform = "translate(-50%, -50%) scale(1.5)";
+        }, 800);
     }
 
    
+   
     video.addEventListener("click", (event) => {
+        event.stopPropagation();
         event.stopPropagation();
 
         if (firstInteraction) {
+            video.muted = false;
             video.muted = false;
             firstInteraction = false;
         }
@@ -59,22 +80,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // maeking video plays with sound after first user interaction
+    // maeking video plays with sound after first user interaction
     document.body.addEventListener("click", () => {
         if (firstInteraction) {
             video.play().then(() => {
+                video.muted = false;
                 video.muted = false;
                 firstInteraction = false;
             }).catch(error => console.error("Autoplay failed:", error));
         }
     }, { once: true });
+    }, { once: true });
 
+    // Like button functionalities dang sound professional
     // Like button functionalities dang sound professional
     likeBtn.addEventListener("click", (event) => {
         event.stopPropagation();
         let likes = parseInt(likeBtn.textContent.match(/\d+/)[0]); 
         likeBtn.textContent = `❤️ ${likes + 1}`; 
+        event.stopPropagation();
+        let likes = parseInt(likeBtn.textContent.match(/\d+/)[0]); 
+        likeBtn.textContent = `❤️ ${likes + 1}`; 
     });
 
+    // Comment button functionality still broken send help
     // Comment button functionality still broken send help
     commentBtn.addEventListener("click", (event) => {
         event.stopPropagation();
