@@ -112,7 +112,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 20px; /* Adjust spacing pls thx*/
 }
 
 
@@ -143,8 +143,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px; /* Adjust this value for more spacing */
+    justify-content: center;
+    gap: 5px; 
 }
+
 
 .icon-button {
     width: 50px;
@@ -162,6 +164,8 @@ body {
     font-size: 14px;
     color: white;
     font-weight: bold;
+    text-align: center;
+    width: 100%;
 }
 
 
