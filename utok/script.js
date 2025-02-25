@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const commentSection = document.createElement("div");
     commentSection.classList.add("comment-section");
     commentSection.innerHTML = `
-        <div class="comment-box">
+        <div class="comment-box" style="color: black;">
             <button class="close-comment">&times;</button>
             <h3>Comments</h3>
             <ul class="comments-list"></ul>
-            <input type="text" class="comment-input" placeholder="Write a comment...">
+            <input type="text" class="comment-input" style="height:50px;" placeholder="Write a comment...">
             <button class="post-comment">Post</button>
         </div>
     `;
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (event) => {
-        if (event.key === " ") {
+        if (event.key === " " && document.activeElement != commentInput) {
             event.preventDefault();
             changePlayState();
         }
