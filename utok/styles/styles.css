@@ -106,6 +106,7 @@ body {
 /* Like & Comment Buttons will integrate later for the custom */
 .controls {
     position: absolute;
+    top: 50%;
     bottom: 50%;
     right: 10px;
     display: flex;
