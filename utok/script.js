@@ -41,9 +41,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const commentText = commentInput.value.trim();
         if (commentText) {
             const commentItem = document.createElement("li");
-            commentItem.textContent = commentText;
+            commentItem.innerHTML = `
+            <table class="comment-item">
+                <tr style="padding:50px;">
+                    <td><img src="assets/profile.jpeg" class="comment-profile-pic" alt="Profile picture"></td>
+                    <td><b>User</b></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="comment-field"></td>
+            </table>
+            `
+            const commentTextField = commentItem.querySelector(".comment-field");
+            commentTextField.textContent = commentText;
             commentsList.appendChild(commentItem);
             commentInput.value = "";
+            console.log(commentItem);
             // Update comment counter
             let comments = parseInt(commentCount.textContent) || 0;
             commentCount.textContent = comments + 1;
