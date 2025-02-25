@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const likeCount = document.querySelector("#like-container > .counter");
     const commentCount = document.querySelector("#comment-container > .counter");
 
-    // 9 Empty Video Slots (You can change these locally)
+
     const videoList = [
         "videos/sample_video_1.mp4",  
         "videos/sample_video_2.mp4",  
@@ -110,7 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Function to Load Video by Index
     function loadVideo(index) {
         if (isTransitioning || index < 0 || index >= videoList.length) return;
         isTransitioning = true;
@@ -120,10 +119,10 @@ document.addEventListener("DOMContentLoaded", () => {
             video.src = videoList[index];  
             video.load();
             video.play();
-            video.muted = false; // Restore volume
+            video.muted = false;
             currentIndex = index;
 
-            // Reset UI Elements
+            //reset elements please edit this
             likeCount.textContent = "0";
             commentCount.textContent = "0";
             commentsList.innerHTML = "";
@@ -140,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let lastScrollTime = 0;
     window.addEventListener("wheel", (event) => {
         const now = new Date().getTime();
-        if (now - lastScrollTime < 800) return; // Prevent skipping multiple videos
+        if (now - lastScrollTime < 800) return; // Prevent skipping multiple videos doesnt work
         lastScrollTime = now;
 
         if (event.deltaY > 0) {
