@@ -8,8 +8,6 @@
 </head>
 <body>
 
-
-
     <!-- Video Wrapper to Center -->
     <div class="video-wrapper">
         <div class="video-container">
@@ -17,10 +15,21 @@
 
             <!-- TikTok-style Right Controls -->
             <div class="controls">
-                <img src="assets/Icons/profile.jpeg" alt="Profile" class="profile-pic"> 
-
-                <button class="like-btn">❤️ <div class="count">0</div></button>
-                <button class="comment-btn">💬 <div class="count">0</div></button>
+                <img src="assets/profile.jpeg" class="profile-pic" alt="Profile">
+                
+                <div class="icon-container">
+                    <button class="icon-button">
+                        <img src="assets/Icons/love.jpg" alt="Like">
+                    </button>
+                    <span class="counter">0</span>
+                </div>
+                
+                <div class="icon-container">
+                    <button class="icon-button">
+                        <img src="assets/Icons/comment.jpg" alt="Comment">
+                    </button>
+                    <span class="counter">0</span>
+                </div>
             </div>
         </div>
     </div>
@@ -28,7 +37,7 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <div class="sidebar-header">
-        <img src="assests/Icons/profile.jpeg" alt="User Profile" class="sidebar-profile-pic">
+        <img src="assets/profile.jpeg" alt="User Profile" class="sidebar-profile-pic">
         <span id="sidebarUser">User - <span id="sidebarRank">USERRANK</span> (<span id="sidebarExp">USEREXP</span> exp)</span>
     </div>
     
