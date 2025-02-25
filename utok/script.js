@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const video = document.querySelector("video");
     const likeBtn = document.querySelector(".icon-button:nth-child(2)");
     const commentBtn = document.querySelector(".icon-button:nth-child(3)");
-    const likeCount = likeBtn.querySelector("span");
-    const commentCount = commentBtn.querySelector("span");
+    const likeCount = likeBtn.querySelector("img");
+    const commentCount = commentBtn.querySelector("img");
 
     // .img stupid AHAHHAHAHHAHAHAHAHA
     const indicator = document.createElement("img"); 
