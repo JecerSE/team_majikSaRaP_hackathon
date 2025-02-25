@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
+
+    <!-- Top Navbar -->
     <div class="top-navbar">
         <a href="index.html">Recommended</a>
         <a href="notfound.html">Following</a>
@@ -14,26 +16,31 @@
         <span style="color: white;">User - <span id="userRank">USERRANK</span> (<span id="userExp">USEREXP</span> exp)</span>
     </div>
 
-    <div class="sidebar">
-        <!-- later -->
-    </div>
+    <!-- Video Wrapper to Center -->
+    <div class="video-wrapper">
+        <div class="video-container">
+            <video class="video" src="videos/sample_video_1.mp4" loop muted autoplay></video>
 
-    <div class="video-container">
-        <video class="video/mp4" src="videos/sample_video_1.mp4" loop muted autoplay></video>
-        <div class="controls">
-            <button class="like-btn">❤️ 0</button>
-            <button class="comment-btn">💬 0</button>
+            <!-- TikTok-style Right Controls -->
+            <div class="controls">
+                <img src="images/profile.jpg" alt="Profile" class="profile-pic"> 
+
+                <button class="like-btn">❤️ <div class="count">0</div></button>
+                <button class="comment-btn">💬 <div class="count">0</div></button>
+            </div>
         </div>
     </div>
 
+    <!-- Bottom Navbar -->
     <div class="bottom-navbar">
         <a href="index.html">Home</a>
-        <a href="quiz.html">Quiz yourself</a>
+        <a href="quiz.html">Quiz Yourself</a>
         <a href="profile.html">Your Profile</a>
         <a href="creator.html">Creator</a>
         <a href="login.html">Login</a>
     </div>
     
+    <!-- JavaScript -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const userRank = sessionStorage.getItem("userRank") || "USERRANK";
