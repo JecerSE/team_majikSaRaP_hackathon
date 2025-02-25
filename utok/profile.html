@@ -20,21 +20,26 @@
                     </tr>
                     <tr>
                         <td>Role</td>
-                        <td><i>Content Creator / Curious Viewer / Best Answerer</i></td>
+                        <td><select name="role" id="roleSelect" onchange="if(this.value!=0){selectRole(this.value)}">
+                            <option value="0" selected="selected">Select role...</option>
+                            <option value="cc">Content Creator</option>
+                            <option value="cv">Curious Viewer</option>
+                            <option value="ba">Best Answerer</option>
+                        </select></td>
                     </tr>
                     <tr>
                         <td>Role level</td>
-                        <td><i>Novice Explorer / 
-                            Emerging Storyteller / 
-                            Knowledge Spreader / 
-                            Insightful Educator / 
-                            Scholarly Creator / 
-                            Master Narrator / 
-                            Visionary Mentor / 
-                            Esteemed Scholar / 
-                            Pioneer of Thought / 
-                            Master Educator / 
-                            etc...</i></td>
+                        <td><p id="roleLevel">Role level here</p></td>
+                    </tr>
+                    <tr style="vertical-align: top;">
+                        <td>XP</td>
+                        <td><p id="expBar">----------</p><br>x points to next rank</td>
+                    </tr>
+                    <tr>
+                        <!--testing buttons-->
+                        <td><input type="button" value="+1 exp" onclick="addExp(1)"></td>
+                        <td><input type="button" value="+10 exp" onclick="addExp(10)">
+                            <input type="button" value="reset rank" onclick="resetRank()"></td>
                     </tr>
                 </table>
             </span>
@@ -106,6 +111,8 @@
             <a href="creator.html">Creator</a>
             <a href="login.html">Login</a>
         </div>
+
+        <script src="rank.js"></script>
     </body>
 
 </html>
