@@ -5,9 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // .img stupid AHAHHAHAHHAHAHAHAHA
     const indicator = document.createElement("img"); 
-    // .img stupid AHAHHAHAHHAHAHAHAHA
-    const indicator = document.createElement("img"); 
-    indicator.classList.add("play-indicator");
 
     // this should be cleaner
     indicator.style.position = "absolute";
@@ -43,17 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
     //  Function to transition indicator
     function showIndicator(iconSrc) {
         indicator.src = iconSrc; // suppose to be .src thx stack overflow
-    //  Function to transition indicator
-    function showIndicator(iconSrc) {
-        indicator.src = iconSrc; // suppose to be .src thx stack overflow
         indicator.style.opacity = "1";
         indicator.style.transform = "translate(-50%, -50%) scale(1)";
         indicator.style.transform = "translate(-50%, -50%) scale(1)";
 
         setTimeout(() => {
             indicator.style.opacity = "0";
-            indicator.style.transform = "translate(-50%, -50%) scale(1.5)";
-        }, 800);
             indicator.style.transform = "translate(-50%, -50%) scale(1.5)";
         }, 800);
     }
@@ -90,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }).catch(error => console.error("Autoplay failed:", error));
         }
     }, { once: true });
-    }, { once: true });
 
     // Like button functionalities dang sound professional
     // Like button functionalities dang sound professional
@@ -98,9 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         event.stopPropagation();
         let likes = parseInt(likeBtn.textContent.match(/\d+/)[0]); 
         likeBtn.textContent = `❤️ ${likes + 1}`; 
-        event.stopPropagation();
-        let likes = parseInt(likeBtn.textContent.match(/\d+/)[0]); 
-        likeBtn.textContent = `❤️ ${likes + 1}`; 
+
     });
 
     // Comment button functionality still broken send help
