@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const video = document.querySelector("video");
-    const likeBtn = document.querySelector(".icon-button:nth-child(2) span");
-    const commentBtn = document.querySelector(".icon-button:nth-child(3) span");
+    const likeBtn = document.querySelector(".icon-button:nth-child(2)");
+    const commentBtn = document.querySelector(".icon-button:nth-child(3)");
+    const likeCount = likeBtn.querySelector("span");
+    const commentCount = commentBtn.querySelector("span");
 
     // .img stupid AHAHHAHAHHAHAHAHAHA
     const indicator = document.createElement("img"); 
@@ -54,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
    
-   
     video.addEventListener("click", (event) => {
         event.stopPropagation();
         changePlayState();
@@ -67,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // maeking video plays with sound after first user interaction
+    // Making video play with sound after first user interaction
     document.body.addEventListener("click", () => {
         if (firstInteraction) {
             video.play().then(() => {
@@ -77,17 +78,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, { once: true });
 
-    // Like button functionalities dang sound professional
-    likeBtn.parentElement.addEventListener("click", (event) => {
+    // Like button functionality
+    likeBtn.addEventListener("click", (event) => {
         event.stopPropagation();
-        let likes = parseInt(likeBtn.textContent) || 0;
-        likeBtn.textContent = likes + 1; 
+        let likes = parseInt(likeCount.textContent) || 0;
+        likeCount.textContent = likes + 1; 
     });
 
-    // fixed
-    commentBtn.parentElement.addEventListener("click", (event) => {
+    // Comment button functionality
+    commentBtn.addEventListener("click", (event) => {
         event.stopPropagation();
-        let comments = parseInt(commentBtn.textContent) || 0;
-        commentBtn.textContent = comments + 1; 
+        let comments = parseInt(commentCount.textContent) || 0;
+        commentCount.textContent = comments + 1; 
     });
 });
