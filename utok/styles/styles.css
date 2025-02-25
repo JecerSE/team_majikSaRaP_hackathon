@@ -107,7 +107,7 @@ body {
 .controls {
     position: absolute;
     bottom: 50%;
-    right: 5%;
+    right: 10px;
     display: flex;
     flex-direction: column;
     gap: 15px;
