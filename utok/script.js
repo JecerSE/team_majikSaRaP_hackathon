@@ -204,7 +204,14 @@ document.addEventListener("DOMContentLoaded", () => {
         sessionStorage.setItem(videoLikesKey, parseInt(likeCount.textContent));
     });
 
+
     document.body.addEventListener("click", () => {
+        video.muted = false; 
         video.play().catch(error => console.error("Autoplay failed:", error));
     }, { once: true });
+    
+    window.addEventListener("load", () => {
+        video.muted = false;
+        video.play().catch(error => console.error("Autoplay failed:", error));
+    });
 });
