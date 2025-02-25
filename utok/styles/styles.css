@@ -168,3 +168,55 @@ body {
     transform: scale(1.1);
 }
 
+.comment-section {
+    position: fixed;
+    top: 0;
+    right: -350px; /* Initially hidden */
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease-in-out;
+}
+
+.comment-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.comments-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 0;
+    list-style: none;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 5px;
+}
+
+.post-comment {
+    width: 100%;
+    padding: 8px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.close-comment {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+}
