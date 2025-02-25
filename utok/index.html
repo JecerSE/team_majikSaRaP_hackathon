@@ -8,13 +8,7 @@
 </head>
 <body>
 
-    <!-- Top Navbar -->
-    <div class="top-navbar">
-        <a href="index.html">Recommended</a>
-        <a href="notfound.html">Following</a>
-        <input type="text" placeholder="Search for a Tok...">
-        <span style="color: white;">User - <span id="userRank">USERRANK</span> (<span id="userExp">USEREXP</span> exp)</span>
-    </div>
+
 
     <!-- Video Wrapper to Center -->
     <div class="video-wrapper">
@@ -31,17 +25,25 @@
         </div>
     </div>
 
-    <!-- Bottom Navbar -->
-    <div class="bottom-navbar">
-        <a href="index.html">Home</a>
-        <a href="quiz.html">Quiz Yourself</a>
-        <a href="profile.html">Your Profile</a>
-        <a href="creator.html">Creator</a>
-        <a href="login.html">Login</a>
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <img src="images/profile.jpg" alt="User Profile" class="sidebar-profile-pic">
+        <span id="sidebarUser">User - <span id="sidebarRank">USERRANK</span> (<span id="sidebarExp">USEREXP</span> exp)</span>
     </div>
     
+    <nav class="sidebar-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="quiz.html">🧠 Quiz Yourself</a>
+        <a href="profile.html">👤 Your Profile</a>
+        <a href="creator.html">🎥 Creator</a>
+        <a href="login.html">🔑 Login</a>
+    </nav>
+</div>
+
     <!-- JavaScript -->
     <script>
+        
         document.addEventListener("DOMContentLoaded", function () {
             const userRank = sessionStorage.getItem("userRank") || "USERRANK";
             const userExp = sessionStorage.getItem("userExp") || "USEREXP";
