@@ -10,6 +10,8 @@
     <body>
         <div class="top-navbar">U-Tok - Your Profile</div>
 
+        
+
         <div class="content">
             <span id="info">
                 <h1>User</h1>
@@ -102,15 +104,22 @@
             </span>
         </div>
 
-        <div class="sidebar"></div>
-
-        <div class="bottom-navbar">
-            <a href="index.html">Home</a>
-            <a href="quiz.html">Quiz yourself</a>
-            <a href="profile.html">Your Profile</a>
-            <a href="creator.html">Creator</a>
-            <a href="login.html">Login</a>
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="images/profile.jpg" alt="User Profile" class="sidebar-profile-pic">
+                <span id="sidebarUser">User - <span id="sidebarRank">USERRANK</span> (<span id="sidebarExp">USEREXP</span> exp)</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="index.html">🏠 Home</a>
+                <a href="quiz.html">🧠 Quiz Yourself</a>
+                <a href="profile.html">👤 Your Profile</a>
+                <a href="creator.html">🎥 Creator</a>
+                <a href="login.html">🔑 Login</a>
+            </nav>
         </div>
+
+        
 
         <script src="rank.js"></script>
     </body>
