@@ -51,10 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (video.paused) {
             video.play();
-            showIndicator("/assets/Icons/play.png"); 
+            showIndicator("assets/Icons/play.png"); 
         } else {
             video.pause();
-            showIndicator("/assets/Icons/pause.png");
+            showIndicator("assets/Icons/pause.png");
         }
     });
 
