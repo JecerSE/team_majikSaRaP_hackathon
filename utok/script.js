@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (sessionStorage.getItem(videoCommentsKey)) {
         commentCount.textContent = sessionStorage.getItem(videoID+"-comments");}    
 
+    var commentBoxActive = false;
+
     let currentIndex = 0; // Start at the first video
     let isTransitioning = false;
 
@@ -56,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Toggle Comment Section
     commentBtn.addEventListener("click", (event) => {
         event.stopPropagation();
+        commentBoxActive = true;
         commentSection.style.right = commentSection.style.right === "0px" ? "-350px" : "0px";
 
         if (sessionStorage.getItem(videoCommentSectionKey)) {
@@ -64,8 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeCommentBtn.addEventListener("click", () => {
         commentSection.style.right = "-350px";
+        commentBoxActive = false;
     });
-
+ 
     postCommentBtn.addEventListener("click", () => {
         const commentText = commentInput.value.trim();
         if (commentText) {
@@ -74,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <table class="comment-item">
                 <tr style="padding:50px;">
                     <td><img src="assets/profile.jpeg" class="comment-profile-pic" alt="Profile picture"></td>
-                    <td><b>User</b></td>
+                    <td><b>User</b> <span class="user-rank" style="font-style:italic; font-size:10px; color:gray"></span></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -87,7 +91,9 @@ document.addEventListener("DOMContentLoaded", () => {
             </table>
             `
             const commentTextField = commentItem.querySelector(".comment-field");
+            const commenterRank = commentItem.querySelector(".user-rank");
             commentTextField.textContent = commentText;
+            if (sessionStorage.getItem("userRank")) {commenterRank.textContent = sessionStorage.getItem("userRank");}
             commentsList.appendChild(commentItem);
             commentInput.value = "";
             // Update comment counter
@@ -186,14 +192,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Scroll Event for Next & Previous Video (Reduced Sensitivity)
     let lastScrollTime = 0;
     window.addEventListener("wheel", (event) => {
-        const now = new Date().getTime();
-        if (now - lastScrollTime < 1500) return; // Prevent skipping multiple videos doesnt work
-        lastScrollTime = now;
+        if (!commentBoxActive){
+            const now = new Date().getTime();
+            if (now - lastScrollTime < 1500) return; // Prevent skipping multiple videos doesnt work
+            lastScrollTime = now;
 
-        if (event.deltaY > 0) {
-            loadVideo(currentIndex + 1);
-        } else if (event.deltaY < 0) {
-            loadVideo(currentIndex - 1);
+            if (event.deltaY > 0) {
+                loadVideo(currentIndex + 1);
+            } else if (event.deltaY < 0) {
+                loadVideo(currentIndex - 1);
+            }
         }
     });
 
