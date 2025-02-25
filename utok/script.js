@@ -18,10 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
         "videos/sample_video_10.mp4"   
     ];
 
-    var videoID = videoList[0];
+    var videoID = "["+videoList[0]+"]";
     var videoLikesKey = videoID+"-likes";
     var videoCommentsKey = videoID+"-comments";
     var videoCommentSectionKey = videoID+"-comments-data";
+
+    if (sessionStorage.getItem(videoLikesKey)) {
+        likeCount.textContent = sessionStorage.getItem(videoID+"-likes");}
+    if (sessionStorage.getItem(videoCommentsKey)) {
+        commentCount.textContent = sessionStorage.getItem(videoID+"-comments");}    
 
     let currentIndex = 0; // Start at the first video
     let isTransitioning = false;
@@ -52,6 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
     commentBtn.addEventListener("click", (event) => {
         event.stopPropagation();
         commentSection.style.right = commentSection.style.right === "0px" ? "-350px" : "0px";
+
+        if (sessionStorage.getItem(videoCommentSectionKey)) {
+            commentSection.querySelector(".comments-list").innerHTML = sessionStorage.getItem(videoCommentSectionKey);}
     });
 
     closeCommentBtn.addEventListener("click", () => {
@@ -74,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Upvote Downvote</td>
+                    <td><input type="button" value="Upvote"> <input type="button" value="Downvote"></td>
                 </tr>
             </table>
             `
@@ -85,6 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // Update comment counter
             let comments = parseInt(commentCount.textContent) || 0;
             commentCount.textContent = comments + 1;
+            sessionStorage.setItem(videoCommentsKey, parseInt(commentCount.textContent));
+            sessionStorage.setItem(videoCommentSectionKey, commentSection.querySelector(".comments-list").innerHTML);
 
             // Add updated comment section to video data in session storage
         }
@@ -159,10 +169,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (sessionStorage.getItem(videoLikesKey)) {
                 likeCount.textContent = sessionStorage.getItem(videoID+"-likes");}
-            if (sessionStorage.getItem(videoCommentSectionKey)) {
-                commentCount.textContent = sessionStorage.getItem(videoID+"-comments");}
             if (sessionStorage.getItem(videoCommentsKey)) {
-                commentSection = sessionStorage.getItem(videoID+"-comments-data");}
+                commentCount.textContent = sessionStorage.getItem(videoID+"-comments");}
+            if (sessionStorage.getItem(videoCommentSectionKey)) {
+                commentSection.querySelector(".comments-list").innerHTML = sessionStorage.getItem(videoCommentSectionKey);
+            }
         }, 300);
 
         videoID = "["+videoList[index]+"]";
