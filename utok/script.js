@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     video.addEventListener("keydown", (event) => {
         const keyName = event.key;
 
-        if (keyName == "Space"){
+        if (keyName == " "){
             event.stopPropagation();
 
             changePlayState();
