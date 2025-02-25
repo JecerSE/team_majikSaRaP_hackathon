@@ -39,11 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 800);
     }
 
-   
-   
-    video.addEventListener("click", (event) => {
-        event.stopPropagation();
-
+    function changePlayState(){
         if (firstInteraction) {
             video.muted = false;
             firstInteraction = false;
@@ -56,26 +52,22 @@ document.addEventListener("DOMContentLoaded", () => {
             video.pause();
             showIndicator("assets/Icons/pause.png");
         }
+    }
+   
+   
+    video.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        changePlayState();
     });
 
     video.addEventListener("keydown", (event) => {
         const keyName = event.key;
 
-        if (keyName == " "){
+        if (keyName == "Space"){
             event.stopPropagation();
 
-            if (firstInteraction) {
-                video.muted = false;
-                firstInteraction = false;
-            }
-
-            if (video.paused) {
-                video.play();
-                showIndicator("assets/Icons/play.png"); 
-            } else {
-                video.pause();
-                showIndicator("assets/Icons/pause.png");
-            }
+            changePlayState();
         }
     });
 
