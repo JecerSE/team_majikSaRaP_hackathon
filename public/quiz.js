@@ -6,7 +6,18 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const quizContainer = document.getElementById("quiz-container"); // Corrected ID
     const subjectButtons = document.querySelectorAll(".subject-btn");
-
+    document.addEventListener("DOMContentLoaded", async function () {
+        try {
+            const response = await fetch("/quiz.json"); // Fetch from the public folder
+            const quizData = await response.json(); // Parse JSON
+    
+            console.log("Loaded Data:", quizData); // ✅ Debugging
+            console.log("Science Questions:", quizData.science); // ✅ Debugging
+        } catch (error) {
+            console.error("Error loading quiz data:", error); // ❌ Log error
+        }
+    });
+    
     async function loadQuestions(subject) {
         try {
             const response = await fetch("quizData.json"); // Ensure the path is correct
@@ -30,9 +41,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             quizContainer.innerHTML = `<p>Failed to load quiz data. Please try again later.</p>`;
         }
     }
-    console.log("Science Questions:", quizData.science);
-    console.log("Loaded Data:", quizData);
-    console.log("Science Questions:", quizData?.science);
+
+    
 
     function showQuestion() {
         if (currentQuestionIndex >= questions.length) {
