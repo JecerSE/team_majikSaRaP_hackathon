@@ -1,62 +1,72 @@
 document.addEventListener("DOMContentLoaded", async function () {
     let currentQuestionIndex = 0;
-    let score = { Science: 0, Math: 0, Social: 0, Language: 0, Random: 0 }; // Track score per subject
+    let score = { Science: 0, Math: 0, Social: 0, Language: 0, Random: 0 };
     let currentSubject = "Science"; // Default subject
     let questions = [];
 
-    // Fetch questions
+    const quizContainer = document.getElementById("quiz-container");
+    const subjectButtons = document.querySelectorAll(".subject-btn");
+
+    // Load questions from JSON
     async function loadQuestions(subject) {
         try {
-            const response = await fetch("/quizData.json");
+            const response = await fetch("/quizData.json"); // Ensure correct path
+            if (!response.ok) throw new Error("Failed to load quiz data");
+
             const data = await response.json();
-            questions = data[subject] || [];
+            questions = data[subject]; // Load only the selected subject
             currentQuestionIndex = 0;
             currentSubject = subject;
-            score[subject] = 0; // Reset score for new subject
+            score[currentSubject] = 0;
             showQuestion();
         } catch (error) {
             console.error("Error loading quiz data:", error);
         }
     }
 
-    // Show a single question
+    // Show one question at a time
     function showQuestion() {
         if (currentQuestionIndex >= questions.length) {
-            document.getElementById("quiz-container").innerHTML = `<h2>Quiz Completed!</h2>
-                <p>Your Score for ${currentSubject}: ${score[currentSubject]}</p>`;
+            quizContainer.innerHTML = `<h3>Quiz Completed! Score: ${score[currentSubject]}</h3>`;
             return;
         }
 
-        let question = questions[currentQuestionIndex];
-        let quizContainer = document.getElementById("quiz-container");
-        
-        // Create question HTML
+        const question = questions[currentQuestionIndex];
         quizContainer.innerHTML = `
-            <h3>${question.question}</h3>
-            <div id="options">
-                ${question.options.map(option => `<button class="option-btn">${option}</button>`).join("")}
+            <h2>${question.question}</h2>
+            <div id="answers">
+                ${question.answers.map((answer, index) => 
+                    `<button class="answer-btn" data-index="${index}">${answer}</button>`
+                ).join("")}
             </div>
         `;
 
-        // Add click event for answers
-        document.querySelectorAll(".option-btn").forEach(btn => {
-            btn.addEventListener("click", function () {
-                if (this.innerText === question.correct) {
-                    score[currentSubject]++; // Increase score if correct
-                }
-                currentQuestionIndex++;
-                showQuestion(); // Load next question
-            });
+        // Attach event listeners to answers
+        document.querySelectorAll(".answer-btn").forEach(button => {
+            button.addEventListener("click", checkAnswer);
         });
     }
 
-    // Category buttons event listener
-    document.querySelectorAll(".subject-btn").forEach(button => {
-        button.addEventListener("click", function () {
-            loadQuestions(this.innerText); // Load selected subject
+    // Check answer and proceed
+    function checkAnswer(event) {
+        const selectedAnswerIndex = event.target.dataset.index;
+        const correctAnswerIndex = questions[currentQuestionIndex].correctIndex;
+
+        if (parseInt(selectedAnswerIndex) === correctAnswerIndex) {
+            score[currentSubject]++;
+        }
+
+        currentQuestionIndex++;
+        showQuestion();
+    }
+
+    // Attach event listeners to subject buttons
+    subjectButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            loadQuestions(button.dataset.subject);
         });
     });
 
-    // Load default subject (Science)
-    loadQuestions("Science");
+    // Initial load (default subject)
+    loadQuestions(currentSubject);
 });

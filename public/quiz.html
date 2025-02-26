@@ -32,8 +32,18 @@
     <!-- Main Content -->
     <div class="main-content">
         <h1>Quiz Yourself</h1>
-        <div id="quizTabs" class="tabs"></div>
-        <div id="quizContent"></div>
+
+        <!-- Subject Selection -->
+        <div id="quizTabs" class="tabs">
+            <button class="subject-btn" data-subject="Science">Science</button>
+            <button class="subject-btn" data-subject="Math">Math</button>
+            <button class="subject-btn" data-subject="Social">Social</button>
+            <button class="subject-btn" data-subject="Language">Language</button>
+            <button class="subject-btn" data-subject="Random">Random</button>
+        </div>
+
+        <!-- Quiz Container (to show questions) -->
+        <div id="quiz-container"></div>
     </div>
 </body>
 </html>
