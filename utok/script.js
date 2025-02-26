@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const commentBtn = document.querySelector("#comment-container > .icon-button");
     const likeCount = document.querySelector("#like-container > .counter");
     const commentCount = document.querySelector("#comment-container > .counter");
-
+    
     const videoList = [
         "videos/sample_video_1.mp4",  
         "videos/sample_video_2.mp4",  
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function loadVideo(index) {
         if (isTransitioning || index < 0 || index >= videoList.length) return;
         isTransitioning = true;
-
+    
         video.style.opacity = "0";
         setTimeout(() => {
             video.src = videoList[index];  
@@ -161,33 +161,51 @@ document.addEventListener("DOMContentLoaded", () => {
             video.play();
             video.muted = false;
             currentIndex = index;
-
-            //reset elements please edit this
+    
+            //likes and comment counts
             likeCount.textContent = "0";
             commentCount.textContent = "0";
             commentsList.innerHTML = "";
             commentInput.value = "";
-
+    
+            //video id list
+            videoID = "[" + videoList[index] + "]";
+            videoLikesKey = videoID + "-likes";
+            videoCommentsKey = videoID + "-comments";
+            videoCommentSectionKey = videoID + "-comments-data";
+    
+            if (sessionStorage.getItem(videoLikesKey)) {
+                likeCount.textContent = sessionStorage.getItem(videoLikesKey);
+            }
+            if (sessionStorage.getItem(videoCommentsKey)) {
+                commentCount.textContent = sessionStorage.getItem(videoCommentsKey);
+            }
+            if (sessionStorage.getItem(videoCommentSectionKey)) {
+                commentSection.querySelector(".comments-list").innerHTML = sessionStorage.getItem(videoCommentSectionKey);
+            }
+    
             video.style.opacity = "1";
             setTimeout(() => {
                 isTransitioning = false;
             }, 300);
-
-            if (sessionStorage.getItem(videoLikesKey)) {
-                likeCount.textContent = sessionStorage.getItem(videoID+"-likes");}
-            if (sessionStorage.getItem(videoCommentsKey)) {
-                commentCount.textContent = sessionStorage.getItem(videoID+"-comments");}
-            if (sessionStorage.getItem(videoCommentSectionKey)) {
-                commentSection.querySelector(".comments-list").innerHTML = sessionStorage.getItem(videoCommentSectionKey);
+    
+            // Track watched videos i think
+            let watchedVideos = parseInt(sessionStorage.getItem("watchedVideos") || "0") + 1;
+            sessionStorage.setItem("watchedVideos", watchedVideos);
+    
+            if (watchedVideos >= 5) {  // Change this number as needed per difficulty of user
+                sessionStorage.setItem("watchedVideos", "0");  // Reset counter after quiz sorry gian if this affects u somehow
+                generateQuiz();
             }
         }, 300);
-
-        videoID = "["+videoList[index]+"]";
-        videoLikesKey = videoID+"-likes";
-        videoCommentsKey = videoID+"-comments";
-        videoCommentSectionKey = videoID+"-comments-data";
-
     }
+    
+    
+    function generateQuiz() {
+        window.location.href = "scroll_quiz.html";  // quiz ai shit 
+    }
+    
+    
 
     // Scroll Event for Next & Previous Video (Reduced Sensitivity)
     let lastScrollTime = 0;
