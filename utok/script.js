@@ -62,7 +62,16 @@ document.addEventListener("DOMContentLoaded", () => {
         commentSection.style.right = commentSection.style.right === "0px" ? "-350px" : "0px";
 
         if (sessionStorage.getItem(videoCommentSectionKey)) {
-            commentSection.querySelector(".comments-list").innerHTML = sessionStorage.getItem(videoCommentSectionKey);}
+            commentSection.querySelector(".comments-list").innerHTML = sessionStorage.getItem(videoCommentSectionKey);
+            console.log(parseInt(commentCount.textContent));
+            // Re-add event listeners for action buttons (upvote, downvote, reply)
+            // Upvote / Downvote tb added later
+            for (let i = 1; i <= parseInt(commentCount.textContent); i++){
+                const replyButton = commentSection.querySelector("#comment-"+i+">tbody>.action-panel>td:nth-child(2)>.reply-button");
+                console.log(replyButton);
+                replyButton.addEventListener("click", toggleReplyInputBox);
+            }
+        }
     });
 
     closeCommentBtn.addEventListener("click", () => {
@@ -84,12 +93,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td></td>
                     <td class="comment-field"></td>
                 </tr>
-                <tr>
+                <tr class="action-panel">
                     <td></td>
-                    <td><input type="button" value="Upvote"> <input type="button" value="Downvote"></td>
+                    <td><input type="button" value="Upvote"> <input type="button" value="Downvote"> <input type="button" value="Reply" class="reply-button"></td>
                 </tr>
+                <tr class="reply-box">
+                    <td></td>
+                    <td class="reply-section hidden"></td>
+                </tr>
+                <tr></tr>
             </table>
             `
+            commentItem.querySelector(".comment-item").id = "comment-" + (parseInt(commentCount.textContent)+1);
+            
+            const replyButton = commentItem.querySelector(".reply-button");
+            replyButton.addEventListener("click", toggleReplyInputBox);
+            console.log(replyButton);
+
             const commentTextField = commentItem.querySelector(".comment-field");
             const commenterRank = commentItem.querySelector(".user-rank");
             commentTextField.textContent = commentText;
@@ -105,6 +125,71 @@ document.addEventListener("DOMContentLoaded", () => {
             // Add updated comment section to video data in session storage
         }
     });
+
+    // Reply box
+    // Toggle reply text input - reply button will call function below on click
+    function toggleReplyInputBox(event){
+        commentItem = event.target.parentNode.parentNode.parentNode.parentNode;
+        replySection = commentItem.querySelector("tbody>.reply-box>.reply-section");
+
+        replySectionStatus = replySection.classList[1];
+        console.log(replySectionStatus);
+
+        if (replySectionStatus == "hidden"){
+            // Unhide reply section
+            if (sessionStorage.getItem(commentItem.id + "-replies")){
+                // Previously saved comment replies
+                replySection.innerHTML = sessionStorage.getItem(commentItem.id + "-replies");
+
+            }
+            else {
+                // No previously saved comment replies
+                // Create new html
+                replySection.innerHTML = `
+                <input type="text" style="height=20px" placeholder="Reply to this comment..." class="reply-input">
+                <input type="button" class="post-reply" value="Post reply">
+                <ul class="comment-replies-list"></ul>
+                `
+
+                
+            }
+            const postReplyButton = replySection.querySelector(".post-reply")
+            postReplyButton.addEventListener("click", postReply);
+            replySection.classList.remove("hidden");
+            replySection.classList.add("visible")
+        }
+        else {
+            // Hide reply section
+            sessionStorage.setItem(commentItem.id + "-replies", replySection.innerHTML);
+            replySection.innerHTML = ``;
+            console.log(replySection)
+            replySection.classList.remove("visible");
+            replySection.classList.add("hidden")
+        }
+
+        event.stopPropagation();
+    }
+
+    function postReply(event){
+        const replySection = event.target.parentNode;
+        const replyText = replySection.querySelector(".reply-input").value.trim();
+
+        if (replyText){
+            const replyItem = document.createElement("li");
+            replyItem.innerHTML = `
+            <table class="reply-item">
+                <tr class="reply-content">
+                    <td><span class="reply-username" style="font-style:bold;"></span> <span class="reply-content"></span><td>
+                </tr>
+                <tr class="reply-action-panel">
+                    <td><input type="button" value="Upvote"> <input type="button" value="Downvote"></td>
+                </tr>
+            </table>
+            `
+        }
+
+        event.stopPropagation();
+    }
 
     // Pause/Play Overlay Indicator
     const indicator = document.createElement("img");
@@ -144,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (event) => {
-        if (event.key === " " && document.activeElement !== commentInput) {
+        if (event.key === " " && document.activeElement !== commentInput && document.activeElement.classList[0] != "reply-input") {
             event.preventDefault();
             togglePlayPause();
         }
