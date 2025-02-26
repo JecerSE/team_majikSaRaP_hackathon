@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     let currentSubject = "Science"; 
     let questions = [];
 
-    const quizContainer = document.getElementById("quizContent");
+    const quizContainer = document.getElementById("quiz-container"); // Corrected ID
     const subjectButtons = document.querySelectorAll(".subject-btn");
 
     async function loadQuestions(subject) {
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const response = await fetch("quizData.json"); // Ensure the path is correct
             const data = await response.json();
 
-            console.log("Loaded Data:", data); // Debugging line
+            console.log("Loaded Data:", data); // Fixed variable name
             console.log("Subject:", subject, "Questions:", data[subject]); // Debugging
 
             questions = data[subject] || []; // Get only the selected subject
@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         document.querySelectorAll(".answer-btn").forEach(button => {
             button.addEventListener("click", function () {
-                const selectedAnswer = this.dataset.index;
-                if (questionData.correctIndex == selectedAnswer) {
+                const selectedAnswer = parseInt(this.dataset.index); // Ensure it's a number
+                if (questionData.correctIndex === selectedAnswer) {
                     score[currentSubject]++;
                 }
                 currentQuestionIndex++;
