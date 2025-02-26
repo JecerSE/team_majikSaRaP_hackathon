@@ -75,6 +75,22 @@ body {
     background: rgba(224, 251, 252, 0.2);
     padding-left: 15px;
 }
+#quiz-container {
+    transition: opacity 0.5s ease-in-out;
+}
+.option-btn {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #2c3e50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.option-btn:hover {
+    background: #1abc9c;
+}
 
 .main-content {
     margin: auto;
