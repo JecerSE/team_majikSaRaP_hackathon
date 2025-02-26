@@ -338,8 +338,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     function generateQuiz() {
+        const quizContainer = document.querySelector("#quiz-container");
+        const video = document.querySelector(".video");
+        
+        // Hide Video, Show Quiz
+        video.style.display = "none";
+        quizContainer.style.display = "flex";
+        
+        // Load First Question
         document.querySelector("#quiz-question").textContent = quizQuestions[0].question;
         document.querySelector("#quiz-options").innerHTML = "";
+        
         quizQuestions[0].options.forEach(option => {
             let btn = document.createElement("button");
             btn.classList.add("quiz-option");
@@ -347,7 +356,6 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.addEventListener("click", () => checkAnswer(option));
             document.querySelector("#quiz-options").appendChild(btn);
         });
-        loadQuiz();
     }
     
     function checkAnswer(selectedAnswer) {
@@ -355,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (selectedAnswer === correctAnswer) {
             quizQuestions.shift();
             if (quizQuestions.length > 0) {
-                generateQuiz();
+                generateQuiz(); // Load next question
             } else {
                 closeQuiz();
             }
@@ -363,9 +371,19 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Wrong answer! Try again.");
         }
     }
-
     
-    
+    function closeQuiz() {
+        const quizContainer = document.querySelector("#quiz-container");
+        const video = document.querySelector(".video");
+        
+        // Show Video, Hide Quiz
+        quizContainer.style.display = "none";
+        video.style.display = "block";
+        
+        watchedVideos = 0;
+        sessionStorage.setItem("watchedVideos", watchedVideos);
+        loadVideo(currentIndex + 1);
+    }
 
     // Scroll Event for Next & Previous Video (Reduced Sensitivity)
     let lastScrollTime = 0;

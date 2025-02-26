@@ -8,31 +8,38 @@
 </head>
 <body>
 
-    <!-- Video Wrapper to Center -->
-    <div class="video-wrapper">
-        <div class="video-container">
-            <video class="video" src="videos/sample_video_1.mp4" loop muted autoplay></video>
+<!-- Video Wrapper -->
+<div class="video-wrapper">
+    <div class="video-container">
+        <video class="video" src="videos/sample_video_1.mp4" loop muted autoplay></video>
 
-            <!-- TikTok-style Right Controls -->
-            <div class="controls">
-                <img src="assets/profile.jpeg" class="profile-pic" alt="Profile">
-                
-                <div id="like-container">
-                    <button class="icon-button">
-                        <img src="assets/Icons/love.jpg" alt="Like">
-                    </button>
-                    <span class="counter">0</span>
-                </div>
-                
-                <div id="comment-container">
-                    <button class="icon-button">
-                        <img src="assets/Icons/comment.jpg" alt="Comment">
-                    </button>
-                    <span class="counter">0</span>
-                </div>
+        <!-- Quiz Section (Hidden Initially) -->
+        <div id="quiz-container" class="quiz-container" style="display: none;">
+            <h2 id="quiz-question">Quiz Question</h2>
+            <div id="quiz-options"></div>
+        </div>
+
+        <!-- TikTok-style Right Controls -->
+        <div class="controls">
+            <img src="assets/profile.jpeg" class="profile-pic" alt="Profile">
+            
+            <div id="like-container">
+                <button class="icon-button">
+                    <img src="assets/Icons/love.jpg" alt="Like">
+                </button>
+                <span class="counter">0</span>
+            </div>
+            
+            <div id="comment-container">
+                <button class="icon-button">
+                    <img src="assets/Icons/comment.jpg" alt="Comment">
+                </button>
+                <span class="counter">0</span>
             </div>
         </div>
     </div>
+</div>
+
 
 <!-- Sidebar -->
 <div class="sidebar">
@@ -53,16 +60,25 @@
     </nav>
 </div>
 
-    <!-- JavaScript -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const userRank = sessionStorage.getItem("userRank") || "USERRANK";
-            const userExp = sessionStorage.getItem("userExp") || "USEREXP";
+<!-- Quiz Modal -->
+<div id="quiz-modal" style="display: none; position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 300px; text-align: center; z-index: 1000;">
+    <h2 id="quiz-question">Quiz Question</h2>
+    <div id="quiz-options"></div>
+</div>
 
-            document.getElementById("sidebarRank").textContent = userRank;
-            document.getElementById("sidebarExp").textContent = userExp;
-        });
-    </script>
-    <script src="script.js"></script>
+<!-- JavaScript -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const userRank = sessionStorage.getItem("userRank") || "USERRANK";
+        const userExp = sessionStorage.getItem("userExp") || "USEREXP";
+
+        document.getElementById("sidebarRank").textContent = userRank;
+        document.getElementById("sidebarExp").textContent = userExp;
+    });
+</script>
+<script src="script.js"></script>
+
 </body>
 </html>
