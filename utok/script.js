@@ -65,11 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
             commentSection.querySelector(".comments-list").innerHTML = sessionStorage.getItem(videoCommentSectionKey);
             console.log(parseInt(commentCount.textContent));
             // Re-add event listeners for action buttons (upvote, downvote, reply)
-            // Upvote / Downvote tb added later
             for (let i = 1; i <= parseInt(commentCount.textContent); i++){
                 const replyButton = commentSection.querySelector("#comment-"+i+">tbody>.action-panel>td:nth-child(2)>.reply-button");
-                console.log(replyButton);
+                const upvoteButton = commentSection.querySelector("#comment-"+i+">tbody>.action-panel>td:nth-child(2)>.vote-button.up");
+                const downvoteButton = commentSection.querySelector("#comment-"+i+">tbody>.action-panel>td:nth-child(2)>.vote-button.down");
+                
                 replyButton.addEventListener("click", toggleReplyInputBox);
+                upvoteButton.addEventListener("click", votePressed);
+                downvoteButton.addEventListener("click", votePressed);
             }
         }
     });
@@ -95,7 +98,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 </tr>
                 <tr class="action-panel">
                     <td></td>
-                    <td><button class="upvote-button"><img class="comment-action-icon" src="assets/Icons/Upvote.jpg" alt="Upvote"></button> <button class="downvote-button"><img class="comment-action-icon" src="assets/Icons/Downvote.jpg" alt="Downvote"></button> <input type="button" value="Reply" class="reply-button">
+                    <td><button class="vote-button up"><img class="vote-button up comment-action-icon" src="assets/Icons/Upvote.jpg" alt="Upvote"></button> 
+                    <button class="vote-button down"><img class="vote-button down comment-action-icon" src="assets/Icons/Downvote.jpg" alt="Downvote"></button> 
+                    <span class="vote-count" style="color:gray">0</span>
+                    <input type="button" value="Reply" class="reply-button">
                     <span class="reply-count" style="visibility:hidden">0</span></td>
                 </tr>
                 <tr class="reply-box">
@@ -110,6 +116,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const replyButton = commentItem.querySelector(".reply-button");
             replyButton.addEventListener("click", toggleReplyInputBox);
             console.log(replyButton);
+
+            const upvoteButton = commentItem.querySelector(".vote-button.up");
+            console.log(upvoteButton);
+            upvoteButton.addEventListener("click", votePressed);
+
+            const downvoteButton = commentItem.querySelector(".vote-button.down");
+            downvoteButton.addEventListener("click", votePressed);
+
 
             const replyCount = commentItem.querySelector(".reply-count")
             replyButton.value = "Replies (" + replyCount.innerHTML + ")"
@@ -129,6 +143,43 @@ document.addEventListener("DOMContentLoaded", () => {
             // Add updated comment section to video data in session storage
         }
     });
+
+    // Comment vote system
+    function votePressed(event){
+        const commentItem = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
+        const voteCounter = commentItem.querySelector(".vote-count");
+
+        console.log(event.target.classList)
+        const buttonClass = event.target.classList;
+        let voteCount = parseInt(voteCounter.textContent);
+        if (buttonClass.contains("up")){
+            voteCount++;
+        }
+        else if (buttonClass.contains("down")){
+            voteCount--;
+        }
+
+        voteCounter.textContent = voteCount;
+        
+        if (voteCount == 0){
+            voteCounter.style = "color:gray";
+        }
+        else if (voteCount > 0){
+            voteCounter.style = "color:lime";
+        }
+        else if (voteCount < 0){
+            voteCounter.style = "color:red";
+        }
+
+        if (buttonClass.contains("comment-action-icon")){
+            sessionStorage.setItem(videoCommentSectionKey, commentItem.parentNode.parentNode.innerHTML);
+        }
+        else {
+            sessionStorage.setItem(videoCommentSectionKey, commentItem.parentNode.innerHTML);
+        }
+
+        event.stopPropagation()
+    }
 
     // Reply box
     // Toggle reply text input - reply button will call function below on click
@@ -191,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td><span class="reply-username" style="font-weight:bold;">User</span> <span class="reply-field"></span><td>
                 </tr>
                 <tr class="reply-action-panel">
-                    <td><button class="upvote-button"><img class="reply-action-icon" src="assets/Icons/Upvote.jpg" alt="Upvote"></button> <button class="downvote-button"><img class="reply-action-icon" src="assets/Icons/Downvote.jpg" alt="Downvote"></button></td>
+                    <td><button class="vote-button up"><img class="reply-action-icon" src="assets/Icons/Upvote.jpg" alt="Upvote"></button> <button class="vote-button down"><img class="reply-action-icon" src="assets/Icons/Downvote.jpg" alt="Downvote"></button></td>
                 </tr>
             </table>
             `
