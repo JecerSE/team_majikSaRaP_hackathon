@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             quizContainer.innerHTML = `<p>Failed to load quiz data. Please try again later.</p>`;
         }
     }
+    console.log("Science Questions:", quizData.science);
+    console.log("Loaded Data:", quizData);
+    console.log("Science Questions:", quizData?.science);
 
     function showQuestion() {
         if (currentQuestionIndex >= questions.length) {
