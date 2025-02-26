@@ -311,27 +311,85 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     
-    function generateQuiz() {
-        window.location.href = "scroll_quiz.html";  // quiz ai shit 
+    const quizQuestions = [
+        {
+            question: "Who is the best player in League of Legends?",
+            options: ["Caps", "Chovy", "Faker", "TheShy"],
+            answer: "Faker"
+        },
+        {
+            question: "Which player is NOT in Los Ratones' starting roster?",
+            options: ["TheBausffs", "Caedrel", "Crownie", "Nemesis"],
+            answer: "Caedrel"
+        }
+    ];
+    
+    let watchedVideos = parseInt(sessionStorage.getItem("watchedVideos") || "0");
+    
+    function loadQuiz() {
+        document.querySelector("#quiz-modal").style.display = "flex";
     }
+    
+    function closeQuiz() {
+        document.querySelector("#quiz-modal").style.display = "none";
+        watchedVideos = 0;
+        sessionStorage.setItem("watchedVideos", watchedVideos);
+        loadVideo(currentIndex + 1);
+    }
+    
+    function generateQuiz() {
+        document.querySelector("#quiz-question").textContent = quizQuestions[0].question;
+        document.querySelector("#quiz-options").innerHTML = "";
+        quizQuestions[0].options.forEach(option => {
+            let btn = document.createElement("button");
+            btn.classList.add("quiz-option");
+            btn.textContent = option;
+            btn.addEventListener("click", () => checkAnswer(option));
+            document.querySelector("#quiz-options").appendChild(btn);
+        });
+        loadQuiz();
+    }
+    
+    function checkAnswer(selectedAnswer) {
+        let correctAnswer = quizQuestions[0].answer;
+        if (selectedAnswer === correctAnswer) {
+            quizQuestions.shift();
+            if (quizQuestions.length > 0) {
+                generateQuiz();
+            } else {
+                closeQuiz();
+            }
+        } else {
+            alert("Wrong answer! Try again.");
+        }
+    }
+
     
     
 
     // Scroll Event for Next & Previous Video (Reduced Sensitivity)
     let lastScrollTime = 0;
     window.addEventListener("wheel", (event) => {
-        if (!commentBoxActive){
+        if (!commentBoxActive) {
             const now = new Date().getTime();
-            if (now - lastScrollTime < 1500) return; // Prevent skipping multiple videos doesnt work
+            if (now - lastScrollTime < 1500) return;
             lastScrollTime = now;
-
+            watchedVideos++;
+            sessionStorage.setItem("watchedVideos", watchedVideos);
+            
+            if (watchedVideos >= 5) {
+                generateQuiz();
+            } else {
+                loadVideo(currentIndex + (event.deltaY > 0 ? 1 : -1));
+            }
             if (event.deltaY > 0) {
                 loadVideo(currentIndex + 1);
             } else if (event.deltaY < 0) {
                 loadVideo(currentIndex - 1);
             }
         }
-    });
+        });
+    
 
     likeBtn.addEventListener("click", (event) => {
         event.stopPropagation();
