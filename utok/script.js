@@ -384,15 +384,19 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
     
     let watchedVideos = parseInt(sessionStorage.getItem("watchedVideos") || "0");
+    let quizCompleted = sessionStorage.getItem("quizCompleted") === "true";
 
     function loadQuiz() {
-        document.querySelector("#quiz-modal").style.display = "flex";
+    document.querySelector("#quiz-modal").style.display = "flex";
     }
     
+
     function closeQuiz() {
         document.querySelector("#quiz-modal").style.display = "none";
         watchedVideos = 0;
+        quizCompleted = true;
         sessionStorage.setItem("watchedVideos", watchedVideos);
+        sessionStorage.setItem("quizCompleted", "true");
         loadVideo(currentIndex + 1);
     }
     
@@ -424,7 +428,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (selectedAnswer === correctAnswer) {
             quizQuestions.shift();
             if (quizQuestions.length > 0) {
-                generateQuiz(); // Load next question
+                generateQuiz();
             } else {
                 closeQuiz();
             }
@@ -455,6 +459,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (now - lastScrollTime < 1500) return;
             lastScrollTime = now;
             
+            if (event.deltaY < 0 && quizCompleted) {
+                let nextIndex = currentIndex - 1;
+                loadVideo(nextIndex);
+                return;
+            }
+    
             watchedVideos++;
             sessionStorage.setItem("watchedVideos", watchedVideos);
             
@@ -466,6 +476,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+    
 
     
 
