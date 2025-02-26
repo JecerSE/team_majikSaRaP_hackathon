@@ -2,23 +2,40 @@ body {
     margin: 0;
     height: 100vh;
     display: flex;
-    background: black;
-    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to bottom, #98c1d9, #e0fbfc);
+    font-family: 'MonaspaceNeon', monospace;
+    color: #0d1b2a;
+}
+
+/* navbar */
+.top-navbar {
+    width: 100%;
+    padding: 15px;
+    background: #1b263b;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-right: 30px;
 }
 
 /* Sidebar */
 .sidebar {
     position: fixed;
-    top: 0;
+    top: 50px;
     left: 0;
-    width: 200px;
-    height: 100vh;
-    background: rgba(30, 30, 30, 0.95);
+    width: 250px;
+    height: calc(100vh - 50px);
+    background: #1b263b;
     color: white;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0 10px 10px 0;
 }
 
 /* User Profile */
@@ -30,18 +47,18 @@ body {
 }
 
 .sidebar-profile-pic {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid white;
+    border: 2px solid #e0fbfc;
 }
 
 /* Navigation Links */
 .sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
 .sidebar-nav a {
@@ -54,73 +71,64 @@ body {
 }
 
 .sidebar-nav a:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(224, 251, 252, 0.2);
     padding-left: 15px;
 }
 
-.content{
+/* Content Section */
+.content {
     margin: auto;
     position: relative;
-    background-color: gray;
-    padding: 20px 75px;
-    width: 80%;
-    margin-left: 220px;
-    margin-top: 50px;
-    margin-right: 50px;
-}
-
-.content td{
-    padding: 5px 5px;
-}
-
-
-.bottom-navbar{
-    position: fixed;
-    bottom: 0;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    flex-wrap: wrap;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.bottom-navbar a {
-    display: inline;
-    float: none;
-    width: 700px;
-    padding: 1px 6px;
-    border: 1px outset white;
-    border-radius: 3px;
     background-color: white;
-    color: black;
-    text-decoration: none;
+    padding: 30px 50px;
+    width: 60%;
+    margin-left: 280px;
+    margin-top: 90px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
-@font-face {
-    font-family: 'MonaspaceNeon';
-    src: url('assets/fonts/MonaspaceNeon-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'MonaspaceNeon';
-    src: url('assets/fonts/MonaspaceNeon-Bold.woff2') format('woff2');
+.content h1 {
+    color: #1b263b;
+    border-bottom: 2px solid #1b263b;
+    padding-bottom: 5px;
     font-weight: bold;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'MonaspaceNeon';
-    src: url('assets/fonts/MonaspaceNeon-Italic.woff2') format('woff2');
-    font-weight: normal;
-    font-style: italic;
-  }
-  
-  
-body {
-    font-family: 'MonaspaceNeon', monospace;
-  }
-  
+}
+
+.content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+.content td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Buttons */
+input[type="button"], .edit-button {
+    padding: 8px 12px;
+    background: #98c1d9;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+input[type="button"]:hover, .edit-button:hover {
+    background: #e0fbfc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+    .content {
+        width: 85%;
+        margin-left: 220px;
+    }
+}
