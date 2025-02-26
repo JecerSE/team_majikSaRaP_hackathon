@@ -1,66 +1,62 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const quizTabs = document.getElementById("quizTabs");
-    const quizContent = document.getElementById("quizContent");
+document.addEventListener("DOMContentLoaded", async function () {
+    let currentQuestionIndex = 0;
+    let score = { Science: 0, Math: 0, Social: 0, Language: 0, Random: 0 }; // Track score per subject
+    let currentSubject = "Science"; // Default subject
+    let questions = [];
 
-    fetch("quizData.json")
-    .then(response => response.json())
-    .then(quizzes => {
-        console.log("Quiz Data Loaded:", quizzes); // ✅ Check if data is loading
-
-        Object.keys(quizzes).forEach(category => {
-            console.log("Creating button for:", category); // ✅ Check if buttons are being created
-
-            const tabButton = document.createElement("button");
-            tabButton.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-            tabButton.classList.add("tab-button");
-            tabButton.dataset.category = category;
-
-            tabButton.addEventListener("click", function () {
-                loadQuiz(category, quizzes);
-            });
-
-            quizTabs.appendChild(tabButton);
-        });
-
-        // Load first category
-        const firstCategory = Object.keys(quizzes)[0];
-        if (firstCategory) {
-            loadQuiz(firstCategory, quizzes);
+    // Fetch questions
+    async function loadQuestions(subject) {
+        try {
+            const response = await fetch("/quizData.json");
+            const data = await response.json();
+            questions = data[subject] || [];
+            currentQuestionIndex = 0;
+            currentSubject = subject;
+            score[subject] = 0; // Reset score for new subject
+            showQuestion();
+        } catch (error) {
+            console.error("Error loading quiz data:", error);
         }
-    })
-    .catch(error => console.error("Error loading quiz data:", error));
+    }
 
-    // Function to Load Quiz Questions
-    function loadQuiz(category, quizzes) {
-        quizContent.innerHTML = ""; // Clear previous questions
-
-        if (!quizzes[category]) {
-            console.error("Category not found:", category);
+    // Show a single question
+    function showQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            document.getElementById("quiz-container").innerHTML = `<h2>Quiz Completed!</h2>
+                <p>Your Score for ${currentSubject}: ${score[currentSubject]}</p>`;
             return;
         }
 
-        quizzes[category].forEach((quiz, index) => {
-            const questionDiv = document.createElement("div");
-            questionDiv.classList.add("question");
-            questionDiv.innerHTML = `<p><strong>${index + 1}. ${quiz.question}</strong></p>`;
+        let question = questions[currentQuestionIndex];
+        let quizContainer = document.getElementById("quiz-container");
+        
+        // Create question HTML
+        quizContainer.innerHTML = `
+            <h3>${question.question}</h3>
+            <div id="options">
+                ${question.options.map(option => `<button class="option-btn">${option}</button>`).join("")}
+            </div>
+        `;
 
-            const optionsContainer = document.createElement("div");
-            optionsContainer.classList.add("options");
-
-            quiz.options.forEach(option => {
-                const button = document.createElement("button");
-                button.textContent = option;
-                button.classList.add("option-btn");
-
-                button.addEventListener("click", function () {
-                    alert(option === quiz.answer ? "✅ Correct!" : `❌ Wrong! Correct: ${quiz.answer}`);
-                });
-
-                optionsContainer.appendChild(button);
+        // Add click event for answers
+        document.querySelectorAll(".option-btn").forEach(btn => {
+            btn.addEventListener("click", function () {
+                if (this.innerText === question.correct) {
+                    score[currentSubject]++; // Increase score if correct
+                }
+                currentQuestionIndex++;
+                showQuestion(); // Load next question
             });
-
-            questionDiv.appendChild(optionsContainer);
-            quizContent.appendChild(questionDiv);
         });
     }
+
+    // Category buttons event listener
+    document.querySelectorAll(".subject-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            loadQuestions(this.innerText); // Load selected subject
+        });
+    });
+
+    // Load default subject (Science)
+    loadQuestions("Science");
 });
