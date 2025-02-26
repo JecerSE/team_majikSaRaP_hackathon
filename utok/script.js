@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </tr>
                 <tr class="action-panel">
                     <td></td>
-                    <td><input type="button" value="Upvote"> <input type="button" value="Downvote"> <input type="button" value="Reply" class="reply-button">
+                    <td><button class="upvote-button"><img class="comment-action-icon" src="assets/Icons/Upvote.jpg" alt="Upvote"></button> <button class="downvote-button"><img class="comment-action-icon" src="assets/Icons/Downvote.jpg" alt="Downvote"></button> <input type="button" value="Reply" class="reply-button">
                     <span class="reply-count" style="visibility:hidden">0</span></td>
                 </tr>
                 <tr class="reply-box">
@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td><span class="reply-username" style="font-weight:bold;">User</span> <span class="reply-field"></span><td>
                 </tr>
                 <tr class="reply-action-panel">
-                    <td><input type="button" value="Upvote"> <input type="button" value="Downvote"></td>
+                    <td><button class="upvote-button"><img class="reply-action-icon" src="assets/Icons/Upvote.jpg" alt="Upvote"></button> <button class="downvote-button"><img class="reply-action-icon" src="assets/Icons/Downvote.jpg" alt="Downvote"></button></td>
                 </tr>
             </table>
             `

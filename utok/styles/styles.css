@@ -244,6 +244,18 @@ body {
     cursor: pointer;
 }
 
+.comment-action-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.reply-action-icon {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
 @font-face {
     font-family: 'MonaspaceNeon';
     src: url('../fonts/MonaspaceNeon-Regular.woff2') format('woff2');
