@@ -424,6 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //quiz questions should be genereated here but for now i will have fillers
     //mostly league of legends stuff
     //should also implement a system for another quiz and have memory generation stuffs
+    //jecer was here dili nako ani :)
     const quizQuestions = [
         {
             question: "Who is the best player in League of Legends?",
