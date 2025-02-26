@@ -24,6 +24,16 @@
         <a href="creator.html">🎥 Creator</a>
         <a href="login.html">🔑 Login</a>
     </nav>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userRank = sessionStorage.getItem("userRank") || "USERRANK";
+            const userExp = sessionStorage.getItem("userExp") || "USEREXP";
+    
+            document.getElementById("sidebarRank").textContent = userRank;
+            document.getElementById("sidebarExp").textContent = userExp;
+        });
+    </script>   
 </div>
 </body>
 </html>
