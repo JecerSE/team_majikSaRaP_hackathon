@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     function openTab(tabName) {
-        //hide
+        // Hide
         document.querySelectorAll(".tab-content").forEach(tab => {
             tab.style.display = "none";
         });
@@ -12,7 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    openTab('random');
+    const defaultTab = document.querySelector(".tab-button")?.dataset.tab;
+    if (defaultTab) openTab(defaultTab);
+
+
     document.querySelectorAll(".tab-button").forEach(button => {
         button.addEventListener("click", function () {
             openTab(this.dataset.tab);
