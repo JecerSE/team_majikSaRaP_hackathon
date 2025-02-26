@@ -310,7 +310,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300);
     }
     
-    
+    //quiz questions should be genereated here but for now i will have fillers
+    //mostly league of legends stuff
+    //should also implement a system for another quiz and have memory generation stuffs
     const quizQuestions = [
         {
             question: "Who is the best player in League of Legends?",
@@ -325,7 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
     
     let watchedVideos = parseInt(sessionStorage.getItem("watchedVideos") || "0");
-    
+
     function loadQuiz() {
         document.querySelector("#quiz-modal").style.display = "flex";
     }
@@ -338,6 +340,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     function generateQuiz() {
+        if (watchedVideos < 5) return; // change 5 dependsing if how many will vary later
+        
         const quizContainer = document.querySelector("#quiz-container");
         const video = document.querySelector(".video");
         
@@ -386,6 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Scroll Event for Next & Previous Video (Reduced Sensitivity)
+
     let lastScrollTime = 0;
     window.addEventListener("wheel", (event) => {
         if (!commentBoxActive) {
@@ -396,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
             watchedVideos++;
             sessionStorage.setItem("watchedVideos", watchedVideos);
             
-            if (watchedVideos >= 5) {
+            if (watchedVideos === 5) {
                 generateQuiz();
             } else {
                 let nextIndex = currentIndex + (event.deltaY > 0 ? 1 : -1);
@@ -404,7 +409,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
-    
+
     
 
     likeBtn.addEventListener("click", (event) => {
