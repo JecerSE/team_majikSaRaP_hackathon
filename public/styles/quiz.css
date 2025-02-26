@@ -6,6 +6,7 @@ body {
     padding: 0;
     display: flex;
     height: 100vh;
+    flex-direction: column;
 }
 
 .top-navbar {
@@ -81,11 +82,13 @@ body {
     background-color: white;
     padding: 30px 50px;
     width: 60%;
-    margin-left: 280px;
+    margin-left: 270px;
     margin-top: 90px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     text-align: center;
+    overflow-y: auto;
+    max-height: 80vh;
 }
 
 .tabs {
