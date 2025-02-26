@@ -208,6 +208,16 @@ body {
     list-style: none;
 }
 
+.comment-replies-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 0;
+    list-style: none;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
 .comment-input {
     width: 93%;
     padding: 8px;

@@ -95,7 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 </tr>
                 <tr class="action-panel">
                     <td></td>
-                    <td><input type="button" value="Upvote"> <input type="button" value="Downvote"> <input type="button" value="Reply" class="reply-button"></td>
+                    <td><input type="button" value="Upvote"> <input type="button" value="Downvote"> <input type="button" value="Reply" class="reply-button">
+                    <span class="reply-count" style="visibility:hidden">0</span></td>
                 </tr>
                 <tr class="reply-box">
                     <td></td>
@@ -109,6 +110,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const replyButton = commentItem.querySelector(".reply-button");
             replyButton.addEventListener("click", toggleReplyInputBox);
             console.log(replyButton);
+
+            const replyCount = commentItem.querySelector(".reply-count")
+            replyButton.value = "Replies (" + replyCount.innerHTML + ")"
 
             const commentTextField = commentItem.querySelector(".comment-field");
             const commenterRank = commentItem.querySelector(".user-rank");
@@ -172,20 +176,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function postReply(event){
         const replySection = event.target.parentNode;
-        const replyText = replySection.querySelector(".reply-input").value.trim();
+        const repliesList = replySection.querySelector(".comment-replies-list")
+        const commentItem = replySection.parentNode.parentNode.parentNode;
+        const replyInput = replySection.querySelector(".reply-input");
+        const replyText = replyInput.value.trim();
+        const replyCount = commentItem.querySelector("tbody>.action-panel>td:nth-child(2)>.reply-count")
+        const replyButton = commentItem.querySelector(".reply-button");
 
         if (replyText){
             const replyItem = document.createElement("li");
             replyItem.innerHTML = `
             <table class="reply-item">
                 <tr class="reply-content">
-                    <td><span class="reply-username" style="font-style:bold;"></span> <span class="reply-content"></span><td>
+                    <td><span class="reply-username" style="font-weight:bold;">User</span> <span class="reply-field"></span><td>
                 </tr>
                 <tr class="reply-action-panel">
                     <td><input type="button" value="Upvote"> <input type="button" value="Downvote"></td>
                 </tr>
             </table>
             `
+
+            replyCount.textContent = parseInt(replyCount.textContent) + 1;
+            replyItem.querySelector(".reply-item").id = "comment-" + commentItem.id + "-reply-" + (parseInt(replyCount.textContent));
+
+            replyButton.value = "Replies (" + replyCount.innerHTML + ")"
+
+            const replyTextField = replyItem.querySelector(".reply-field")
+            replyTextField.textContent = replyText;
+            repliesList.appendChild(replyItem)
+
+            replyInput.value = "";
+
+            sessionStorage.setItem(commentItem.id + "-replies", replySection.innerHTML);
+            sessionStorage.setItem(videoCommentSectionKey, commentItem.parentNode.innerHTML);
+
+
         }
 
         event.stopPropagation();
