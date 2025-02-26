@@ -209,7 +209,7 @@ body {
 }
 
 .comment-input {
-    width: 100%;
+    width: 93%;
     padding: 8px;
     margin-bottom: 5px;
 }
@@ -221,6 +221,7 @@ body {
     color: white;
     border: none;
     cursor: pointer;
+    height: 70px;
 }
 
 .close-comment {
