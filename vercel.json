@@ -1,4 +1,15 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/utok/index.html" }]
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/utok/index.html"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/assets/(.*)",
+        "dest": "/utok/assets/$1"
+      }
+    ]
   }
   
