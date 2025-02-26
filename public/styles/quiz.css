@@ -1,47 +1,74 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #EBEAED;
-    color: #202124;
+    font-family: 'MonaspaceNeon', Arial, sans-serif;
+    background: linear-gradient(to bottom, #98c1d9, #e0fbfc);
+    color: #0d1b2a;
     margin: 0;
     padding: 0;
     display: flex;
     height: 100vh;
 }
 
+.top-navbar {
+    width: 100%;
+    padding: 15px;
+    background: #1b263b;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-right: 30px;
+}
+
 .sidebar {
+    position: fixed;
+    top: 50px;
+    left: 0;
     width: 250px;
-    background-color: #002A55;
-    color: #EBEAED;
-    padding: 20px;
+    height: calc(100vh - 50px);
+    background: #1b263b;
+    color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0 10px 10px 0;
 }
 
 .sidebar a {
-    color: #EBEAED;
+    color: white;
     text-decoration: none;
     padding: 10px;
     display: block;
     border-radius: 4px;
+    margin-bottom: 5px;
+    transition: 0.3s ease;
 }
 
 .sidebar a:hover {
-    background-color: #593B32;
+    background: rgba(224, 251, 252, 0.2);
+    padding-left: 15px;
 }
 
 .main-content {
     flex-grow: 1;
-    background-color: #6FCEBD;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    padding: 30px 50px;
+    width: 60%;
+    margin-left: 280px;
+    margin-top: 90px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
     text-align: center;
-    width: calc(100% - 250px);
 }
 
 .tabs {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .tab-button {
@@ -52,6 +79,7 @@ body {
     margin: 5px;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
 .tab-button:hover {
@@ -64,6 +92,7 @@ body {
     padding: 15px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
 }
 
 @font-face {
@@ -71,18 +100,28 @@ body {
     src: url('assets/fonts/MonaspaceNeon-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-  }
-  
-  @font-face {
+}
+
+@font-face {
     font-family: 'MonaspaceNeon';
     src: url('assets/fonts/MonaspaceNeon-Bold.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
-  }
-  
-  @font-face {
+}
+
+@font-face {
     font-family: 'MonaspaceNeon';
     src: url('assets/fonts/MonaspaceNeon-Italic.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;
-  }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+    .main-content {
+        width: 85%;
+        margin-left: 220px;
+    }
+}
