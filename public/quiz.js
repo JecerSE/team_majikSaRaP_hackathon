@@ -1,19 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const tabs = document.querySelectorAll(".tab-button");
-    const contents = document.querySelectorAll(".tab-content");
-
     function openTab(tabName) {
-        contents.forEach(content => content.style.display = "none");
+        // Hide 
+        document.querySelectorAll(".tab-content").forEach(tab => {
+            tab.style.display = "none";
+        });
+
+        // Show the selected tab
         document.getElementById(tabName).style.display = "block";
     }
 
-    tabs.forEach(button => {
+    // Set 
+    openTab('random');
+
+
+    document.querySelectorAll(".tab-button").forEach(button => {
         button.addEventListener("click", function () {
-            const tabName = this.getAttribute("onclick").match(/'([^']+)'/)[1];
+            const tabName = this.getAttribute("data-tab");
             openTab(tabName);
         });
     });
-
-
-    openTab("science");
 });
