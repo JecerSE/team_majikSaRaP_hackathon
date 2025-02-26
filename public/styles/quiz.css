@@ -1,23 +1,43 @@
 body {
-    font-family: 'MonaspaceNeon', monospace;
+    font-family: Arial, sans-serif;
     background-color: #EBEAED;
     color: #202124;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
+.sidebar {
+    width: 250px;
+    background-color: #002A55;
+    color: #EBEAED;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar a {
+    color: #EBEAED;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    border-radius: 4px;
+}
+
+.sidebar a:hover {
+    background-color: #593B32;
+}
+
 .main-content {
+    flex-grow: 1;
     background-color: #6FCEBD;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: 80%;
-    max-width: 600px;
+    width: calc(100% - 250px);
 }
 
 .tabs {
