@@ -4,29 +4,18 @@ document.addEventListener("DOMContentLoaded", async function () {
     let currentSubject = "Science"; 
     let questions = [];
 
-    const quizContainer = document.getElementById("quiz-container"); // Corrected ID
+    const quizContainer = document.getElementById("quiz-container"); // Ensure correct ID
     const subjectButtons = document.querySelectorAll(".subject-btn");
-    document.addEventListener("DOMContentLoaded", async function () {
-        try {
-            const response = await fetch("/quiz.json"); // Fetch from the public folder
-            const quizData = await response.json(); // Parse JSON
-    
-            console.log("Loaded Data:", quizData); // ✅ Debugging
-            console.log("Science Questions:", quizData.science); // ✅ Debugging
-        } catch (error) {
-            console.error("Error loading quiz data:", error); // ❌ Log error
-        }
-    });
-    
+
     async function loadQuestions(subject) {
         try {
-            const response = await fetch("quizData.json"); // Ensure the path is correct
+            const response = await fetch("/quiz.json"); // Fetch from the public folder
             const data = await response.json();
 
-            console.log("Loaded Data:", data); // Fixed variable name
+            console.log("Loaded Data:", data); // Debugging
             console.log("Subject:", subject, "Questions:", data[subject]); // Debugging
 
-            questions = data[subject] || []; // Get only the selected subject
+            questions = data[subject.toLowerCase()] || []; // Convert subject to lowercase to match JSON keys
             currentQuestionIndex = 0;
             currentSubject = subject;
 
@@ -42,8 +31,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    
-
     function showQuestion() {
         if (currentQuestionIndex >= questions.length) {
             quizContainer.innerHTML = `<h2>Quiz Finished!</h2>
@@ -55,16 +42,16 @@ document.addEventListener("DOMContentLoaded", async function () {
         quizContainer.innerHTML = `
             <h2>${questionData.question}</h2>
             <div id="answers">
-                ${questionData.options.map((option, index) => 
-                    `<button class="answer-btn" data-index="${index}">${option}</button>`
+                ${questionData.options.map(option => 
+                    `<button class="answer-btn">${option}</button>`
                 ).join("")}
             </div>
         `;
 
         document.querySelectorAll(".answer-btn").forEach(button => {
             button.addEventListener("click", function () {
-                const selectedAnswer = parseInt(this.dataset.index); // Ensure it's a number
-                if (questionData.correctIndex === selectedAnswer) {
+                const selectedAnswer = this.textContent.trim(); // Get button text
+                if (selectedAnswer === questionData.answer) { // Compare with correct answer
                     score[currentSubject]++;
                 }
                 currentQuestionIndex++;
