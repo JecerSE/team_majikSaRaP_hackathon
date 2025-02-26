@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Your Profile - U-Tok</title>
-        <link rel="stylesheet" href="styles/profile.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - U-Tok</title>
+    <link rel="stylesheet" href="styles/quiz.css">
+    <script src="scripts/quiz.js" defer></script>
+</head>
 <body>
-<div class="sidebar">
-    <div class="sidebar-header">
-        <img src="assets/profile.jpeg" alt="User Profile" class="sidebar-profile-pic">
-        <span id="sidebarUser">User - <span id="sidebarRank">USERRANK</span> (<span id="sidebarExp">USEREXP</span> exp)</span>
+<div class="main-content">
+    <h1>Quiz Yourself</h1>
+    <div class="tabs">
+        <button class="tab-button" onclick="openTab('science')">🔬 Science</button>
+        <button class="tab-button" onclick="openTab('math')">➗ Math</button>
+        <button class="tab-button" onclick="openTab('social')">🌍 Social Studies</button>
+        <button class="tab-button" onclick="openTab('language')">📝 Language</button>
+        <button class="tab-button" onclick="openTab('random')">🎲 Random</button>
     </div>
     
-    <nav class="sidebar-nav">
-        <input type="text" placeholder="🔎 Search for a Tok" class="search-bar">
-        <a href="index.html">🏠 Home</a>
-        <a href="ranks.html">🏆 Ranks</a>
-        <a href="following.html">👥 Following</a>
-        <a href="recommended.html">✨ Recommended</a>
-        <a href="quiz.html">🧠 Quiz Yourself</a>
-        <a href="profile.html">👤 Your Profile</a>
-        <a href="creator.html">🎥 Creator</a>
-        <a href="login.html">🔑 Login</a>
-    </nav>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const userRank = sessionStorage.getItem("userRank") || "USERRANK";
-            const userExp = sessionStorage.getItem("userExp") || "USEREXP";
+    <div id="science" class="tab-content">
+        <h2>Science Quiz</h2>
+        <p>Question 1: What is the chemical symbol for water?</p>
+    </div>
     
-            document.getElementById("sidebarRank").textContent = userRank;
-            document.getElementById("sidebarExp").textContent = userExp;
-        });
-    </script>
+    <div id="math" class="tab-content" style="display:none;">
+        <h2>Math Quiz</h2>
+        <p>Question 1: What is 7 x 8?</p>
+    </div>
+    
+    <div id="social" class="tab-content" style="display:none;">
+        <h2>Social Studies Quiz</h2>
+        <p>Question 1: Who was the first president of the United States?</p>
+    </div>
+    
+    <div id="language" class="tab-content" style="display:none;">
+        <h2>Language Quiz</h2>
+        <p>Question 1: What is the plural of "mouse"?</p>
+    </div>
+    
+    <div id="random" class="tab-content" style="display:none;">
+        <h2>Random Quiz</h2>
+        <p>Question 1: What year did the first iPhone release?</p>
+    </div>
 </div>
 </body>
 </html>

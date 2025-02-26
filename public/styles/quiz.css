@@ -1,0 +1,68 @@
+body {
+    font-family: 'MonaspaceNeon', monospace;
+    background-color: #EBEAED;
+    color: #202124;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main-content {
+    background-color: #6FCEBD;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+}
+
+.tabs {
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background-color: #002A55;
+    color: #EBEAED;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tab-button:hover {
+    background-color: #593B32;
+}
+
+.tab-content {
+    display: none;
+    background-color: #FFFFFF;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@font-face {
+    font-family: 'MonaspaceNeon';
+    src: url('assets/fonts/MonaspaceNeon-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'MonaspaceNeon';
+    src: url('assets/fonts/MonaspaceNeon-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'MonaspaceNeon';
+    src: url('assets/fonts/MonaspaceNeon-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+  }
