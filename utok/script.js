@@ -146,7 +146,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Comment vote system
     function votePressed(event){
-        const commentItem = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
+        const voteButton = event.target;
+        let linkToCommentItem = voteButton;
+        while(!linkToCommentItem.classList.contains("comment-item")){
+            linkToCommentItem = linkToCommentItem.parentNode;
+        }
+        const commentItem = linkToCommentItem;
+        console.log(commentItem);
         const voteCounter = commentItem.querySelector(".vote-count");
 
         console.log(event.target.classList)
@@ -237,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (replyText){
             const replyItem = document.createElement("li");
             replyItem.innerHTML = `
-            <table class="reply-item">
+            <table class="comment-item reply">
                 <tr class="reply-content">
                     <td><span class="reply-username" style="font-weight:bold;">User</span> <span class="reply-field"></span><td>
                 </tr>
@@ -248,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
             `
 
             replyCount.textContent = parseInt(replyCount.textContent) + 1;
-            replyItem.querySelector(".reply-item").id = "comment-" + commentItem.id + "-reply-" + (parseInt(replyCount.textContent));
+            replyItem.querySelector(".comment-item.reply").id = "comment-" + commentItem.id + "-reply-" + (parseInt(replyCount.textContent));
 
             replyButton.value = "Replies (" + replyCount.innerHTML + ")"
 
