@@ -374,21 +374,19 @@ document.addEventListener("DOMContentLoaded", () => {
             const now = new Date().getTime();
             if (now - lastScrollTime < 1500) return;
             lastScrollTime = now;
+            
             watchedVideos++;
             sessionStorage.setItem("watchedVideos", watchedVideos);
             
             if (watchedVideos >= 5) {
                 generateQuiz();
             } else {
-                loadVideo(currentIndex + (event.deltaY > 0 ? 1 : -1));
-            }
-            if (event.deltaY > 0) {
-                loadVideo(currentIndex + 1);
-            } else if (event.deltaY < 0) {
-                loadVideo(currentIndex - 1);
+                let nextIndex = currentIndex + (event.deltaY > 0 ? 1 : -1);
+                loadVideo(nextIndex);
             }
         }
-        });
+    });
+    
     
 
     likeBtn.addEventListener("click", (event) => {
