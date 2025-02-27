@@ -20,16 +20,15 @@ updateExpBar();
 
 const ccRanks = ["Novice Explorer", "Emerging Storyteller", "Knowledge Spreader",
     "Insightful Educator", "Scholarly Creator", "Master Narrator",
-    "Visionary Mentor", "Esteemed Scholar", "Pioneer of Thought", 
-    "Master Educator"];
+    "Visionary Mentor", "Esteemed Scholar", 
+    "Master Educator", "Pioneer of Thought"];
 const cvRanks = ["Inquisitive Mind", "Engaged Seeker", "Thoughtful Observer",
     "Analytical Learner", "Insight Collector", "Deep Thinker",
-    "Knowledge Enthusiast", "Curious Scholar", "Critical Analyst", 
-    "Wisdom Seeker"];
+    "Knowledge Enthusiast", "Curious Scholar", 
+    "Wisdom Seeker","Critical Analyst"];
 const baRanks = ["Budding Responder", "Trusted Guide", "Thoughtful Contributor",
     "Knowledge Dispenser", "Insightful Analyst", "Community Mentor",
-    "Intellectual Luminary", "Master Thinker", "Source of Truth",
-    "Ultimate Sage"];
+    "Intellectual Luminary", "Master Thinker", "Ultimate Sage", "Source of Truth"];
 
 function logCurrentExp(){
     console.log("Current user EXP: " + userExp);
