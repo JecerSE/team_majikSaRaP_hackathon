@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     async function loadQuestions(subject) {
         try {
-            const response = await fetch("/quiz.json"); // Fetch from the public folder
+            const response = await fetch("/quizData.json");
             const data = await response.json();
 
             console.log("Loaded Data:", data); // Debugging
