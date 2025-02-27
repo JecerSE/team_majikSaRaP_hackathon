@@ -6,6 +6,10 @@
           { "key": "Access-Control-Allow-Origin", "value": "*" }
         ]
       }
-    ]
+    ],
+    "build": {
+      "src": "public/index.html",
+      "use": "@vercel/static"
+    }  
   }
   
