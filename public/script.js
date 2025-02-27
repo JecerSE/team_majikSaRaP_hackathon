@@ -553,3 +553,4 @@ document.addEventListener("DOMContentLoaded", () => {
         video.play().catch(error => console.error("Autoplay failed:", error));
     });
 });
+
