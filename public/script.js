@@ -65,13 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
             commentSection.querySelector(".comments-list").innerHTML = sessionStorage.getItem(videoCommentSectionKey);
             // Re-add event listeners for action buttons (upvote, downvote, reply)
             for (let i = 1; i <= parseInt(commentCount.textContent); i++){
-                const replyButton = commentSection.querySelector("#comment-"+i+">tbody>.action-panel>td:nth-child(2)>.reply-button");
-                const upvoteButton = commentSection.querySelector("#comment-"+i+">tbody>.action-panel>td:nth-child(2)>.vote-button.up");
-                const downvoteButton = commentSection.querySelector("#comment-"+i+">tbody>.action-panel>td:nth-child(2)>.vote-button.down");
-                
-                replyButton.addEventListener("click", toggleReplyInputBox);
-                upvoteButton.addEventListener("click", votePressed);
-                downvoteButton.addEventListener("click", votePressed);
+                const commentItem = commentSection.querySelector("#comment-"+i)
+                activateActionPanel(commentItem)
             }
         }
     });
@@ -83,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function activateActionPanel(hostItem){
         const actionPanel = hostItem.querySelector(".action-panel")
-
+        console.log(actionPanel)
         if (!actionPanel.classList.contains("reply")){
             const replyButton = hostItem.querySelector(".reply-button")      
             replyButton.addEventListener("click", toggleReplyInputBox)
@@ -338,7 +333,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(replyItem)
                 activateActionPanel(replyItem)
             }
-
         }
 
         event.stopPropagation();
