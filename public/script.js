@@ -382,26 +382,43 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    function loadVideo(index) {
-        if (isTransitioning || index < 0 || index >= videoList.length) return;
+    const watchedVideosSet = new Set();
+
+    function getRandomVideoIndex() {
+        let availableVideos = videoList.filter((_, index) => !watchedVideosSet.has(index));
+        
+        if (availableVideos.length === 0) {
+            watchedVideosSet.clear(); // Reset if all videos have been watched
+            availableVideos = videoList;
+        }
+    
+        const randomIndex = Math.floor(Math.random() * availableVideos.length);
+        return videoList.indexOf(availableVideos[randomIndex]);
+    }
+    
+    function loadVideo() {
+        if (isTransitioning) return;
         isTransitioning = true;
+    
+        let newIndex = getRandomVideoIndex();
+        watchedVideosSet.add(newIndex); // Mark as watched indexes
     
         video.style.opacity = "0";
         setTimeout(() => {
-            video.src = videoList[index];  
+            video.src = videoList[newIndex];
             video.load();
             video.play();
             video.muted = false;
-            currentIndex = index;
+            currentIndex = newIndex;
     
-            //likes and comment counts
+            // Reset likes and comments
             likeCount.textContent = "0";
             commentCount.textContent = "0";
             commentsList.innerHTML = "";
             commentInput.value = "";
     
-            //video id list
-            videoID = "[" + videoList[index] + "]";
+            // Update sessionStorage keys
+            videoID = "[" + videoList[newIndex] + "]";
             videoLikesKey = videoID + "-likes";
             videoCommentsKey = videoID + "-comments";
             videoCommentSectionKey = videoID + "-comments-data";
@@ -539,6 +556,9 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 let nextIndex = currentIndex + (event.deltaY > 0 ? 1 : -1);
                 loadVideo(nextIndex);
+                if (quizCompleted) {
+                    loadVideo();  // randomizer theorhetically
+                }
             }
         }
     });
