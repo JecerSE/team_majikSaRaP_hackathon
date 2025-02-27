@@ -149,7 +149,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Comment vote system
     function votePressed(event){
         console.log("Vote pressed")
-        const voteButton = event.target;
+        let linkToVoteButton = event.target;
+        while (!linkToVoteButton.classList.contains("vote-button")){
+            linkToVoteButton = linkToVoteButton.parentNode;
+        }
+        const voteButton = linkToVoteButton;
 
         let linkToCommentItem = voteButton;
         while(!linkToCommentItem.classList.contains("comment-item")){
@@ -159,7 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const voteCounter = commentItem.querySelector(".vote-count");
 
         const voteClass = voteButton.classList;
-        console.log(voteClass)
         let voteCount = parseInt(voteCounter.textContent);
         if (voteClass.contains("up")){
             voteCount++;
