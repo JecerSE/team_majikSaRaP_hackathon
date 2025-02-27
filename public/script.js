@@ -80,6 +80,23 @@ document.addEventListener("DOMContentLoaded", () => {
         commentSection.style.right = "-350px";
         commentBoxActive = false;
     });
+
+    function activateActionPanel(hostItem){
+        const actionPanel = hostItem.querySelector(".action-panel")
+
+        if (!actionPanel.classList.contains("reply")){
+            const replyButton = hostItem.querySelector(".reply-button")      
+            replyButton.addEventListener("click", toggleReplyInputBox)
+        }
+
+        const upvoteButton = hostItem.querySelector(".vote-button.up")
+        const downvoteButton = hostItem.querySelector(".vote-button.down")
+        console.log(upvoteButton)
+        upvoteButton.addEventListener("click", votePressed)
+        downvoteButton.addEventListener("click", votePressed)
+
+    }
+
  
     postCommentBtn.addEventListener("click", () => {
         const commentText = commentInput.value.trim();
@@ -112,14 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
             `
             commentItem.querySelector(".comment-item").id = "comment-" + (parseInt(commentCount.textContent)+1);
             
-            const replyButton = commentItem.querySelector(".reply-button");
-            replyButton.addEventListener("click", toggleReplyInputBox);
-
-            const upvoteButton = commentItem.querySelector(".vote-button.up");
-            upvoteButton.addEventListener("click", votePressed);
-
-            const downvoteButton = commentItem.querySelector(".vote-button.down");
-            downvoteButton.addEventListener("click", votePressed);
+            activateActionPanel(commentItem);
 
             const replyCount = commentItem.querySelector(".reply-count")
             replyButton.value = "Replies (" + replyCount.innerHTML + ")"
@@ -142,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Comment vote system
     function votePressed(event){
+        console.log("Vote pressed")
         const voteButton = event.target;
 
         let linkToCommentItem = voteButton;
@@ -212,6 +223,10 @@ document.addEventListener("DOMContentLoaded", () => {
             replySection.classList.add("visible")
 
             const replyCount = parseInt(commentItem.querySelector(".reply-count").textContent)
+            for (let j = 1; j < replyCount; j++){
+                const replyItem = replySection.querySelector("#" + commentItem.id + "-reply-" + j);
+                console.log(replyItem)
+            }
             
         }
     }
@@ -235,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const commentID = commentItem.id;
                 const replyCount = parseInt(commentItem.querySelector(".reply-count").textContent)
                 for (let i = 1; i <= replyCount; i++){
-                    const replyItem = replyList.querySelector("#comment-" + commentID + "-reply-" + i);
+                    const replyItem = replyList.querySelector("#" + commentID + "-reply-" + i);
 
                     const upvoteButton = replyItem.querySelector(".vote-button.up");
                     const downvoteButton = replyItem.querySelector(".vote-button.down");
@@ -286,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <tr class="reply-content">
                     <td><span class="reply-username" style="font-weight:bold;">User</span> <span class="reply-field"></span><td>
                 </tr>
-                <tr class="reply-action-panel">
+                <tr class="action-panel reply">
                     <td><button class="vote-button up"><img class="reply-action-icon" src="assets/Icons/Upvote.jpg" alt="Upvote"></button> 
                     <button class="vote-button down"><img class="reply-action-icon" src="assets/Icons/Downvote.jpg" alt="Downvote"></button>
                     <span class="vote-count reply" style="color:gray">0</span></td>
@@ -295,16 +310,13 @@ document.addEventListener("DOMContentLoaded", () => {
             `
 
             replyCount.textContent = parseInt(replyCount.textContent) + 1;
-            replyItem.querySelector(".comment-item.reply").id = "comment-" + commentItem.id + "-reply-" + (parseInt(replyCount.textContent));
+            replyItem.querySelector(".comment-item.reply").id = commentItem.id + "-reply-" + (parseInt(replyCount.textContent));
 
             replyButton.value = "Replies (" + replyCount.innerHTML + ")";
 
-            const upvoteButton = replyItem.querySelector(".vote-button.up");
-            upvoteButton.addEventListener("click", votePressed);
-
-            const downvoteButton = replyItem.querySelector(".vote-button.down");
-            downvoteButton.addEventListener("click", votePressed);
-
+            console.log("oisted")
+            activateActionPanel(replyItem.querySelector(".comment-item.reply"))
+            
             const replyTextField = replyItem.querySelector(".reply-field")
             replyTextField.textContent = replyText;
             repliesList.appendChild(replyItem)
