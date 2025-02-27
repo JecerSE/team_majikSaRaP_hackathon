@@ -97,8 +97,8 @@ body {
     position: relative;
     background-color: white;
     padding: 30px 50px;
-    width: 60%;
-    margin-left: 270px;
+    width: 55%; 
+    margin-left: 320px; 
     margin-top: 90px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
