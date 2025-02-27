@@ -77,24 +77,24 @@ body {
 }
 
 #quiz-container {
-    background: #ffffff;
+    background: linear-gradient(135deg, #ffffff, #e6f7ff);
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 50px auto; /* Centers the box */
-    width: 75%; /* Increased width */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    margin: 50px auto;
+    width: 75%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-/* Quiz Question */
+/*question part i moved cuz i cant fking see*/
 #quiz-container h2 {
     font-size: 26px;
     text-align: center;
+    color: #2c3e50;
+    font-weight: bold;
     margin-bottom: 25px;
-    width: 100%;
 }
 
 .subject-btn {
@@ -117,25 +117,25 @@ body {
 
 /* Answer Buttons */
 .option-btn {
-    display: block;
-    width: 95%; 
-    padding: 15px;
-    margin: 12px auto; 
+    display: inline-block;
+    width: auto;
+    padding: 12px 18px;
+    margin: 10px;
     border-radius: 8px;
-    background: #2c3e50;
-    color: white;
-    border: 2px solid #1b263b;
+    background: #1e3a8a; 
+    color: #ffffff;
+    border: 2px solid #0f172a;
     cursor: pointer;
     font-weight: bold;
     transition: background 0.3s ease, transform 0.2s ease;
     text-align: center;
 }
 
+
 .option-btn:hover {
-    background: #8B5E3C;
+    background: #8B5E3C; 
     transform: scale(1.05);
 }
-
 .option-btn:active {
     background: #593B32;
     transform: scale(1);
@@ -187,6 +187,21 @@ body {
 }
 .tab-content:first-of-type {
     display: block;
+}
+/*wanted to try smthing with this*/
+.category-btn {
+    background: #374151;
+    color: white;
+    border: 2px solid #1f2937;
+    padding: 12px 18px;
+    margin: 5px;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+.category-btn:hover {
+    background: #8B5E3C;
+    color: #fff;
 }
 
 @font-face {
