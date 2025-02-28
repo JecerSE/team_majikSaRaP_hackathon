@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <table class="comment-item">
                 <tr style="padding:50px;">
                     <td><img src="assets/profile.jpeg" class="comment-profile-pic" alt="Profile picture"></td>
-                    <td><b>User</b> <span class="user-rank" style="font-style:italic; font-size:10px; color:gray"></span></td>
+                    <td>@<b class="user-name">User</b> <span class="user-rank" style="font-style:italic; font-size:10px; color:gray"></span></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -220,8 +220,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const commentTextField = commentItem.querySelector(".comment-field");
             const commenterRank = commentItem.querySelector(".user-rank");
+            const commenterName = commentItem.querySelector(".user-name");
             commentTextField.textContent = commentText;
             if (sessionStorage.getItem("userRank")) {commenterRank.textContent = sessionStorage.getItem("userRank");}
+            if (sessionStorage.getItem("userName")) {commenterName.textContent = sessionStorage.getItem("userName");}
             commentsList.appendChild(commentItem);
             commentInput.value = "";
             // Update comment counter
@@ -308,7 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
             replyItem.innerHTML = `
             <table class="comment-item reply">
                 <tr class="reply-content">
-                    <td><span class="reply-username" style="font-weight:bold;">User</span> 
+                    <td>@<span class="reply-user-name" style="font-weight:bold;">User</span> 
                     <span class="reply-rank">(RANK)</span> 
                     <span class="reply-field"></span><td>
                 </tr>
@@ -334,6 +336,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const replyRank = replyItem.querySelector(".reply-rank")
             if (sessionStorage.getItem("userRank")) {replyRank.textContent = "("+sessionStorage.getItem("userRank")+")"}
 
+            const replyUsername = replyItem.querySelector(".reply-user-name")
+            if (sessionStorage.getItem("userName")) {replyUsername.textContent = sessionStorage.getItem("userName")}
             replyInput.value = "";
 
             
