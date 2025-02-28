@@ -75,23 +75,71 @@ body {
     background: rgba(224, 251, 252, 0.2);
     padding-left: 15px;
 }
+
 #quiz-container {
-    transition: opacity 0.5s ease-in-out;
+    background: linear-gradient(135deg, #ffffff, #e6f7ff);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    margin: 50px auto;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.option-btn {
-    display: block;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    background: #2c3e50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-.option-btn:hover {
-    background: #1abc9c;
+/*question part i moved cuz i cant fking see*/
+#quiz-container h2 {
+    font-size: 26px;
+    text-align: center;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 25px;
 }
 
+.subject-btn {
+    background-color: #2c3e50;
+    color: #EBEAED;
+    border: none;
+    padding: 12px 18px;
+    margin: 10px; /* Added more spacing */
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+.subject-btn:hover {
+    background-color: #8B5E3C;
+    transform: scale(1.05);
+}
+
+
+/* Answer Buttons */
+.option-btn {
+    display: inline-block;
+    width: auto;
+    padding: 12px 18px;
+    margin: 10px;
+    border-radius: 8px;
+    background: #1e3a8a; 
+    color: #ffffff;
+    border: 2px solid #0f172a;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+
+.option-btn:hover {
+    background: #8B5E3C; 
+    transform: scale(1.05);
+}
+.option-btn:active {
+    background: #593B32;
+    transform: scale(1);
+}
 .main-content {
     margin: auto;
     position: relative;
@@ -139,6 +187,21 @@ body {
 }
 .tab-content:first-of-type {
     display: block;
+}
+/*wanted to try smthing with this*/
+.category-btn {
+    background: #374151;
+    color: white;
+    border: 2px solid #1f2937;
+    padding: 12px 18px;
+    margin: 5px;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+.category-btn:hover {
+    background: #8B5E3C;
+    color: #fff;
 }
 
 @font-face {
