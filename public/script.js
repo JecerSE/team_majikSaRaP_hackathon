@@ -76,14 +76,16 @@ document.addEventListener("DOMContentLoaded", () => {
         commentBoxActive = false;
     });
 
-    function activateActionPanel(hostItem){
+    function activateActionPanel(hostItem, replySectionVisible=false){
         const actionPanel = hostItem.querySelector(".action-panel")
         if (!actionPanel.classList.contains("reply")){
             const replyButton = hostItem.querySelector(".reply-button")      
             replyButton.addEventListener("click", replyInputBoxEvt)
         }
-        else if (actionPanel.classList.contains("reply") && hostItem.querySelector(".post-reply") != null) {
+        
+        if (replySectionVisible && hostItem.querySelector(".post-reply") != null) {
             const postReplyButton = hostItem.querySelector(".post-reply")
+            console.log(postReplyButton)
             postReplyButton.addEventListener("click", postReply)
         }
 
@@ -208,6 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         sessionStorage.setItem(videoCommentSectionKey, commentsList.innerHTML);
+        console.log(visibleRepliesItems)
 
         for (let i = 0; i < visibleRepliesItems.length && visibleRepliesItems.length > 0; i++){
             const commentItem = commentsList.querySelector("#"+visibleRepliesItems[i])
@@ -216,6 +219,9 @@ document.addEventListener("DOMContentLoaded", () => {
             replySection.innerHTML = sessionStorage.getItem(visibleRepliesItems[i]+"-replies")
             replySection.classList.remove("hidden")
             replySection.classList.add("visible")
+
+            console.log(commentItem)
+            activateActionPanel(commentItem, true)
 
             const replyCount = parseInt(commentItem.querySelector(".reply-count").textContent)
             for (let j = 1; j <= replyCount; j++){

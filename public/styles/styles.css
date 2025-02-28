@@ -255,6 +255,11 @@ body {
     height: 15px;
     border-radius: 50%;
 }
+
+.comment-item.reply {
+    font-size: 10px;
+}
+
 .quiz-container {
     position: absolute;
     top: 0;
