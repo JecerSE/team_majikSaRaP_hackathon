@@ -78,10 +78,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function activateActionPanel(hostItem){
         const actionPanel = hostItem.querySelector(".action-panel")
-        console.log(actionPanel)
         if (!actionPanel.classList.contains("reply")){
             const replyButton = hostItem.querySelector(".reply-button")      
-            replyButton.addEventListener("click", toggleReplyInputBox)
+            replyButton.addEventListener("click", replyInputBoxEvt)
+        }
+        else if (actionPanel.classList.contains("reply") && hostItem.querySelector(".post-reply") != null) {
+            const postReplyButton = hostItem.querySelector(".post-reply")
+            postReplyButton.addEventListener("click", postReply)
         }
 
         const upvoteButton = hostItem.querySelector(".vote-button.up")
@@ -190,8 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let visibleRepliesItems = []
 
-        console.log(commentsList)
-
         for (let i = 1; i<=commentCount; i++){
             const commentItem = commentsList.querySelector("#comment-" + i)
             const replySection = commentItem.querySelector(".reply-section")
@@ -227,11 +228,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Reply box
     // Toggle reply text input - reply button will call function below on click
-    function toggleReplyInputBox(event){
-        commentItem = event.target.parentNode.parentNode.parentNode.parentNode;
-        replySection = commentItem.querySelector("tbody>.reply-box>.reply-section");
+    function replyInputBoxEvt(event){
+        let linkToCommentItem = event.target;
+        while (!linkToCommentItem.classList.contains("comment-item") || linkToCommentItem.classList.contains("reply")){
+            linkToCommentItem = linkToCommentItem.parentNode;
+        }
+        const commentItem = linkToCommentItem;
 
-        replySectionStatus = replySection.classList[1];
+        toggleReplyInputBox(commentItem)
+    }
+
+
+    function toggleReplyInputBox(commentItem){
+
+        const replySection = commentItem.querySelector("tbody>.reply-box>.reply-section");
+        const replySectionStatus = replySection.classList[1];
 
         if (replySectionStatus == "hidden"){
             // Unhide reply section
@@ -239,18 +250,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Previously saved comment replies
                 replySection.innerHTML = sessionStorage.getItem(commentItem.id + "-replies");
 
-                console.log(replySection)
                 const replyList = replySection.querySelector(".comments-list.replies");
                 const commentID = commentItem.id;
                 const replyCount = parseInt(commentItem.querySelector(".reply-count").textContent)
                 for (let i = 1; i <= replyCount; i++){
                     const replyItem = replyList.querySelector("#" + commentID + "-reply-" + i);
-
-                    const upvoteButton = replyItem.querySelector(".vote-button.up");
-                    const downvoteButton = replyItem.querySelector(".vote-button.down");
-
-                    upvoteButton.addEventListener("click", votePressed);
-                    downvoteButton.addEventListener("click", votePressed);
+                    activateActionPanel(replyItem)
                 }
 
             }
@@ -280,6 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function postReply(event){
+        console.log("Replying...")
         const replySection = event.target.parentNode;
         const repliesList = replySection.querySelector(".comments-list.replies")
         const commentItem = replySection.parentNode.parentNode.parentNode;
@@ -287,6 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const replyText = replyInput.value.trim();
         const replyCount = commentItem.querySelector("tbody>.action-panel>td:nth-child(2)>.reply-count")
         const replyButton = commentItem.querySelector(".reply-button");
+        const postReplyButton = commentItem.querySelector(".post-reply")
 
         if (replyText){
             const replyItem = document.createElement("li");
@@ -316,23 +323,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             replyInput.value = "";
 
-            sessionStorage.setItem(commentItem.id + "-replies", replySection.innerHTML);
-
-            replySection.innerHTML = ``
-            replySection.classList.remove("visible");
-            replySection.classList.add("hidden");
-            sessionStorage.setItem(videoCommentSectionKey, commentItem.parentNode.innerHTML);
-
-            replySection.classList.remove("hidden")
-            replySection.classList.add("visible")
-            replySection.innerHTML = sessionStorage.getItem(commentItem.id + "-replies");
-
-            // reactivate all replies' action panels
-            for (let i = 1; i <= parseInt(replyCount.textContent); i++){
-                const replyItem = replySection.querySelector("#"+commentItem.id+"-reply-"+i)
-                console.log(replyItem)
-                activateActionPanel(replyItem)
-            }
+            
+            toggleReplyInputBox(commentItem)
+            saveCommentBoxToSession()
+            toggleReplyInputBox(commentItem)
         }
 
         event.stopPropagation();
