@@ -76,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
         commentBoxActive = false;
     });
 
+    // (Re)activate action panel for any comment-item element with a child action-panel element
     function activateActionPanel(hostItem, replySectionVisible=false){
         const actionPanel = hostItem.querySelector(".action-panel")
         if (!actionPanel.classList.contains("reply")){
@@ -93,7 +94,94 @@ document.addEventListener("DOMContentLoaded", () => {
         const downvoteButton = hostItem.querySelector(".vote-button.down")
         upvoteButton.addEventListener("click", votePressed)
         downvoteButton.addEventListener("click", votePressed)
+    }
 
+    // Comment vote system
+    function votePressed(event){
+        console.log("Vote pressed")
+        let linkToVoteButton = event.target;
+        while (!linkToVoteButton.classList.contains("vote-button")){
+            linkToVoteButton = linkToVoteButton.parentNode;
+        }
+        const voteButton = linkToVoteButton;
+
+        let linkToCommentItem = voteButton;
+        while(!linkToCommentItem.classList.contains("comment-item")){
+            linkToCommentItem = linkToCommentItem.parentNode;
+        }
+        const commentItem = linkToCommentItem;
+        const voteCounter = commentItem.querySelector(".vote-count");
+
+        const voteClass = voteButton.classList;
+        let voteCount = parseInt(voteCounter.textContent);
+        if (voteClass.contains("up")){
+            voteCount++;
+        }
+        else if (voteClass.contains("down")){
+            voteCount--;
+        }
+
+        voteCounter.textContent = voteCount;
+        
+        if (voteCount == 0){
+            voteCounter.style = "color:gray";
+        }
+        else if (voteCount > 0){
+            voteCounter.style = "color:lime";
+        }
+        else if (voteCount < 0){
+            voteCounter.style = "color:red";
+        }
+
+        saveCommentBoxToSession();
+
+        console.log("success!")
+        event.stopPropagation()
+    }
+
+    // Save entire comment section to session storage
+    function saveCommentBoxToSession(){
+        const commentsList = document.querySelector(".comments-list");
+        const commentCount = parseInt(document.querySelector("#comment-container>.counter").textContent);
+
+        let visibleRepliesItems = []
+
+        // Hide visible replies first, so that comment section on initial load has no reply sections visible
+        for (let i = 1; i<=commentCount; i++){
+            const commentItem = commentsList.querySelector("#comment-" + i)
+            const replySection = commentItem.querySelector(".reply-section")
+
+            if (replySection.classList.contains("visible")){
+                sessionStorage.setItem(commentItem.id + "-replies", replySection.innerHTML)
+                replySection.innerHTML = ``
+                replySection.classList.remove("visible")
+                replySection.classList.add("hidden")
+                visibleRepliesItems.push(commentItem.id)
+            }
+
+        }
+
+        sessionStorage.setItem(videoCommentSectionKey, commentsList.innerHTML);
+        
+        // Show replies
+        for (let i = 0; i < visibleRepliesItems.length && visibleRepliesItems.length > 0; i++){
+            const commentItem = commentsList.querySelector("#"+visibleRepliesItems[i])
+            const replySection = commentItem.querySelector(".reply-section")
+
+            replySection.innerHTML = sessionStorage.getItem(visibleRepliesItems[i]+"-replies")
+            replySection.classList.remove("hidden")
+            replySection.classList.add("visible")
+
+            console.log(commentItem)
+            activateActionPanel(commentItem, true)
+
+            const replyCount = parseInt(commentItem.querySelector(".reply-count").textContent)
+            for (let j = 1; j <= replyCount; j++){
+                const replyItem = replySection.querySelector("#" + commentItem.id + "-reply-" + j);
+                activateActionPanel(replyItem)
+            }
+            
+        }
     }
 
  
@@ -146,94 +234,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Comment vote system
-    function votePressed(event){
-        console.log("Vote pressed")
-        let linkToVoteButton = event.target;
-        while (!linkToVoteButton.classList.contains("vote-button")){
-            linkToVoteButton = linkToVoteButton.parentNode;
-        }
-        const voteButton = linkToVoteButton;
-
-        let linkToCommentItem = voteButton;
-        while(!linkToCommentItem.classList.contains("comment-item")){
-            linkToCommentItem = linkToCommentItem.parentNode;
-        }
-        const commentItem = linkToCommentItem;
-        const voteCounter = commentItem.querySelector(".vote-count");
-
-        const voteClass = voteButton.classList;
-        let voteCount = parseInt(voteCounter.textContent);
-        if (voteClass.contains("up")){
-            voteCount++;
-        }
-        else if (voteClass.contains("down")){
-            voteCount--;
-        }
-
-        voteCounter.textContent = voteCount;
-        
-        if (voteCount == 0){
-            voteCounter.style = "color:gray";
-        }
-        else if (voteCount > 0){
-            voteCounter.style = "color:lime";
-        }
-        else if (voteCount < 0){
-            voteCounter.style = "color:red";
-        }
-
-        saveCommentBoxToSession();
-
-        console.log("success!")
-        event.stopPropagation()
-    }
-
-    function saveCommentBoxToSession(){
-        const commentsList = document.querySelector(".comments-list");
-        const commentCount = parseInt(document.querySelector("#comment-container>.counter").textContent);
-
-        let visibleRepliesItems = []
-
-        for (let i = 1; i<=commentCount; i++){
-            const commentItem = commentsList.querySelector("#comment-" + i)
-            const replySection = commentItem.querySelector(".reply-section")
-
-            if (replySection.classList.contains("visible")){
-                sessionStorage.setItem(commentItem.id + "-replies", replySection.innerHTML)
-                replySection.innerHTML = ``
-                replySection.classList.remove("visible")
-                replySection.classList.add("hidden")
-                visibleRepliesItems.push(commentItem.id)
-            }
-
-        }
-
-        sessionStorage.setItem(videoCommentSectionKey, commentsList.innerHTML);
-        console.log(visibleRepliesItems)
-
-        for (let i = 0; i < visibleRepliesItems.length && visibleRepliesItems.length > 0; i++){
-            const commentItem = commentsList.querySelector("#"+visibleRepliesItems[i])
-            const replySection = commentItem.querySelector(".reply-section")
-
-            replySection.innerHTML = sessionStorage.getItem(visibleRepliesItems[i]+"-replies")
-            replySection.classList.remove("hidden")
-            replySection.classList.add("visible")
-
-            console.log(commentItem)
-            activateActionPanel(commentItem, true)
-
-            const replyCount = parseInt(commentItem.querySelector(".reply-count").textContent)
-            for (let j = 1; j <= replyCount; j++){
-                const replyItem = replySection.querySelector("#" + commentItem.id + "-reply-" + j);
-                activateActionPanel(replyItem)
-            }
-            
-        }
-    }
-
     // Reply box
-    // Toggle reply text input - reply button will call function below on click
+    // For reply buttons only - will call actual toggleReplies function on click
     function replyInputBoxEvt(event){
         let linkToCommentItem = event.target;
         while (!linkToCommentItem.classList.contains("comment-item") || linkToCommentItem.classList.contains("reply")){
@@ -244,9 +246,8 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleReplyInputBox(commentItem)
     }
 
-
+    // Toggle replies section of a comment-item element
     function toggleReplyInputBox(commentItem){
-
         const replySection = commentItem.querySelector("tbody>.reply-box>.reply-section");
         const replySectionStatus = replySection.classList[1];
 
@@ -290,6 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
         event.stopPropagation();
     }
 
+    // Create a new .comment-item.reply element as a child of a comment-item
     function postReply(event){
         console.log("Replying...")
         const replySection = event.target.parentNode;
