@@ -60,7 +60,8 @@
 
 
 body {
-    background-color: black;
+    background: rgb(111,207,189);
+    background: linear-gradient(180deg, rgba(111,207,189,1) 0%, rgba(0,35,101,1) 80%);
     color: white;
     margin: 0;
     font-family: Arial, sans-serif;
