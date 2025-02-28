@@ -260,6 +260,10 @@ body {
     font-size: 10px;
 }
 
+.reply-rank {
+    color: gray;
+}
+
 .quiz-container {
     position: absolute;
     top: 0;

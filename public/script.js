@@ -306,7 +306,9 @@ document.addEventListener("DOMContentLoaded", () => {
             replyItem.innerHTML = `
             <table class="comment-item reply">
                 <tr class="reply-content">
-                    <td><span class="reply-username" style="font-weight:bold;">User</span> <span class="reply-field"></span><td>
+                    <td><span class="reply-username" style="font-weight:bold;">User</span> 
+                    <span class="reply-rank">(RANK)</span> 
+                    <span class="reply-field"></span><td>
                 </tr>
                 <tr class="action-panel reply">
                     <td><button class="vote-button up"><img class="reply-action-icon" src="assets/Icons/Upvote.jpg" alt="Upvote"></button> 
@@ -326,6 +328,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const replyTextField = replyItem.querySelector(".reply-field")
             replyTextField.textContent = replyText;
             repliesList.appendChild(replyItem)
+
+            const replyRank = replyItem.querySelector(".reply-rank")
+            if (sessionStorage.getItem("userRank")) {replyRank.textContent = "("+sessionStorage.getItem("userRank")+")"}
 
             replyInput.value = "";
 
