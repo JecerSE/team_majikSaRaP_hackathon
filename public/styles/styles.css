@@ -5,7 +5,7 @@
     left: 0;
     width: 200px;
     height: 100vh;
-    background: rgba(30, 30, 30, 0.95);
+    background: rgba(0, 35, 101, 0.95);
     color: white;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@
 
 body {
     background: rgb(111,207,189);
-    background: linear-gradient(180deg, rgba(111,207,189,1) 0%, rgba(0,35,101,1) 80%);
+    background: linear-gradient(0deg, rgba(111,207,189,1) 0%, rgba(0,35,101,1) 100%);
     color: white;
     margin: 0;
     font-family: Arial, sans-serif;
