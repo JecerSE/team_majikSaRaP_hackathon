@@ -3,7 +3,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 200px;
+    width: 250px;
     height: 100vh;
     background: rgba(0, 35, 101, 0.95);
     color: white;
@@ -68,7 +68,7 @@
 .sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 8px;
 }
 
 .sidebar-nav a {
