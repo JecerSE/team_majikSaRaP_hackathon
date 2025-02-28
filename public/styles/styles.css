@@ -15,10 +15,37 @@
 
 /* User Profile */
 .sidebar-header {
-    display: flex;
+    display: absolute;
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
+}
+
+.sidebar-header-logo{
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.sidebar-logo {
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.utok-name{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 35px;
+}
+
+.sidebar-user-profile{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .sidebar-profile-pic {
