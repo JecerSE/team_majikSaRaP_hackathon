@@ -104,3 +104,54 @@ function resetRank(){
     updateExpBar();
     saveSession();
 }
+
+// USERNAME EDITING
+const usernameInputField = document.querySelector(".user-name-input-field")
+const usernameInputButton = document.querySelector(".user-name-input-button")
+
+function editUsername(event){
+    // Set input field to visible
+    usernameInputField.style.visibility = "visible";
+    // Change submit button text
+    usernameInputButton.value = "Submit";
+
+    usernameInputButton.addEventListener("click", submitUsername)
+    usernameInputButton.removeEventListener("click", editUsername)
+}
+
+function submitUsername(event){
+
+    // Get input text
+    const usernameInput = usernameInputField.value.trim()
+
+    // Check if username field is empty or not
+    if (usernameInput){
+        sessionStorage.setItem("userName", usernameInput)
+
+        // Set input field to hidden
+        usernameInputField.style.visibility = "hidden";
+        usernameInputField.value = ""
+        // Change submit button text
+        usernameInputButton.value = "Edit"
+
+        usernameInputButton.addEventListener("click", editUsername)
+        usernameInputButton.removeEventListener("click", submitUsername)
+    }
+    else {
+        window.alert("Username must not be empty!")
+    }
+
+    // Refresh tab for display
+    location.reload()
+}
+
+// DEFAULT RUNNING
+usernameInputButton.addEventListener("click", editUsername)
+
+// DISPLAY USERNAME
+const sidebarUserNameDisplay = document.querySelector("#sidebar-user-name")
+const infoUserNameDisplay = document.querySelector("#info-user-name")
+if (sessionStorage.getItem("userName")){
+    sidebarUserNameDisplay.textContent = sessionStorage.getItem("userName")
+    infoUserNameDisplay.textContent = sessionStorage.getItem("userName")
+}

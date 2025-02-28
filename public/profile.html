@@ -50,6 +50,15 @@
                 <h1>Account options</h1>
                 <table>
                     <tr>
+                        <td id="info-user-name">Username</td>
+                        <td>
+                            <input class="user-name-input-field" type="text" style="visibility:hidden" placeholder="Enter your new username...">
+                        </td>
+                        <td>
+                            <input class="user-name-input-button" type="button" value="Edit">
+                        </td>
+                    </tr>
+                    <tr>
                         <td>Email address</td>
                         <td>email@address.org</td>
                         <td>Edit</td>
@@ -107,7 +116,7 @@
         <div class="sidebar">
             <div class="sidebar-header">
                 <img src="assets/profile.jpeg" alt="User Profile" class="sidebar-profile-pic">
-                <span id="sidebarUser">User - <span id="sidebarRank">USERRANK</span> (<span id="sidebarExp">USEREXP</span> exp)</span>
+                <span>@<span id="sidebar-user-name">User </span> - <span id="sidebarRank">USERRANK</span> (<span id="sidebarExp">USEREXP</span> exp)</span>
             </div>
             
             <nav class="sidebar-nav">
@@ -131,8 +140,9 @@
             const userRank = sessionStorage.getItem("userRank") || "USERRANK";
             const userExp = sessionStorage.getItem("userExp") || "USEREXP";
 
-            document.getElementById("sidebarRank").textContent = userRank;
-            document.getElementById("sidebarExp").textContent = userExp;
+            console.log(document.querySelector("#sidebarRank"))
+            document.querySelector("#sidebarRank").textContent = userRank;
+            document.querySelector("#sidebarExp").textContent = userExp;
         });
         </script>
     </body>
