@@ -1,3 +1,12 @@
+body {
+    background: linear-gradient(0deg, rgba(111,207,189,1) 0%, rgba(0,35,101,1) 100%);
+    color: white;
+    margin: 0;
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: extra bold;
+    overflow-y: auto; /* Allow scrolling future topic ill consider*/
+}
+
 /* Sidebar */
 .sidebar {
     position: fixed;
@@ -13,7 +22,6 @@
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
 }
 
-/* User Profile */
 .sidebar-header {
     display: absolute;
     align-items: center;
@@ -21,6 +29,7 @@
     margin-bottom: 20px;
 }
 
+/* U-Tok Logo */
 .sidebar-header-logo{
     text-align: center;
     margin-bottom: 0px;
@@ -40,6 +49,7 @@
     font-size: 35px;
 }
 
+/* User Summary */
 .sidebar-user-profile{
     display: flex;
     align-items: center;
@@ -56,14 +66,6 @@
     border: 2px solid white;
 }
 
-.comment-profile-pic {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid black;
-}
-
 /* Navigation Links */
 .sidebar-nav {
     display: flex;
@@ -72,7 +74,7 @@
     padding-left: 5px;
 }
 
-/* Search Bar*/
+/* Search Bar */
 .search-bar {
     width: 90%;
     height: 40px;
@@ -81,7 +83,7 @@
     background-color: rgba(111, 207, 189, 0.9);
     color: #F8F8FF;
     font-family: 'MonaspaceNeon', monospace;
-    font-weight: 800;
+    font-weight: extra bold;
     padding-left: 20px;
     margin-top: 2px;
     margin-bottom: 10px;
@@ -114,20 +116,10 @@
     background-color: rgba(111, 207, 189, 0.9);
     color: #F8F8FF;
     font-family: 'MonaspaceNeon', monospace;
-    font-weight: 800;
+    font-weight: extra bold;
     padding-left: 0px;
     margin-top: 8px;
 }
-
-body {
-    background: rgb(111,207,189);
-    background: linear-gradient(0deg, rgba(111,207,189,1) 0%, rgba(0,35,101,1) 100%);
-    color: white;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    overflow-y: auto; /* Allow scrolling future topic ill consider*/
-}
-
 
 ::-webkit-scrollbar {
     width: 8px;
@@ -146,7 +138,7 @@ body {
     background: #666; 
 }
 
-
+/* Video Content */
 .video-wrapper {
     display: flex;
     justify-content: center;
@@ -157,7 +149,7 @@ body {
     padding-bottom: 0;
 }
 
-/* Video container */
+/* Video Container */
 .video-container {
     position: relative;
     width: 400px; 
@@ -173,6 +165,7 @@ body {
     object-fit: cover;
 }
 
+/* Controls */
 .controls {
     position: absolute;
     right: -82px; 
@@ -186,7 +179,6 @@ body {
     border-radius: 15px;
     text-align: center;
 }
-
 
 .controls button {
     padding: 14px 10px;
@@ -212,7 +204,6 @@ body {
     gap: 5px; 
 }
 
-
 .icon-button {
     width: 46px;
     height: 46px;
@@ -228,10 +219,9 @@ body {
 .counter {
     font-size: 14px;
     color: #002365;
-    font-weight: 800;
     width: 100%;
+    font-weight: extra bold;
 }
-
 
 .icon-button img {
     width: 270%; 
@@ -239,11 +229,11 @@ body {
     object-fit: contain; 
 }
 
-
 .icon-button:hover {
     transform: scale(1.1);
 }
 
+/* Comment Section */
 .comment-section {
     position: fixed;
     top: 0;
@@ -256,6 +246,14 @@ body {
     display: flex;
     flex-direction: column;
     transition: right 0.3s ease-in-out;
+}
+
+.comment-profile-pic {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid black;
 }
 
 .comment-box {
@@ -364,36 +362,24 @@ body {
     background: #0056b3;
 }
 
-    @font-face {
+/* Fonts */
+@font-face {
     font-family: 'MonaspaceNeon';
     src: url('../assets/fonts/MonaspaceNeon-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: 'MonaspaceNeon';
-    src: url('../assets/fonts/MonaspaceNeon-Bold.woff2') format('woff2');
-    font-weight: bold;
+    src: url('../assets/fonts/MonaspaceNeon-SemiWideSemiBold.woff2') format('woff2');
+    font-weight: semi bold;
     font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'MonaspaceNeon';
-    src: url('../assets/fonts/MonaspaceNeon-Italic.woff2') format('woff2');
-    font-weight: normal;
-    font-style: italic;
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: 'MonaspaceNeon';
     src: url('../assets/fonts/MonaspaceNeon-WideExtraBold.woff2') format('woff2');
-    font-weight: 800;
+    font-weight: extra bold;
     font-style: normal;
-  }
-  
-  body {
-    font-family: 'MonaspaceNeon', monospace;
-    font-weight: 800;
-  }
-  
+}
