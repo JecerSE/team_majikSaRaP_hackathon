@@ -3,7 +3,7 @@ body {
     color: white;
     margin: 0;
     font-family: 'MonaspaceNeon', monospace;
-    font-weight: extra bold;
+    font-weight: 800;
     overflow-y: auto; /* Allow scrolling future topic ill consider*/
 }
 
@@ -83,7 +83,7 @@ body {
     background-color: rgba(111, 207, 189, 0.9);
     color: #F8F8FF;
     font-family: 'MonaspaceNeon', monospace;
-    font-weight: extra bold;
+    font-weight: 800;
     padding-left: 20px;
     margin-top: 2px;
     margin-bottom: 10px;
@@ -116,7 +116,7 @@ body {
     background-color: rgba(111, 207, 189, 0.9);
     color: #F8F8FF;
     font-family: 'MonaspaceNeon', monospace;
-    font-weight: extra bold;
+    font-weight: 800;
     padding-left: 0px;
     margin-top: 8px;
 }
@@ -220,7 +220,7 @@ body {
     font-size: 14px;
     color: #002365;
     width: 100%;
-    font-weight: extra bold;
+    font-weight: 800;
 }
 
 .icon-button img {
@@ -373,13 +373,13 @@ body {
 @font-face {
     font-family: 'MonaspaceNeon';
     src: url('../assets/fonts/MonaspaceNeon-SemiWideSemiBold.woff2') format('woff2');
-    font-weight: semi bold;
+    font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'MonaspaceNeon';
     src: url('../assets/fonts/MonaspaceNeon-WideExtraBold.woff2') format('woff2');
-    font-weight: extra bold;
+    font-weight: 800;
     font-style: normal;
 }
