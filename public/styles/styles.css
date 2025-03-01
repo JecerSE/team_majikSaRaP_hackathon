@@ -153,18 +153,25 @@ body {
     align-items: center;
     height: 100vh;
     margin-left: 220px; 
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 /* Video container */
 .video-container {
     position: relative;
-    width: 350px; 
-    height: 600px; 
+    width: 400px; 
+    height: 100%; 
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0px;
 }
 
+.video {
+    height: 100%;
+    object-fit: cover;
+}
 
 .controls {
     position: absolute;
