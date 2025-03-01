@@ -175,7 +175,7 @@ body {
 
 .controls {
     position: absolute;
-    right: -85px; 
+    right: -82px; 
     bottom: 200px;
     display: flex;
     flex-direction: column;
@@ -189,7 +189,7 @@ body {
 
 
 .controls button {
-    padding: 14px;
+    padding: 14px 10px;
     font-size: 22px;
     cursor: pointer;
     transition: all 0.3s ease;
