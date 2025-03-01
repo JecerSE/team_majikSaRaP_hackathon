@@ -99,11 +99,24 @@
     padding: 10px 20px;
     border-radius: 3px;
     transition: 0.3s ease;
+    width: 84%;
 }
 
 .sidebar-nav a:hover {
     background: rgba(255, 255, 255, 0.2);
     padding-left: 15px;
+}
+
+.login-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(111, 207, 189, 0.9);
+    color: #F8F8FF;
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 800;
+    padding-left: 0px;
+    margin-top: 8px;
 }
 
 body {
