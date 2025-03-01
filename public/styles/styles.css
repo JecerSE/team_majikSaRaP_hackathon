@@ -1,6 +1,5 @@
 body {
     background: linear-gradient(0deg, rgba(111,207,189,1) 0%, rgba(0,35,101,1) 100%);
-    color: white;
     margin: 0;
     font-family: 'MonaspaceNeon', monospace;
     font-weight: 800;
@@ -15,7 +14,7 @@ body {
     width: 300px;
     height: 100vh;
     background: rgba(0, 35, 101, 1);
-    color: white;
+    color: #F8F8FF;
     display: flex;
     flex-direction: column;
     padding: 20px;
