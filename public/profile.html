@@ -24,9 +24,9 @@
                         <td>Role</td>
                         <td><select name="role" id="roleSelect" onchange="if(this.value!=0){selectRole(this.value)}">
                             <option value="0" selected="selected">Select role...</option>
-                            <option value="cc">Content Creator</option>
-                            <option value="cv">Curious Viewer</option>
-                            <option value="ba">Best Answerer</option>
+                            <option value="Content Creator">Content Creator</option>
+                            <option value="Curious Viewer">Curious Viewer</option>
+                            <option value="Best Answerer">Best Answerer</option>
                         </select></td>
                     </tr>
                     <tr>
@@ -61,22 +61,30 @@
                     <tr>
                         <td>Email address</td>
                         <td>email@address.org</td>
-                        <td>Edit</td>
+                        <td>
+                            <input class="user-email-input-button" type="button" value="Edit">
+                        </td>
                     </tr>
                     <tr>
                         <td>Role Display</td>
-                        <td></td>
-                        <td>Edit</td>
+                        <td><span class="role-display-edit-field"></span></td>
+                        <td>
+                            <input class="user-roledisplay-input-button" type="button" value="Edit">
+                        </td>
                     </tr>
                     <tr>
                         <td>Phone number</td>
                         <td>09**82***14</td>
-                        <td>Edit</td>
+                        <td>
+                            <input class="user-phoneno-input-button" type="button" value="Edit">
+                        </td>
                     </tr>
                     <tr>
                         <td>Backup email address</td>
                         <td>backupemail@address.org</td>
-                        <td>Edit</td>
+                        <td>
+                            <input class="user-backupemail-input-button" type="button" value="Edit">
+                        </td>
                     </tr>
                 </table>
                 <h1>Security</h1>
@@ -84,12 +92,14 @@
                     <tr>
                         <td>Password</td>
                         <td>***********************</td>
-                        <td>Edit</td>
+                        <td>
+                            <input class="password-input-button" type="button" value="Edit">
+                        </td>
                     </tr>
                     <tr>
                         <td>Two-factor authentication</td>
                         <td>Active</td>
-                        <td>Edit</td>
+                        <td></td>
                     </tr>
                 </table>
                 <h1>Account integration</h1>
@@ -97,17 +107,21 @@
                     <tr>
                         <td>Google</td>
                         <td>email@gmail.com</td>
-                        <td>Remove integration</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>Facebook</td>
                         <td><i>No linked account</i></td>
-                        <td>Add account</td>
+                        <td>
+                            <input class="account-integration-button" id="aib-2" type="button" value="Add account">
+                        </td>
                     </tr>
                     <tr>
                         <td>Moonton</td>
                         <td><i>No linked account</i></td>
-                        <td>Add account</td>
+                        <td>
+                            <input class="account-integration-button" id="aib-3" type="button" value="Add account">
+                        </td>
                     </tr>
                 </table>
             </span>

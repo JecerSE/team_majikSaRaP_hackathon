@@ -44,6 +44,7 @@ function selectRole(role){
     userRole = role;
     updateRank();
     saveSession();
+    location.reload();
 }
 
 function updateExpBar(){
@@ -82,15 +83,15 @@ function updateRank(){
 
     if (rankLvl > maxRankLvl) {rankLvl = maxRankLvl;}
 
-    if (userRole == "cc"){
+    if (userRole == "Content Creator"){
         roleLevelText.textContent = ccRanks[rankLvl];
         userRank = ccRanks[rankLvl];
     }
-    else if (userRole == "cv"){
+    else if (userRole == "Curious Viewer"){
         roleLevelText.textContent = cvRanks[rankLvl];
         userRank = cvRanks[rankLvl];
     }
-    else if (userRole == "ba"){
+    else if (userRole == "Best Answerer"){
         roleLevelText.textContent = baRanks[rankLvl];
         userRank = baRanks[rankLvl]; 
     }
@@ -103,6 +104,7 @@ function resetRank(){
     logCurrentExp();
     updateExpBar();
     saveSession();
+    location.reload();
 }
 
 // USERNAME EDITING
@@ -145,8 +147,21 @@ function submitUsername(event){
     location.reload()
 }
 
+// ACCOUNT INTEGRATION - ALERT BOX
+const accountIntegrationEditButton2 = document.querySelector("#aib-2");
+const accountIntegrationEditButton3 = document.querySelector("#aib-3");
+accountIntegrationEditButton2.addEventListener("click", () => {
+    window.alert("Feature coming soon");
+});
+accountIntegrationEditButton3.addEventListener("click", () => {
+    window.alert("Feature coming soon");
+});
+
 // DEFAULT RUNNING
 usernameInputButton.addEventListener("click", editUsername)
+
+const roleDisplayField = document.querySelector(".role-display-edit-field");
+roleDisplayField.textContent = sessionStorage.getItem("userRole") || "USER ROLE HERE"
 
 // DISPLAY USERNAME
 const sidebarUserNameDisplay = document.querySelector("#sidebar-user-name")
