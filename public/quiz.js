@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const questionData = questions[currentQuestionIndex];
         quizContainer.innerHTML = `
-            <h2>${questionData.question}</h2>
+            <h3>${questionData.question}</h3>
             <div id="answers">
                 ${questionData.options.map(option => 
                     `<button class="answer-btn">${option}</button>`
