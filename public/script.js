@@ -38,11 +38,19 @@ document.addEventListener("DOMContentLoaded", () => {
     commentSection.classList.add("comment-section");
     commentSection.innerHTML = `
         <div class="comment-box" style="color: black;">
-            <button class="close-comment">&times;</button>
-            <h3>Comments</h3>
+            <div class="comment-box-header">
+                <button class="close-comment">
+                    <img src="assets/Icons/close.png" class="close-comment-icon" alt="Close">
+                </button>
+                <h3>Comments</h3>
+            </div>
             <ul class="comments-list"></ul>
-            <input type="text" class="comment-input" style="height:50px;" placeholder="Write a comment...">
-            <button class="post-comment">Post</button>
+            <div class="comment-box-input">
+                <input type="text" class="comment-input" style="height:50px;" placeholder="Write a comment...">
+                <button class="post-comment">
+                    <img src="assets/Icons/post-comment.png" class="post-comment-icon" alt="Post Comment">
+                </button>
+            </div>
         </div>
     `;
     document.body.appendChild(commentSection);
@@ -201,8 +209,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 </tr>
                 <tr class="action-panel">
                     <td></td>
-                    <td><button class="vote-button up"><img class="vote-button up comment-action-icon" src="assets/Icons/upvote.jpg" alt="Upvote"></button> 
-                    <button class="vote-button down"><img class="vote-button down comment-action-icon" src="assets/Icons/downvote.jpg" alt="Downvote"></button> 
+                    <td><button class="vote-button up"><img class="vote-button up comment-action-icon" src="assets/Icons/upvote.png" alt="Upvote"></button> 
+                    <button class="vote-button down"><img class="vote-button down comment-action-icon" src="assets/Icons/downvote.png" alt="Downvote"></button> 
                     <span class="vote-count" style="color:gray">0</span>
                     <input type="button" value="Reply" class="reply-button">
                     <span class="reply-count" style="visibility:hidden">0</span></td>
@@ -315,9 +323,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     <span class="reply-field"></span><td>
                 </tr>
                 <tr class="action-panel reply">
-                    <td><button class="vote-button up"><img class="reply-action-icon" src="assets/Icons/upvote.jpg" alt="Upvote"></button> 
-                    <button class="vote-button down"><img class="reply-action-icon" src="assets/Icons/downvote.jpg" alt="Downvote"></button>
-                    <span class="vote-count reply" style="color:gray">0</span></td>
+                    <td><button class="vote-button up"><img class="reply-action-icon" src="assets/Icons/upvote.png" alt="Upvote"></button>
+                    <button class="vote-button down"><img class="reply-action-icon" src="assets/Icons/downvote.png" alt="Downvote"></button>
+                    <span class="vote-count reply" style="color:gray">0</span></td> 
                 </tr>
             </table>
             `
@@ -595,4 +603,3 @@ document.addEventListener("DOMContentLoaded", () => {
         video.play().catch(error => console.error("Autoplay failed:", error));
     });
 });
-
