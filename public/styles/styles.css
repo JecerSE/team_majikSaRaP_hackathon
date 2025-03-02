@@ -88,8 +88,23 @@ body {
     margin-bottom: 10px;
 }
 
-/*feel like this would also affect comment, will just debug when i start formatting comsec*/
-::placeholder {
+input.search-bar::-webkit-input-placeholder { 
+    font-size: 15px;
+    color: #F8F8FF;
+}
+
+input.search-bar:-moz-placeholder { 
+    font-size: 15px;
+    color: #F8F8FF;
+}
+
+input.search-bar::-moz-placeholder { 
+    font-size: 15px;
+    color: #F8F8FF;
+}
+
+input.search-bar:-ms-input-placeholder {
+    font-size: 15px;
     color: #F8F8FF;
 }
 
@@ -273,18 +288,73 @@ body {
     transition: right 0.3s ease-in-out;
 }
 
+.comment-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+
+.comment-box-header h3 {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    color: #002365;
+}
+
+.close-comment {
+    margin-top: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+.close-comment-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px; 
+    height: 15px;
+}
+
 .comment-profile-pic {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid black;
+    border: 2px solid #002365;
+}
+
+.comment-field {
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: normal;
+    font-size: 14px;
+    color: #002355;
+
 }
 
 .comment-box {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.comment-box-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px;
+    margin: 0px 0px 28px 0px;
+}
+
+.post-comment {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: auto 0px auto 0px;
+}
+
+.post-comment-icon {
+    width: 25px;
+    height: 25px;
 }
 
 .comments-list {
@@ -306,19 +376,38 @@ body {
 }
 
 .comment-input {
-    width: 93%;
-    padding: 8px;
-    margin-bottom: 5px;
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: normal;
+    font-size: 14px;
+    color: #F8F8FF;
+    width: 90%;
+    padding: 0px 10px;
+    height: 15px;
+    margin: 0px;
+    border: 0px;
+    border-radius: 17px;
+    background: rgb(111,207,189);
+    background: linear-gradient(90deg, rgba(111,207,189,1) 0%, rgba(0,35,101,1) 100%);
 }
 
-.post-comment {
-    width: 100%;
-    padding: 8px;
-    background: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    height: 70px;
+input.comment-input::-webkit-input-placeholder { 
+    font-size: 14px;
+    color: #F8F8FF;
+}
+
+input.comment-input:-moz-placeholder { 
+    font-size: 14px;
+    color: #F8F8FF;
+}
+
+input.comment-input::-moz-placeholder { 
+    font-size: 14px;
+    color: #F8F8FF;
+}
+
+input.comment-input:-ms-input-placeholder {
+    font-size: 14px;
+    color: #F8F8FF;
 }
 
 .close-comment {
@@ -341,6 +430,11 @@ body {
     width: 15px;
     height: 15px;
     border-radius: 50%;
+}
+
+.comment-item {
+    font-size: 15px;
+    color: #002355;
 }
 
 .comment-item.reply {
