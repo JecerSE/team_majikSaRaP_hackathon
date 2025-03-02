@@ -8,13 +8,17 @@
     <script src="quiz.js" defer></script>
 </head>
 <body>
-    <div class="top-navbar">U-Tok - Quizzes</div>
-
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="sidebar-header">
-            <img src="assets/profile.jpeg" alt="User Profile" class="sidebar-profile-pic">
-            <span>@<span id="sidebar-user-name">User</span> - <span id="sidebarRank">USERRANK</span> (<span id="sidebarExp">USEREXP</span> exp)</span>
+            <div class="sidebar-header-logo">
+                <img src="assets/logo-whitebg.png" alt="U-Tok Logo" class="sidebar-logo">
+                <p class="utok-name">U-Tok</p>
+            </div>
+            <div class="sidebar-user-profile">
+                <img src="assets/profile.jpeg" alt="User Profile" class="sidebar-profile-pic">
+                <span>@<span id="sidebar-user-name">User</span> - <span id="sidebarRank">USERRANK</span> (<span id="sidebarExp">USEREXP</span> exp)</span>
+            </div>
         </div>
         <nav class="sidebar-nav">
             <input type="text" placeholder="🔎 Search for a Tok" class="search-bar">
@@ -25,25 +29,26 @@
             <a href="quiz.html">🧠 Quiz Yourself</a>
             <a href="profile.html">👤 Your Profile</a>
             <a href="creator.html">🎥 Creator</a>
-            <a href="login.html">🔑 Login</a>
+            <a href="login.html" class="login-button">Log In</a>
         </nav>
     </div>
 
     <!-- Main Content -->
-    <div class="main-content">
-        <h1>Quiz Yourself</h1>
-
-        <!-- Subject Selection -->
-        <div id="quizTabs" class="tabs">
-            <button class="subject-btn" data-subject="Science">Science</button>
-            <button class="subject-btn" data-subject="Math">Math</button>
-            <button class="subject-btn" data-subject="Social">Social</button>
-            <button class="subject-btn" data-subject="Language">Language</button>
-            <button class="subject-btn" data-subject="Random">Random</button>
-        </div>
-
-        <!-- Quiz Container (to show questions) -->
-        <div id="quiz-container"></div>
+    <div class="content-wrapper">
+        <div class="main-content">
+            <p class="main-content-header">Quiz Yourself</p>
+            <!-- Subject Selection -->
+            <div id="quizTabs" class="tabs">
+                <button class="subject-btn" data-subject="Science">Science</button>
+                <button class="subject-btn" data-subject="Math">Math</button>
+                <button class="subject-btn" data-subject="Social">Social</button>
+                <button class="subject-btn" data-subject="Language">Language</button>
+                <button class="subject-btn" data-subject="Random">Random</button>
+            </div>
+    
+            <!-- Quiz Container (to show questions) -->
+            <div id="quiz-container"></div>
+            </div>
     </div>
 
     <script>
