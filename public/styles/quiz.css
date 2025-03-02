@@ -124,7 +124,7 @@ body {
 
 #quiz-container {
     background: linear-gradient(135deg, #ffffff, #e6f7ff);
-    padding: 40px;
+    padding: 0px 40px 40px 40px;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     margin: 50px auto;
@@ -137,11 +137,48 @@ body {
 
 /*question part i moved cuz i cant fking see*/
 #quiz-container h2 {
-    font-size: 26px;
+    font-size: 25px;
     text-align: center;
-    color: #2c3e50;
+    color: #002365;
     font-weight: bold;
     margin-bottom: 25px;
+}
+
+#quiz-container h3 {
+    font-size: 20px;
+    text-align: center;
+    color: #002365;
+    font-weight: bold;
+    margin-bottom: 0px;
+    padding-bottom: 6px;
+}
+
+#quiz-container p {
+    font-size: 15px;
+    text-align: center;
+    color: #002365;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+#quiz-container .answer-btn {
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 800;
+    background-color: #6FCFBD;
+    color: #002365;
+    border: none;
+    padding: 12px 18px;
+    margin: 5px; /* Added more spacing */
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.6s ease, transform 0.4s ease, color 0.3s ease;
+    font-size: 14px;
+}
+
+#quiz-container .answer-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, rgba(111,207,189,1) 0%, rgba(0,35,101,1) 100%);
+    color: #F8F8FF;
 }
 
 .subject-btn {
