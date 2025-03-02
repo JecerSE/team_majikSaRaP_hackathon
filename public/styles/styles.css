@@ -143,9 +143,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-left: 220px; 
-    padding-top: 0;
-    padding-bottom: 0;
+    margin-left: 300px; 
+    padding: 0;
 }
 
 /* Video Container */
@@ -162,6 +161,33 @@ body {
 .video {
     height: 100%;
     object-fit: cover;
+    display: block;
+}
+
+.vid-info {
+    position: absolute;
+    bottom: 3px; /* Adjust positioning */
+    left: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    z-index: 10; /* Ensures text appears above video */
+    width: calc(100%-20px);
+    color: #F8F8FF;
+}
+
+.vid-user {
+    font-weight: 800;
+    padding: 0px;
+    border-radius: 5px;
+    margin-bottom: -10px;
+    font-size: 8px;
+}
+
+.vid-title {
+    font-size: 14px;
+    padding: 0px;
+    margin-top: -10px;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 /* Controls */
