@@ -20,7 +20,7 @@
 ## Content Creator 
 The backbone of U-Tok, these individuals produce educational shorts, ensuring quality, accuracy, and engagement.
 
-# Titles for Content Creators:
+### Titles for Content Creators:
 - Novice Explorer   
 - Emerging Storyteller  
 - Knowledge Spreader  
@@ -34,7 +34,7 @@ The backbone of U-Tok, these individuals produce educational shorts, ensuring qu
 ## Curious Viewer
 The eager learners, those who actively watch, engage, and participate in discussions. As they continue their journey, they earn new titles reflecting their depth of knowledge absorption. 
 
-# Titles for Curious Viewers:
+### Titles for Curious Viewers:
 - Inquisitive Mind  
 - Engaged Seeker  
 - Thoughtful Observer  
@@ -48,7 +48,7 @@ The eager learners, those who actively watch, engage, and participate in discuss
 ## Best Answerer
 The community’s intellectual pillars. These are the ones who answer questions with clarity and depth, their responses upvoted and ranked to provide the most accurate, concise, and insightful information to others.
 
-# Titles for Best Answerers:
+### Titles for Best Answerers:
 - Budding Responder  
 - Trusted Guide  
 - Thoughtful Contributor  
