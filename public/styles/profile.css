@@ -35,6 +35,8 @@ body {
     flex-direction: column;
     padding: 20px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    font-family: "MonaspaceNeon", monospace;
+    font-weight: bold;
 }
 
 .sidebar-header {
@@ -158,11 +160,19 @@ input.search-bar:-ms-input-placeholder {
     background-color: white;
     padding: 30px 50px;
     width: 60%;
-    margin-left: 280px;
+    margin-left: 375px;
     margin-top: 90px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     right: -50px;
+    height: 500px;
+    overflow-y: auto;
+}
+
+.profile-pic {
+    width: 250px;
+    border-radius: 50%;
+    border: 2px solid black;
 }
 
 .content h1 {
@@ -213,4 +223,26 @@ input[type="button"]:hover, .edit-button:hover {
         width: 85%;
         margin-left: 220px;
     }
+}
+
+/* Fonts */
+@font-face {
+    font-family: 'MonaspaceNeon';
+    src: url('../assets/fonts/MonaspaceNeon-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MonaspaceNeon';
+    src: url('../assets/fonts/MonaspaceNeon-SemiWideSemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MonaspaceNeon';
+    src: url('../assets/fonts/MonaspaceNeon-WideExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
 }
