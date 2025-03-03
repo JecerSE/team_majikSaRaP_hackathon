@@ -9,36 +9,24 @@
 
     <body>
         <div class="content">
-            <span id="info">
-                <h1>User</h1>
-                <table>
-                    <tr>
-                        <td class="info-type">Name</td>
-                        <td id="info-user-name">User name here</td>
-                    </tr>
-                    <tr>
-                        <td class="info-type">Profile picture</td>
-                        <td><a class="edit-profile-pic"><img src="assets/profile.jpeg" alt="User Profile" class="profile-pic"></a></td>
-                    </tr>
-                    <tr>
-                        <td class="info-type">Role</td>
-                        <td><select name="role" id="roleSelect" onchange="if(this.value!=0){selectRole(this.value)}">
+            <div id="info">
+                <a class="edit-profile-pic"><img src="assets/profile.jpeg" alt="User Profile" class="profile-pic"></a>
+                <div class="user-info">
+                    <p id="info-user-name">User</p>
+                    <p id="roleLevel">Role level here</p>
+                    <div class="select-role">
+                        <p id="role">Role</p>
+                        <select name="role" id="roleSelect" onchange="if(this.value!=0){selectRole(this.value)}">
                             <option value="0" selected="selected">Select role...</option>
                             <option value="Content Creator">Content Creator</option>
                             <option value="Curious Viewer">Curious Viewer</option>
                             <option value="Best Answerer">Best Answerer</option>
-                        </select></td>
-                    </tr>
-                    <tr>
-                        <td class="info-type">Role level</td>
-                        <td><p id="roleLevel">Role level here</p></td>
-                    </tr>
-                    <tr style="vertical-align: top;">
-                        <td class="info-type">XP</td>
-                        <td><p id="expBar">----------</p><br>x points to next rank</td>
-                    </tr>
-                </table>
-            </span>
+                        </select>
+                    </div>
+                    <p id="expBar">----------</p>
+                    <p id="expDesc">x points to next rank</p>
+                </div>
+            </div>
 
             <span id="actions">
                 <h1>Account options</h1>
@@ -54,28 +42,28 @@
                     </tr>
                     <tr>
                         <td class="info-type">Email address</td>
-                        <td>email@address.org</td>
+                        <td id="info-input">email@address.org</td>
                         <td>
                             <input class="user-email-input-button" type="button" value="Edit">
                         </td>
                     </tr>
                     <tr>
                         <td class="info-type">Role Display</td>
-                        <td><span class="role-display-edit-field"></span></td>
+                        <td><span id="info-input" class="role-display-edit-field"></span></td>
                         <td>
                             <input class="user-roledisplay-input-button" type="button" value="Edit">
                         </td>
                     </tr>
                     <tr>
                         <td class="info-type">Phone number</td>
-                        <td>09**82***14</td>
+                        <td id="info-input">09**82***14</td>
                         <td>
                             <input class="user-phoneno-input-button" type="button" value="Edit">
                         </td>
                     </tr>
                     <tr>
                         <td class="info-type">Backup email address</td>
-                        <td>backupemail@address.org</td>
+                        <td id="info-input">backupemail@address.org</td>
                         <td>
                             <input class="user-backupemail-input-button" type="button" value="Edit">
                         </td>
@@ -85,14 +73,14 @@
                 <table>
                     <tr>
                         <td class="info-type">Password</td>
-                        <td>***********************</td>
+                        <td id="info-input">***********************</td>
                         <td>
                             <input class="password-input-button" type="button" value="Edit">
                         </td>
                     </tr>
                     <tr>
                         <td class="info-type">Two-factor authentication</td>
-                        <td>Active</td>
+                        <td id="info-input">Active</td>
                         <td></td>
                     </tr>
                 </table>
@@ -100,19 +88,19 @@
                 <table>
                     <tr>
                         <td class="info-type">Google</td>
-                        <td>email@gmail.com</td>
+                        <td id="info-input">email@gmail.com</td>
                         <td></td>
                     </tr>
                     <tr>
                         <td class="info-type">Facebook</td>
-                        <td><i>No linked account</i></td>
+                        <td id="info-input"><i>No linked account</i></td>
                         <td>
                             <input class="account-integration-button" id="aib-2" type="button" value="Add account">
                         </td>
                     </tr>
                     <tr>
                         <td class="info-type">Moonton</td>
-                        <td><i>No linked account</i></td>
+                        <td id="info-input"><i>No linked account</i></td>
                         <td>
                             <input class="account-integration-button" id="aib-3" type="button" value="Add account">
                         </td>
