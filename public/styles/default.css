@@ -17,10 +17,10 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 200px;
+    width: 300px;
     height: 100vh;
-    background: rgba(30, 30, 30, 0.95);
-    color: white;
+    background:#1b263b;
+    color: #F8F8FF;
     display: flex;
     flex-direction: column;
     padding: 20px;
