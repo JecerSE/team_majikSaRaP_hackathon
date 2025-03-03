@@ -4,7 +4,7 @@ body {
     display: flex;
     background: linear-gradient(to bottom, #98c1d9, #e0fbfc);
     font-family: 'MonaspaceNeon', monospace;
-    color: #0d1b2a;
+    color: #002365;
 }
 
 /* navbar */
@@ -159,34 +159,107 @@ input.search-bar:-ms-input-placeholder {
     position: relative;
     background-color: white;
     padding: 30px 50px;
-    width: 60%;
-    margin-left: 375px;
+    width: 50%;
+    margin-left: 435px;
     margin-top: 90px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     right: -50px;
     height: 500px;
     overflow-y: auto;
-    font-size: 12px;
+    font-size: 20px;
 }
 
 .profile-pic {
-    width: 250px;
+    width: 150px;
     border-radius: 50%;
-    border: 2px solid black;
+    border: 5px solid #6FCFBD;
 }
 
 .content h1 {
-    color: #1b263b;
-    border-bottom: 2px solid #1b263b;
+    border-bottom: 2px solid rgba(111, 207, 189, 0.5);
     padding-bottom: 5px;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .info-type {
     font-weight: 800;
+    font-size: 15px;
+}
+
+#info {
+    display: flex;
+}
+
+#info-user-name {
+    font-weight: 800;
+    font-size: 24px;
+    margin: 0;
+}
+
+.user-info {
+    margin-left: 20px;
+}
+
+.select-role {
+    display: flex;
+    gap: 10px;
+    top: 50%;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+#expBar {
+    margin: 0;
+}
+#expDesc {
+    margin: 0;
+    font-size: 14px;
+}
+
+#roleLevel {
+    margin: 0px;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+#roleSelect {
+    font-size: 14px;
+    border: 0;
+    border-radius: 15px;
+    background-color: rgba(111, 207, 189, 0.9);
+    color: #F8F8FF;
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 600;
+    padding: 5px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+#roleSelect option {
+    font-size: 14px;
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 600;
+    padding: 5px;
+}
+
+#roleSelect option:checked {
+    background-color: #002365;
+}
+
+#role {
     font-size: 16px;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+#info-input {
+    font-size: 14px;
 }
 
 .content table {
@@ -196,7 +269,7 @@ input.search-bar:-ms-input-placeholder {
 }
 
 .content td {
-    padding: 10px;
+    padding: 6px;
 }
 
 .user-name-input-field {
@@ -206,14 +279,17 @@ input.search-bar:-ms-input-placeholder {
 
 /* Buttons */
 input[type="button"], .edit-button {
-    padding: 8px 12px;
-    background: #98c1d9;
-    color: black;
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 800;
+    background-color: #6FCFBD;
+    color: #F8F8FF;
     border: none;
-    border-radius: 5px;
+    padding: 10px;
+    margin: 0;
     cursor: pointer;
-    transition: 0.3s;
-    font-weight: bold;
+    border-radius: 6px;
+    transition: background 0.6s ease, transform 0.4s ease, color 0.3s ease;
+    font-size: 12px;
 }
 
 input[type="button"]:hover, .edit-button:hover {
