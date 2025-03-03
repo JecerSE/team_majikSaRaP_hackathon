@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(0deg, rgba(111,207,189,1) 0%, rgba(0,35,101,1) 100%);
+    background: linear-gradient(to bottom, #98c1d9, #e0fbfc);
     margin: 0;
     font-family: 'MonaspaceNeon', monospace;
     font-weight: 800;
