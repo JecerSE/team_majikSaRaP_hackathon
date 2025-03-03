@@ -167,6 +167,7 @@ input.search-bar:-ms-input-placeholder {
     right: -50px;
     height: 500px;
     overflow-y: auto;
+    font-size: 12px;
 }
 
 .profile-pic {
@@ -180,6 +181,12 @@ input.search-bar:-ms-input-placeholder {
     border-bottom: 2px solid #1b263b;
     padding-bottom: 5px;
     font-weight: bold;
+    font-size: 24px;
+}
+
+.info-type {
+    font-weight: 800;
+    font-size: 16px;
 }
 
 .content table {
@@ -190,7 +197,6 @@ input.search-bar:-ms-input-placeholder {
 
 .content td {
     padding: 10px;
-    border-bottom: 1px solid #ddd;
 }
 
 .user-name-input-field {
