@@ -189,13 +189,13 @@ input.search-bar:-ms-input-placeholder {
     color: #F8F8FF;
 }
 
-.vid-user {
+/*.vid-user {
     font-weight: 800;
     padding: 0px;
     border-radius: 5px;
     margin-bottom: -10px;
     font-size: 8px;
-}
+}*/
 
 .vid-title {
     font-size: 14px;
