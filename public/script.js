@@ -474,14 +474,14 @@ document.addEventListener("DOMContentLoaded", () => {
     //jecer was here dili nako ani :)
     const quizQuestions = [
         {
-            question: "Who is the best player in League of Legends?",
-            options: ["Caps", "Chovy", "Faker", "TheShy"],
-            answer: "Faker"
+            question: "What is the inverse of inegration",
+            options: ["Kinematics", "Pythagorean Theorem", "Differentiation", "Condensation"],
+            answer: "Differentiation"
         },
         {
-            question: "Which player is NOT in Los Ratones' starting roster?",
-            options: ["TheBausffs", "Caedrel", "Crownie", "Nemesis"],
-            answer: "Caedrel"
+            question: "Which of the following distinguishes a vector quantity from a scalar quantity?",
+            options: ["Magnitude only", "Direction only", "Both magnitude and direction", "Neither magnitude nor direction"],
+            answer: "Both magnitude and direction"
         }
     ];
     
