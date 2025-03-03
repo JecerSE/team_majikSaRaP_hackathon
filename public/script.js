@@ -362,7 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
     indicator.style.position = "absolute";
     indicator.style.top = "50%";
     indicator.style.left = "50%";
-    indicator.style.transform = "translate(-50%, -50%) scale(1)";
+    indicator.style.transform = "translate(140%, -50%) scale(1)";
     indicator.style.width = "80px";
     indicator.style.opacity = "0";
     indicator.style.transition = "opacity 0.3s ease, transform 0.3s ease";
@@ -371,11 +371,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function showIndicator(iconSrc) {
         indicator.src = iconSrc;
         indicator.style.opacity = "1";
-        indicator.style.transform = "translate(-50%, -50%) scale(1)";
+        indicator.style.transform = "translate(140%, -50%) scale(1)";
 
         setTimeout(() => {
             indicator.style.opacity = "0";
-            indicator.style.transform = "translate(-50%, -50%) scale(1.5)";
+            indicator.style.transform = "translate(140%, -50%) scale(1.5)";
         }, 500);
     }
 
