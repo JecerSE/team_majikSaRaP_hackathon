@@ -170,12 +170,12 @@ input.search-bar:-ms-input-placeholder {
 }
 
 ::-webkit-scrollbar-track {
-    background: #111; 
+    background: none;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #444; 
-    border-radius: 4px;
+    background: rgba(111, 207, 189, 0.6); 
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -309,8 +309,21 @@ input.search-bar:-ms-input-placeholder {
 }
 
 .user-name-input-field {
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: normal;
+    font-size: 15px;
+    color: #F8F8FF;
+    padding: 3px 3px 3px 5px;
+    margin: 0px;
+    border: 0px;
+    border-radius: 6px;
+    background: rgb(111,207,189);
     height: 20px;
     width: 250px;
+}
+
+.user-name-input-field::placeholder {
+    color: #F8F8FF;
 }
 
 /* Buttons */
