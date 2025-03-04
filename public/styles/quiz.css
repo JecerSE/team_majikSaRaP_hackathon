@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to bottom, #98c1d9, #e0fbfc);
+    background: linear-gradient(to top, #98c1d9, #e0fbfc);
     margin: 0;
     font-family: 'MonaspaceNeon', monospace;
     font-weight: 800;
@@ -18,7 +18,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 15px -2px rgba(32,33,36,0.9);
 }
 
 .sidebar-header {
@@ -53,16 +53,30 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 0px;
-    margin-top: 0px;
 }
 
+#sidebar-user-name {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+#sidebarRank{
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.sidebar-exp-summary {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
 .sidebar-profile-pic {
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid white;
+    border: 3px solid #F8F8FF;
 }
 
 /* Navigation Links */
@@ -85,11 +99,28 @@ body {
     font-weight: 800;
     padding-left: 20px;
     margin-top: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 15px -2px rgba(32,33,36,0.9);
 }
 
-/*feel like this would also affect comment, will just debug when i start formatting comsec*/
-::placeholder {
+
+input.search-bar::-webkit-input-placeholder { 
+    font-size: 15px;
+    color: #F8F8FF;
+}
+
+input.search-bar:-moz-placeholder { 
+    font-size: 15px;
+    color: #F8F8FF;
+}
+
+input.search-bar::-moz-placeholder { 
+    font-size: 15px;
+    color: #F8F8FF;
+}
+
+input.search-bar:-ms-input-placeholder {
+    font-size: 15px;
     color: #F8F8FF;
 }
 
@@ -97,15 +128,22 @@ body {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 6px 20px;
     border-radius: 3px;
-    transition: 0.3s ease;
+    transition: 0.4s ease;
     width: 84%;
 }
 
-.sidebar-nav a:hover {
+.sidebar-nav a:hover, .login-button:hover {
     background: rgba(255, 255, 255, 0.2);
     padding-left: 15px;
+}
+
+.navbar-icons {
+    height: 25px;
+    width: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .login-button {
@@ -117,7 +155,29 @@ body {
     font-family: 'MonaspaceNeon', monospace;
     font-weight: 800;
     padding-left: 0px;
-    margin-top: 8px;
+    margin-top: 12px;
+    text-decoration: none;
+    border-radius: 15px;
+    height: 45px;
+    box-shadow: 0px 0px 15px -2px rgba(32,33,36,0.9);
+    transition: 0.4s ease;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444; 
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #666; 
 }
 
 #quiz-container {
