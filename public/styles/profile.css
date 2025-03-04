@@ -191,7 +191,7 @@ input.search-bar:-ms-input-placeholder {
     width: 50%;
     margin-left: 435px;
     margin-top: 90px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px -5px rgba(32,33,36,0.9);
     border-radius: 10px;
     right: -50px;
     height: 500px;
