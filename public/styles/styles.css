@@ -378,35 +378,69 @@ input.search-bar:-ms-input-placeholder {
 .comment-input {
     font-family: 'MonaspaceNeon', monospace;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 12px;
     color: #F8F8FF;
     width: 90%;
     padding: 0px 10px;
+    height: 10px;
+    margin: 0px;
+    border: 0px;
+    border-radius: 12px;
+    background: rgb(111,207,189);
+}
+
+.reply-input {
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: normal;
+    font-size: 12px;
+    color: #F8F8FF;
+    width: 50%;
+    padding: 10px 10px;
     height: 15px;
     margin: 0px;
     border: 0px;
-    border-radius: 17px;
+    border-radius: 12px;
     background: rgb(111,207,189);
-    background: linear-gradient(90deg, rgba(111,207,189,1) 0%, rgba(0,35,101,1) 100%);
+}
+
+.reply-input::placeholder {
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: normal;
+    font-size: 12px;
+    color: #F8F8FF;
+}
+
+.post-reply {
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 800;
+    background-color: #002355;
+    color: #F8F8FF;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.6s ease, transform 0.4s ease, color 0.3s ease;
+    font-size: 10px;
 }
 
 input.comment-input::-webkit-input-placeholder { 
-    font-size: 14px;
+    font-size: 12px;
     color: #F8F8FF;
 }
 
 input.comment-input:-moz-placeholder { 
-    font-size: 14px;
+    font-size: 12px;
     color: #F8F8FF;
 }
 
 input.comment-input::-moz-placeholder { 
-    font-size: 14px;
+    font-size: 12px;
     color: #F8F8FF;
 }
 
 input.comment-input:-ms-input-placeholder {
-    font-size: 14px;
+    font-size: 12px;
     color: #F8F8FF;
 }
 
@@ -432,6 +466,20 @@ input.comment-input:-ms-input-placeholder {
     border-radius: 50%;
 }
 
+.reply-button {
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 800;
+    background-color: #6FCFBD;
+    color: #F8F8FF;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.6s ease, transform 0.4s ease, color 0.3s ease;
+    font-size: 10px;
+}
+
 .comment-item {
     font-size: 15px;
     color: #002355;
@@ -439,6 +487,18 @@ input.comment-input:-ms-input-placeholder {
 
 .comment-item.reply {
     font-size: 10px;
+}
+
+.vote-button {
+    background: none;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    margin-bottom: 0;
+    margin-top: 0;
+    height: 15px;
+    width: auto;
 }
 
 .reply-rank {
