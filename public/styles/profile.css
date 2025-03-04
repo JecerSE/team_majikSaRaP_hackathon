@@ -229,6 +229,10 @@ input.search-bar:-ms-input-placeholder {
     margin: 0;
 }
 
+.overall-user-name {
+    margin-bottom: 0;
+}
+
 .user-info {
     margin-left: 20px;
 }
@@ -320,12 +324,12 @@ input[type="button"], .edit-button {
     margin: 0;
     cursor: pointer;
     border-radius: 6px;
-    transition: background 0.6s ease, transform 0.4s ease, color 0.3s ease;
+    transition: background 0.4s ease, transform 0.4s ease, color 0.3s ease;
     font-size: 12px;
 }
 
 input[type="button"]:hover, .edit-button:hover {
-    background: #e0fbfc;
+    background: #002365;
 }
 
 /* Responsive Design */
