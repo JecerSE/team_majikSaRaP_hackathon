@@ -339,6 +339,7 @@ input[type="button"], .edit-button {
     border-radius: 6px;
     transition: background 0.4s ease, transform 0.4s ease, color 0.3s ease;
     font-size: 12px;
+    box-shadow: 0px 0px 6px -5px rgba(32,33,36,0.9);
 }
 
 input[type="button"]:hover, .edit-button:hover {
