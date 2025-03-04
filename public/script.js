@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Create new html
                 replySection.innerHTML = `
                 <input type="text" style="height=20px" placeholder="Reply to this comment..." class="reply-input">
-                <input type="button" class="post-reply" value="Post reply">
+                <input type="button" class="post-reply" value="Post">
                 <ul class="comments-list replies"></ul>
                 `                
             }
