@@ -181,11 +181,12 @@ input.search-bar:-ms-input-placeholder {
 }
 
 #quiz-container {
-    background: linear-gradient(135deg, #ffffff, #e6f7ff);
+    background: rgb(248,248,255);
+    background: radial-gradient(circle, rgba(248,248,255,1) 0%, rgba(224,251,252,1) 100%);
     padding: 0px 40px 40px 40px;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    margin: 50px auto;
+    margin: 20px auto 40px auto;
     width: 75%;
     display: flex;
     flex-direction: column;
@@ -222,8 +223,8 @@ input.search-bar:-ms-input-placeholder {
 #quiz-container .answer-btn {
     font-family: 'MonaspaceNeon', monospace;
     font-weight: 800;
-    background-color: #6FCFBD;
-    color: #002365;
+    background-color: #002365;
+    color: #6FCFBD;
     border: none;
     padding: 12px 18px;
     margin: 5px; /* Added more spacing */
@@ -231,6 +232,7 @@ input.search-bar:-ms-input-placeholder {
     border-radius: 6px;
     transition: background 0.6s ease, transform 0.4s ease, color 0.3s ease;
     font-size: 14px;
+    box-shadow: 0px 0px 10px -5px rgba(32,33,36,0.9);
 }
 
 #quiz-container .answer-btn:hover {
@@ -246,15 +248,17 @@ input.search-bar:-ms-input-placeholder {
     color: #002365;
     border: none;
     padding: 12px 18px;
-    margin: 10px; /* Added more spacing */
+    margin: 12px 6px 0px 6px;
     cursor: pointer;
     border-radius: 6px;
     transition: background-color 0.3s ease, transform 0.2s ease;
     font-weight: bold;
+    box-shadow: 0px 0px 10px -5px rgba(32,33,36,0.9);
 }
 
 .subject-btn:hover {
-    background-color: #8B5E3C;
+    background-color: #002365;
+    color: #F8F8FF;
     transform: scale(1.05);
 }
 
@@ -298,7 +302,7 @@ input.search-bar:-ms-input-placeholder {
     position: relative;
     background-color: white;
     padding: 20px 40px;
-    width: 55%;
+    width: 60%;
     margin: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
@@ -309,7 +313,9 @@ input.search-bar:-ms-input-placeholder {
 
 .main-content-header {
     color: #002365;
-    font-size: 30px;
+    font-size: 25px;
+    padding: 0;
+    margin: 10px 0px 0px 0px;
 }
 
 .tabs {
