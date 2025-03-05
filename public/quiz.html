@@ -3,35 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - U-Tok</title>
+    <title>Quiz Yourself | U-Tok</title>
+    <link rel="icon" type="image/png" href="assets/logo.png"/>
     <link rel="stylesheet" href="styles/quiz.css">
     <script src="quiz.js" defer></script>
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-header-logo">
-                <img src="assets/logo-whitebg.png" alt="U-Tok Logo" class="sidebar-logo">
-                <p class="utok-name">U-Tok</p>
-            </div>
-            <div class="sidebar-user-profile">
-                <img src="assets/profile.jpeg" alt="User Profile" class="sidebar-profile-pic">
-                <span>@<span id="sidebar-user-name">User</span> - <span id="sidebarRank">USERRANK</span> (<span id="sidebarExp">USEREXP</span> exp)</span>
-            </div>
+<div class="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-header-logo">
+            <img src="assets/logo-whitebg.png" alt="U-Tok Logo" class="sidebar-logo">
+            <p class="utok-name">U-Tok</p>
         </div>
-        <nav class="sidebar-nav">
-            <input type="text" placeholder="🔎 Search for a Tok" class="search-bar">
-            <a href="index.html">🏠 Home</a>
-            <a href="ranks.html">🏆 Ranks</a>
-            <a href="following.html">👥 Following</a>
-            <a href="recommended.html">✨ Recommended</a>
-            <a href="quiz.html">🧠 Quiz Yourself</a>
-            <a href="profile.html">👤 Your Profile</a>
-            <a href="creator.html">🎥 Creator</a>
-            <a href="login.html" class="login-button">Log In</a>
-        </nav>
+        <div class="sidebar-user-profile">
+            <a href="profile.html"><img src="assets/profile.jpeg" alt="User Profile" class="sidebar-profile-pic"></a>
+            <div class="sidebar-user-info">
+                <span>@<span id="sidebar-user-name">User</span></span> <br>
+                <span id="sidebarRank">USERRANK</span> <br>
+                <span class="sidebar-exp-summary"><span id="sidebarExp">USEREXP</span> exp</span>
+            </div>            
+        </div>
     </div>
+    <nav class="sidebar-nav">
+        <input type="text" placeholder="🔎 Search for a Tok" class="search-bar">
+        <a href="index.html"><img src="assets/Icons/Home_icon.png" alt="Home" class="navbar-icons"> Home</a>
+        <a href="ranks.html"><img src="assets/Icons/Ranks_icon.png" alt="Ranks" class="navbar-icons"> Ranks</a>
+        <a href="following.html"><img src="assets/Icons/Following_icon.png" alt="Following" class="navbar-icons"> Following</a>
+        <a href="recommended.html"><img src="assets/Icons/Recommend_icon.png" alt="Recommended" class="navbar-icons"> Recommended</a>
+        <a href="quiz.html"><img src="assets/Icons/Quiz_icon.png" alt="Quiz Yourself" class="navbar-icons"> Quiz Yourself</a>
+        <a href="profile.html"><img src="assets/Icons/Profile_icon.png" alt="Your Profile" class="navbar-icons"> Your Profile</a>
+        <a href="creator.html"><img src="assets/Icons/Creator_icon.png" alt="Creator" class="navbar-icons"> Creator</a>
+    </nav>
+    <a href="login.html" class="login-button">Log In</a>
+</div>
 
     <!-- Main Content -->
     <div class="content-wrapper">

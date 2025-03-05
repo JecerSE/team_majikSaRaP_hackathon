@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to bottom, #98c1d9, #e0fbfc);
+    background: linear-gradient(to top, #98c1d9, #e0fbfc);
     margin: 0;
     font-family: 'MonaspaceNeon', monospace;
     font-weight: 800;
@@ -13,12 +13,12 @@ body {
     left: 0;
     width: 300px;
     height: 100vh;
-    background:#1b263b;
+    background: #002365;
     color: #F8F8FF;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 15px -2px rgba(32,33,36,0.9);
 }
 
 .sidebar-header {
@@ -53,16 +53,30 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 0px;
-    margin-top: 0px;
 }
 
+#sidebar-user-name {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+#sidebarRank{
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.sidebar-exp-summary {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
 .sidebar-profile-pic {
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid white;
+    border: 3px solid #F8F8FF;
 }
 
 /* Navigation Links */
@@ -85,8 +99,10 @@ body {
     font-weight: 800;
     padding-left: 20px;
     margin-top: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 15px -2px rgba(32,33,36,0.9);
 }
+
 
 input.search-bar::-webkit-input-placeholder { 
     font-size: 15px;
@@ -112,15 +128,22 @@ input.search-bar:-ms-input-placeholder {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    padding: 10px 20px;
+    padding: 6px 20px;
     border-radius: 3px;
-    transition: 0.3s ease;
+    transition: 0.4s ease;
     width: 84%;
 }
 
-.sidebar-nav a:hover {
+.sidebar-nav a:hover, .login-button:hover {
     background: rgba(255, 255, 255, 0.2);
     padding-left: 15px;
+}
+
+.navbar-icons {
+    height: 25px;
+    width: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .login-button {
@@ -132,7 +155,12 @@ input.search-bar:-ms-input-placeholder {
     font-family: 'MonaspaceNeon', monospace;
     font-weight: 800;
     padding-left: 0px;
-    margin-top: 8px;
+    margin-top: 12px;
+    text-decoration: none;
+    border-radius: 15px;
+    height: 45px;
+    box-shadow: 0px 0px 15px -2px rgba(32,33,36,0.9);
+    transition: 0.4s ease;
 }
 
 ::-webkit-scrollbar {
@@ -177,6 +205,7 @@ input.search-bar:-ms-input-placeholder {
     height: 100%;
     object-fit: cover;
     display: block;
+    box-shadow: 0px 0px 10px -5px rgba(32,33,36,0.9);
 }
 
 .vid-info {
@@ -218,6 +247,7 @@ input.search-bar:-ms-input-placeholder {
     padding: 8px;
     border-radius: 15px;
     text-align: center;
+    box-shadow: 0px 0px 10px -5px rgba(32,33,36,0.9);
 }
 
 .controls button {
@@ -346,15 +376,18 @@ input.search-bar:-ms-input-placeholder {
 }
 
 .post-comment {
-    background: none;
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 800;
+    background-color: #002355;
+    color: #F8F8FF;
     border: none;
+    padding: 16px;
+    margin-left: 10px;
     cursor: pointer;
-    margin: auto 0px auto 0px;
-}
-
-.post-comment-icon {
-    width: 25px;
-    height: 25px;
+    border-radius: 6px;
+    transition: background 0.6s ease, transform 0.4s ease, color 0.3s ease;
+    font-size: 12px;
+    box-shadow: 0px 0px 8px -4px rgba(32,33,36,0.9);
 }
 
 .comments-list {
@@ -382,12 +415,55 @@ input.search-bar:-ms-input-placeholder {
     color: #F8F8FF;
     width: 90%;
     padding: 0px 10px;
+    height: 10px;
+    margin: 0px;
+    border: 0px;
+    border-radius: 12px;
+    background: rgb(111,207,189);
+}
+
+.reply-input {
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: normal;
+    font-size: 12px;
+    color: #F8F8FF;
+    width: 60%;
+    padding: 10px 10px;
     height: 15px;
     margin: 0px;
     border: 0px;
-    border-radius: 17px;
+    border-radius: 12px;
     background: rgb(111,207,189);
-    background: linear-gradient(90deg, rgba(111,207,189,1) 0%, rgba(0,35,101,1) 100%);
+}
+
+.reply-input::placeholder {
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: normal;
+    font-size: 12px;
+    color: #F8F8FF;
+}
+
+.post-reply {
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 800;
+    background-color: #002355;
+    color: #F8F8FF;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.6s ease, transform 0.4s ease, color 0.3s ease;
+    font-size: 10px;
+    box-shadow: 0px 0px 4px -4px rgba(32,33,36,0.9);
+}
+
+.post-comment:hover, .post-reply:hover {
+    background: #6FCFBD;
+}
+
+.reply-button:hover {
+    background: #002355;
 }
 
 input.comment-input::-webkit-input-placeholder { 
@@ -432,6 +508,21 @@ input.comment-input:-ms-input-placeholder {
     border-radius: 50%;
 }
 
+.reply-button {
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 800;
+    background-color: #6FCFBD;
+    color: #F8F8FF;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.6s ease, transform 0.4s ease, color 0.3s ease;
+    font-size: 10px;
+    box-shadow: 0px 0px 4px -4px rgba(32,33,36,0.9);
+}
+
 .comment-item {
     font-size: 15px;
     color: #002355;
@@ -439,6 +530,18 @@ input.comment-input:-ms-input-placeholder {
 
 .comment-item.reply {
     font-size: 10px;
+}
+
+.vote-button {
+    background: none;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    margin-bottom: 0;
+    margin-top: 0;
+    height: 15px;
+    width: auto;
 }
 
 .reply-rank {

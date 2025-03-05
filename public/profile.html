@@ -3,42 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Your Profile - U-Tok</title>
+        <title>Profile | U-Tok</title>
+        <link rel="icon" type="image/png" href="assets/logo.png"/>
         <link rel="stylesheet" href="styles/profile.css">
     </head>
 
     <body>
         <div class="content">
-            <span id="info">
-                <h1>User</h1>
-                <table>
-                    <tr>
-                        <td class="info-type">Name</td>
-                        <td id="info-user-name">User name here</td>
-                    </tr>
-                    <tr>
-                        <td class="info-type">Profile picture</td>
-                        <td><a class="edit-profile-pic"><img src="assets/profile.jpeg" alt="User Profile" class="profile-pic"></a></td>
-                    </tr>
-                    <tr>
-                        <td class="info-type">Role</td>
-                        <td><select name="role" id="roleSelect" onchange="if(this.value!=0){selectRole(this.value)}">
+            <div id="info">
+                <a class="edit-profile-pic"><img src="assets/profile.jpeg" alt="User Profile" class="profile-pic"></a>
+                <div class="user-info">
+                    <p class="overall-user-name"><span>@</span><span id="info-user-name">USER</span></p>
+                    <p id="roleLevel">Role level here</p>
+                    <div class="select-role">
+                        <p id="role">Role</p>
+                        <select name="role" id="roleSelect" onchange="if(this.value!=0){selectRole(this.value)}">
                             <option value="0" selected="selected">Select role...</option>
                             <option value="Content Creator">Content Creator</option>
                             <option value="Curious Viewer">Curious Viewer</option>
                             <option value="Best Answerer">Best Answerer</option>
-                        </select></td>
-                    </tr>
-                    <tr>
-                        <td class="info-type">Role level</td>
-                        <td><p id="roleLevel">Role level here</p></td>
-                    </tr>
-                    <tr style="vertical-align: top;">
-                        <td class="info-type">XP</td>
-                        <td><p id="expBar">----------</p><br>x points to next rank</td>
-                    </tr>
-                </table>
-            </span>
+                        </select>
+                    </div>
+                    <p id="expBar">----------</p>
+                    <p id="expDesc">x points to next rank</p>
+                </div>
+            </div>
 
             <span id="actions">
                 <h1>Account options</h1>
@@ -54,28 +43,28 @@
                     </tr>
                     <tr>
                         <td class="info-type">Email address</td>
-                        <td>email@address.org</td>
+                        <td id="info-input">email@address.org</td>
                         <td>
                             <input class="user-email-input-button" type="button" value="Edit">
                         </td>
                     </tr>
                     <tr>
                         <td class="info-type">Role Display</td>
-                        <td><span class="role-display-edit-field"></span></td>
+                        <td><span id="info-input" class="role-display-edit-field"></span></td>
                         <td>
                             <input class="user-roledisplay-input-button" type="button" value="Edit">
                         </td>
                     </tr>
                     <tr>
                         <td class="info-type">Phone number</td>
-                        <td>09**82***14</td>
+                        <td id="info-input">09**82***14</td>
                         <td>
                             <input class="user-phoneno-input-button" type="button" value="Edit" onclick="addExp(1)">
                         </td>
                     </tr>
                     <tr>
                         <td class="info-type">Backup email address</td>
-                        <td>backupemail@address.org</td>
+                        <td id="info-input">backupemail@address.org</td>
                         <td>
                             <input class="user-backupemail-input-button" type="button" value="Edit" onclick="addExp(10)">
                         </td>
@@ -85,14 +74,14 @@
                 <table>
                     <tr>
                         <td class="info-type">Password</td>
-                        <td>***********************</td>
+                        <td id="info-input">***********************</td>
                         <td>
                             <input class="password-input-button" type="button" value="Edit" onclick="resetRank()">
                         </td>
                     </tr>
                     <tr>
                         <td class="info-type">Two-factor authentication</td>
-                        <td>Active</td>
+                        <td id="info-input">Active</td>
                         <td></td>
                     </tr>
                 </table>
@@ -100,19 +89,19 @@
                 <table>
                     <tr>
                         <td class="info-type">Google</td>
-                        <td>email@gmail.com</td>
+                        <td id="info-input">email@gmail.com</td>
                         <td></td>
                     </tr>
                     <tr>
                         <td class="info-type">Facebook</td>
-                        <td><i>No linked account</i></td>
+                        <td id="info-input"><i>No linked account</i></td>
                         <td>
                             <input class="account-integration-button" id="aib-2" type="button" value="Add account">
                         </td>
                     </tr>
                     <tr>
                         <td class="info-type">Moonton</td>
-                        <td><i>No linked account</i></td>
+                        <td id="info-input"><i>No linked account</i></td>
                         <td>
                             <input class="account-integration-button" id="aib-3" type="button" value="Add account">
                         </td>
@@ -121,31 +110,34 @@
             </span>
         </div>
 
-        <div class="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-header-logo">
-                    <img src="assets/logo-whitebg.png" alt="U-Tok Logo" class="sidebar-logo">
-                    <p class="utok-name">U-Tok</p>
-                </div>
-                <div class="sidebar-user-profile">
-                    <a href="profile.html"><img src="assets/profile.jpeg" alt="User Profile" class="sidebar-profile-pic"></a>
-                    <span>@<span id="sidebar-user-name">User</span> - <span id="sidebarRank">USERRANK</span> (<span id="sidebarExp">USEREXP</span> exp)</span>
-                </div>
-            </div>
-            <nav class="sidebar-nav">
-                <input type="text" placeholder="🔎 Search for a Tok" class="search-bar">
-                <a href="index.html">🏠 Home</a>
-                <a href="ranks.html">🏆 Ranks</a>
-                <a href="following.html">👥 Following</a>
-                <a href="recommended.html">✨ Recommended</a>
-                <a href="quiz.html">🧠 Quiz Yourself</a>
-                <a href="profile.html">👤 Your Profile</a>
-                <a href="creator.html">🎥 Creator</a>
-                <a href="login.html" class="login-button">Log In</a>
-            </nav>
+            <!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-header-logo">
+            <img src="assets/logo-whitebg.png" alt="U-Tok Logo" class="sidebar-logo">
+            <p class="utok-name">U-Tok</p>
         </div>
-
-        
+        <div class="sidebar-user-profile">
+            <a href="profile.html"><img src="assets/profile.jpeg" alt="User Profile" class="sidebar-profile-pic"></a>
+            <div class="sidebar-user-info">
+                <span>@<span id="sidebar-user-name">USER</span></span> <br>
+                <span id="sidebarRank">USERRANK</span> <br>
+                <span class="sidebar-exp-summary"><span id="sidebarExp">USEREXP</span> exp</span>
+            </div>            
+        </div>
+    </div>
+    <nav class="sidebar-nav">
+        <input type="text" placeholder="🔎 Search for a Tok" class="search-bar">
+        <a href="index.html"><img src="assets/Icons/Home_icon.png" alt="Home" class="navbar-icons"> Home</a>
+        <a href="ranks.html"><img src="assets/Icons/Ranks_icon.png" alt="Ranks" class="navbar-icons"> Ranks</a>
+        <a href="following.html"><img src="assets/Icons/Following_icon.png" alt="Following" class="navbar-icons"> Following</a>
+        <a href="recommended.html"><img src="assets/Icons/Recommend_icon.png" alt="Recommended" class="navbar-icons"> Recommended</a>
+        <a href="quiz.html"><img src="assets/Icons/Quiz_icon.png" alt="Quiz Yourself" class="navbar-icons"> Quiz Yourself</a>
+        <a href="profile.html"><img src="assets/Icons/Profile_icon.png" alt="Your Profile" class="navbar-icons"> Your Profile</a>
+        <a href="creator.html"><img src="assets/Icons/Creator_icon.png" alt="Creator" class="navbar-icons"> Creator</a>
+    </nav>
+    <a href="login.html" class="login-button">Log In</a>
+</div>
 
         <script src="rank.js"></script>
         <script>

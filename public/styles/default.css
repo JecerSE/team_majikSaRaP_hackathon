@@ -1,15 +1,10 @@
-.top-navbar {
-    width: 100%;
-    padding: 15px;
-    background: #1b263b;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-right: 30px;
+html, body {
+    background: linear-gradient(to top, #98c1d9, #e0fbfc);
+    height: 100%;
+    margin: 0;
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 800;
+    overflow: hidden;
 }
 
 /* Sidebar */
@@ -19,15 +14,14 @@
     left: 0;
     width: 300px;
     height: 100vh;
-    background:#1b263b;
+    background: #002365;
     color: #F8F8FF;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 15px -2px rgba(32,33,36,0.9);
 }
 
-/* User Profile */
 .sidebar-header {
     display: absolute;
     align-items: center;
@@ -35,67 +29,176 @@
     margin-bottom: 20px;
 }
 
+/* U-Tok Logo */
+.sidebar-header-logo{
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.sidebar-logo {
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.utok-name{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 35px;
+}
+
+/* User Summary */
+.sidebar-user-profile{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#sidebar-user-name {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+#sidebarRank{
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.sidebar-exp-summary {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
 .sidebar-profile-pic {
-    width: 40px;
-    height: 40px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid white;
+    border: 3px solid #F8F8FF;
 }
 
 /* Navigation Links */
 .sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 2px;
+    padding-left: 5px;
+}
+
+/* Search Bar */
+.search-bar {
+    width: 90%;
+    height: 40px;
+    border: 0px;
+    border-radius: 15px;
+    background-color: rgba(111, 207, 189, 0.9);
+    color: #F8F8FF;
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 800;
+    padding-left: 20px;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 15px -2px rgba(32,33,36,0.9);
+}
+
+
+input.search-bar::-webkit-input-placeholder { 
+    font-size: 15px;
+    color: #F8F8FF;
+}
+
+input.search-bar:-moz-placeholder { 
+    font-size: 15px;
+    color: #F8F8FF;
+}
+
+input.search-bar::-moz-placeholder { 
+    font-size: 15px;
+    color: #F8F8FF;
+}
+
+input.search-bar:-ms-input-placeholder {
+    font-size: 15px;
+    color: #F8F8FF;
 }
 
 .sidebar-nav a {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    padding: 10px;
-    border-radius: 5px;
-    transition: 0.3s ease;
+    padding: 6px 20px;
+    border-radius: 3px;
+    transition: 0.4s ease;
+    width: 84%;
 }
 
-.sidebar-nav a:hover {
+.sidebar-nav a:hover, .login-button:hover {
     background: rgba(255, 255, 255, 0.2);
     padding-left: 15px;
 }
 
-.content{
-    margin: auto;
-    position: relative;
-    padding: 20px 75px;
-    background-color: gray;
-    width: 80%;
-    height: 75%;
+.navbar-icons {
+    height: 25px;
+    width: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.login-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(111, 207, 189, 0.9);
+    color: #F8F8FF;
+    font-family: 'MonaspaceNeon', monospace;
+    font-weight: 800;
+    padding-left: 0px;
+    margin-top: 12px;
+    text-decoration: none;
+    border-radius: 15px;
+    height: 45px;
+    box-shadow: 0px 0px 15px -2px rgba(32,33,36,0.9);
+    transition: 0.4s ease;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444; 
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #666; 
+}
+
+/* Fonts */
+@font-face {
+    font-family: 'MonaspaceNeon';
+    src: url('../assets/fonts/MonaspaceNeon-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
     font-family: 'MonaspaceNeon';
-    src: url('assets/fonts/MonaspaceNeon-Regular.woff2') format('woff2');
-    font-weight: normal;
+    src: url('../assets/fonts/MonaspaceNeon-SemiWideSemiBold.woff2') format('woff2');
+    font-weight: 600;
     font-style: normal;
-  }
-  
-  @font-face {
+}
+
+@font-face {
     font-family: 'MonaspaceNeon';
-    src: url('assets/fonts/MonaspaceNeon-Bold.woff2') format('woff2');
-    font-weight: bold;
+    src: url('../assets/fonts/MonaspaceNeon-WideExtraBold.woff2') format('woff2');
+    font-weight: 800;
     font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'MonaspaceNeon';
-    src: url('assets/fonts/MonaspaceNeon-Italic.woff2') format('woff2');
-    font-weight: normal;
-    font-style: italic;
-  }
-  
-  
-body {
-    font-family: 'MonaspaceNeon', monospace;
-  }
-  
+}

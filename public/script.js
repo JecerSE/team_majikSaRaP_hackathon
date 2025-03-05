@@ -47,9 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <ul class="comments-list"></ul>
             <div class="comment-box-input">
                 <input type="text" class="comment-input" style="height:50px;" placeholder="Write a comment...">
-                <button class="post-comment">
-                    <img src="assets/Icons/post-comment.png" class="post-comment-icon" alt="Post Comment">
-                </button>
+                <button class="post-comment">Post</button>
             </div>
         </div>
     `;
@@ -281,7 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Create new html
                 replySection.innerHTML = `
                 <input type="text" style="height=20px" placeholder="Reply to this comment..." class="reply-input">
-                <input type="button" class="post-reply" value="Post reply">
+                <input type="button" class="post-reply" value="Post">
                 <ul class="comments-list replies"></ul>
                 `                
             }
